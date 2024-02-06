@@ -171,15 +171,15 @@ body {
 /* Define a new class for the background image */
 
 .background-container1 {
-    background-image: url('img1.jpg');
+    background-image: url('images/img1.jpg');
 }
 
 .background-container2 {
-    background-image: url('img4.jpg');
+    background-image: url('images/img4.jpg');
 }
 
 .background-container3 {
-    background-image: url('img7.jpg');
+    background-image: url('images/img7.jpg');
 }
 
 /* Add this rule to your CSS sheet */
