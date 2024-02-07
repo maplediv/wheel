@@ -200,6 +200,7 @@ body {
     border-radius: 5px; /* Add rounded corners */
     cursor: pointer; /* Change cursor to indicate interactivity */
     transition: background-color 0.3s, color 0.3s; /* Add smooth transition effect */
+    margin-right: 30px; 
 }
 
 /* Style the button on hover */
