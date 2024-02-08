@@ -1,0 +1,116 @@
+hr {
+  margin: 50px;
+}
+
+/* Part 1 */
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #1e90ff;
+  color: white;
+  margin: 50px auto;
+  display: block;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #115ba2;
+}
+
+/* Part 2 */
+
+.card {
+  width: 30%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 0 auto;
+  box-shadow: 0px 2px 2px 0px #bbb;
+}
+
+.img {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ1yCAnWze1-qu-KQY75TIdMbLdDs3Y4T4WQegXF9Tspo2xI8v");
+  width: 100%;
+  padding-bottom: 50%;
+  background-size: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.title {
+  background-color: #eee;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px;
+}
+
+.description {
+  padding: 15px;
+  background-color: #eee;
+  border-top: 1px solid #ccc;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  font-size: 14px;
+}
+
+/* Part 3 */
+
+.tiles {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tile {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  border: 8px solid peachpuff;
+  background-color: peachpuff;
+}
+
+.img-wrapper {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  border-radius: 8px;
+  background-size: cover;
+}
+
+.img-1 {
+  background-image: url("https://media.giphy.com/media/HrB1MUATg24Ra/giphy.gif");
+}
+
+.img-2 {
+  background-image: url("https://media.giphy.com/media/Y8bL4lil6jive/giphy.gif");
+}
+
+.img-3 {
+  background-image: url("https://media.giphy.com/media/OcZp0maz6ALok/giphy.gif");
+}
+
+.caption {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 300px;
+  transition: top 0.6s;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.tile:hover .caption {
+  top: 0;
+}
