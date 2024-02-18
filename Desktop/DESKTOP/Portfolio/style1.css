@@ -10,23 +10,72 @@ body {
     padding: 0;
 }
 
+/* Add this rule to center the contact form */
+/* Add this rule to center the contact form */
+.contact-container {
+    width: 50%; /* Adjust the width of the container as needed */
+    margin: 0 auto; /* Center align the container */
+    padding: 20px;
+    background-color: #fff; /* Set background color */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.contact-form-page {
+    text-align: left; /* Left align the form */
+}
+
+.contact-form-page label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.contact-form-page input[type="text"],
+.contact-form-page input[type="email"],
+.contact-form-page textarea {
+    width: calc(100% - 22px); /* Adjust width for the border */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.contact-form-page input[type="submit"] {
+    background-color: #002C5B;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contact-form-page input[type="submit"]:hover {
+    background-color: #002C5B;
+}
+
+/* Add padding below the button */
+.custom-button {
+    margin-bottom: 40px;
+    margin-top: 30px; /* Adjust as needed */
+}
+
+/* Add padding below the button */
+.custom-button {
+    margin-bottom: 40px;
+    margin-top: 30px; /* Adjust as needed */
+}
+
+.custom-button {
+    margin-bottom: 40px;
+    margin-top: 30px; /* Adjust as needed */
+}
+
 /* Add this rule for the top padding of videos */
 .embed-responsive iframe {
     padding-top: 20px;
 }
 
-/* Add this rule for the container-api class */
-.container-api {
-    padding: 0;
-}
-
-/* Add this rule for the h1 and p elements inside container-api */
-.container-api h1,
-.container-api p {
-    padding-left: 10px;
-}
-
-/* Add this rule for the text container */
 .text-container {
     text-align: left;
     margin-bottom: 20px; /* Adjust margin as needed */
@@ -134,16 +183,7 @@ body {
 }
 
 /* Container styles for API content */
-.container-api {
-    padding-left: 0; /* Remove left padding */
-    padding-right: 0; /* Remove right padding */
-}
 
-.container-api img {
-    max-width: 100%; /* Set the image width to 100% of its container */
-    height: auto;
-    margin-bottom: 10px; /* Adjusted margin for reducing space between elements */
-}
 
 /* Footer styles */
 .footer {
@@ -171,7 +211,7 @@ body {
 /* Define a new class for the background image */
 
 .background-container1 {
-    background-image: url('/Desktop/DESKTOP/Portfolio/images/img1.jpg');
+    background-image: url('/images/img1.jpg');
 }
 
 .background-container2 {
@@ -214,8 +254,7 @@ body {
     display: none; /* Hide the content by default */
 }
 
-
-/* /* Add this rule to style the Galactic Center Sonification section container */
+/* Add this rule to style the Galactic Center Sonification section container */
 #galacticCenterContainer {
     background-color: #2D2F31; /* Set black background color */
     color: #fff; /* Set white text color */
@@ -224,6 +263,41 @@ body {
 }
 
 #galacticCenterContent {
-    padding: 40px; /* Add padding to the content inside the section container */
+    padding: 40px;
+}
+
+#galacticCenterContent .col-md-6 {
+    padding-right: 50px; /* Adjust padding as needed */
+}
+
+#galacticCenterContent .col-md-6:last-child {
+    padding-left: 0px; /* Adjust padding as needed */
+}
+@media (max-width: 767px) {
+    /* Media query for screens smaller than 768px (mobile devices) */
+    #galacticCenterContent .row {
+        flex-direction: column; /* Change flex direction to column */
+        align-items: center; /* Center align items */
+    }
+
+    #galacticCenterContent .col-md-6 {
+        width: 100%; /* Set column width to 100% */
+        padding: 0; /* Remove padding */
+    }
+
+    .embed-responsive-16by9 {
+        width: 100%; /* Set video width to 100% */
+        margin-top: 20px; /* Add margin to separate text and video */
+    }
+}
+
+/* Add a class to the body element of your contact page */
+.contact-page {
+    background-color: #f2f2f2; /* Set background color */
+}
+
+.custom-img {
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
