@@ -7,9 +7,12 @@ export default defineConfig({
   plugins: [
     react(), // Use the React plugin
     replace({
-      'process.env.REACT_APP_API_KEY': JSON.stringify(process.env.REACT_APP_API_KEY || ''),
+      'process.env.REACT_APP_API_KEY': JSON.stringify(process.env.VITE_REACT_APP_GOOGLE_VISION_API_KEY || ''),
     }),
   ],
+  server: {
+    port: 10000, // Specify the port number
+  },
   build: {
     outDir: 'dist', // Specify the output directory
   },
