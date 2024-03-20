@@ -12,6 +12,7 @@ export default defineConfig({
   ],
   server: {
     port: 10000, // Specify the port number
+    host: '0.0.0.0'
   },
   build: {
     outDir: 'dist', // Specify the output directory
