@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.css';
 
 interface ColorTileProps {
   color: { red: number; green: number; blue: number };

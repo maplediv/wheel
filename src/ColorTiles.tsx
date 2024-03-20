@@ -1,5 +1,5 @@
 import React from 'react';
-import ColorTile from './ColorTile'; // Import ColorTile here
+import ColorTile from './ColorTile';
 
 interface ColorTilesProps {
   response: {
@@ -18,13 +18,22 @@ interface ColorTilesProps {
 }
 
 const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
-  // Use optional chaining (?) and nullish coalescing (??) to safely access nested properties
   const colors = response?.responses?.[0]?.imagePropertiesAnnotation?.dominantColors?.colors || [];
 
   return (
-    <div>
+    <div className="color-tile-container">
       {colors.map((color, index) => (
-        <ColorTile key={index} color={color.color} />
+        <div key={index} className="color-tile">
+          <ColorTile color={color.color} />
+          <div className="hex-code-blocks"> {/* Add this div with the class */}
+            <div>Hex: #{color.color.red.toString(16).padStart(2, '0').toUpperCase()}
+              {color.color.green.toString(16).padStart(2, '0').toUpperCase()}
+              {color.color.blue.toString(16).padStart(2, '0').toUpperCase()}</div>
+            <div>Red: #{color.color.red.toString(16).padStart(2, '0').toUpperCase()} ({(color.color.red / 255 * 100).toFixed(2)}%)</div>
+            <div>Green: #{color.color.green.toString(16).padStart(2, '0').toUpperCase()} ({(color.color.green / 255 * 100).toFixed(2)}%)</div>
+            <div>Blue: #{color.color.blue.toString(16).padStart(2, '0').toUpperCase()} ({(color.color.blue / 255 * 100).toFixed(2)}%)</div>
+          </div>
+        </div>
       ))}
     </div>
   );

@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './index.css';
 
-const VisionAPIComponent: React.FC<{ imageUrl: string; onColorResponse: (response: any) => void }> = ({ imageUrl, onColorResponse }) => {
+
+const VisionAPIComponent: React.FC<{ onColorResponse: (response: any) => void }> = ({ onColorResponse }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [imageUrl, setImageUrl] = useState<string | null>(null); // State to store the public URL
+
+  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]; // Get the uploaded file
+
+    if (file) {
+      const publicUrl = URL.createObjectURL(file); // Generate public URL for the file
+      setImageUrl(publicUrl); // Set the public URL to the state
+    }
+  };
 
   const handleImageAnalysis = async () => {
-    const apiKey: string | undefined = import.meta.env.REACT_APP_GOOGLE_VISION_API_KEY;
+    if (!imageUrl) {
+      console.error('Image URL is missing.');
+      return;
+    }
+
+    const apiKey: string | undefined = import.meta.env.VITE_REACT_APP_GOOGLE_VISION_API_KEY;
 
     if (!apiKey) {
       console.error('API key is missing.');
@@ -60,11 +77,18 @@ const VisionAPIComponent: React.FC<{ imageUrl: string; onColorResponse: (respons
   };
 
   return (
-    <div>
-      <button onClick={handleImageAnalysis} disabled={loading}>
-        {loading ? 'Analyzing...' : 'Analyze Image'}
-      </button>
-      {error && <p>Error: {error}</p>}
+    <div className="vision-api-container">
+      <div className="upload-button-container">
+        <input type="file" accept="image/*" onChange={handleImageUpload} />
+        <button onClick={handleImageAnalysis} disabled={loading}>
+          {loading ? 'Analyzing...' : 'Analyze Image'}
+        </button>
+      </div>
+      {imageUrl && ( // Render the image if imageUrl is not null
+        <div className="image-container">
+          <img src={imageUrl} alt="Uploaded Image" style={{ maxWidth: '100%', maxHeight: '50vh' }} />
+        </div>
+      )}
     </div>
   );
 };

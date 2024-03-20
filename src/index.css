@@ -1,12 +1,11 @@
+/* index.css */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: #000000; /* Change font color to black */
+  background-color: #eae9e9;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -16,7 +15,7 @@
 a {
   font-weight: 500;
   color: #646cff;
-  text-decoration: inherit;
+  text-decoration: none;
 }
 a:hover {
   color: #535bf2;
@@ -25,7 +24,8 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column; /* Adjusted to column for better alignment */
+  align-items: center; /* Center content horizontally */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -33,18 +33,20 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin-top: 20px; /* Add some space above the title */
 }
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px, 000000;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #f7f2f2;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin: 20px
 }
 button:hover {
   border-color: #646cff;
@@ -54,15 +56,55 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Adjustments for color tiles and hex code blocks */
+.color-tile-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  margin-top: 20px; /* Add margin between color tiles and hex code blocks */
+}
+
+.color-tile {
+  margin: 30px;
+}
+
+.hex-code-blocks {
+  display: flex;
+  flex-direction: column;
+  align-items: right; /* Center horizontally */
+  text-align: center; /* Center text horizontally */
+}
+
+.hex-code-block {
+  margin-bottom: 10px; /* Add margin between each hex code block */
+  display: flex;
+  flex-direction: column;
+  align-items: right; /* Center hex code blocks vertically */
+}
+
+.hex-code-block > div {
+  text-align: right; /* Center text within hex code blocks */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 980px) {
+  .color-tile-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
   }
-  a:hover {
-    color: #747bff;
+}
+
+@media screen and (min-width: 981px) {
+  .vision-api-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  button {
-    background-color: #f9f9f9;
+  .color-tile-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
   }
 }
