@@ -36,27 +36,32 @@ h1 {
   margin-top: 20px; /* Add some space above the title */
 }
 
-btn btn-primary {
-  border-radius: 8px;
-  border: 1px, 000000;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #020101;
-  cursor: pointer;
-  transition: border-color 0.25s;
-  margin: 20px
- 
+/* Add this CSS to ensure both buttons have the same style and size */
 
+/* Style for both buttons */
+.btn.btn-primary.custom-button {
+  display: inline-block;
+  background-color: #002C5B;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #002C5B;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
-button:hover {
-  border-color: #646cff;
+
+/* Hover style for both buttons */
+.btn.btn-primary.custom-button:hover {
+  background-color: #001A35;
+  border-color: #001A35;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+/* Focus style for both buttons */
+.btn.btn-primary.custom-button:focus,
+.btn.btn-primary.custom-button:focus-visible {
+  outline: none;
 }
+
 
 /* Adjustments for color tiles and hex code blocks */
 .color-tile-container {
@@ -65,23 +70,47 @@ button:focus-visible {
   justify-content: center;
   align-items: center; /* Center vertically */
   margin-top: 20px; 
-  grid-template-columns: repeat(5, 1fr);
-  /* Add margin between color tiles and hex code blocks */
+  margin-bottom: 50px;
 }
 
-.color-tile {
+.color-tiles-container {
+  margin-bottom: 200px; /* Adjust margin-bottom as needed */
+}
 
+
+.color-tile {
   background-color: #ffffff; /* Example background color */
   width: 50px;
   height: 50px;
-  margin: 50px;
+  margin-right: 500px; /* Adjust margin-right for space between color tiles */
   border: 0px solid black;
-  margin-top: 20px;
-  margin-right: 80px;
-  margin-left: 80px;
-  margin-bottom: 300px;
- 
+  margin-bottom: 2000px; /* Add margin-bottom for space between rows of color tiles */
 }
+
+.hex-code {
+  margin-right: 50px; /* Adjust margin-right for space between hex codes */
+}
+
+.footer {
+  position: relative; /* Change position to relative */
+  background-color: #f8f9fa; /* Set background color */
+  padding: 20px 0;
+  text-align: center;
+}
+
+
+.hex-code {
+  margin-right: 200px; 
+  margin-bottom: 200px;/* Adjust margin-right for space between hex codes */
+}
+
+.color-value {
+  width: 100px; 
+  margin-bottom: 200px;
+  padding-left: 20px;
+}
+
+
 
 .spinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
@@ -107,20 +136,20 @@ button:focus-visible {
   flex-direction: column;
   align-items: center; /* Center horizontally */
   text-align: center; /* Center text horizontally */
+  margin-left: 200px; /* Add margin-left for space between color tiles and hex codes */
 }
 
 .hex-code-block {
-  margin-bottom: 10px; /* Add margin between each hex code block */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center hex code blocks vertically */
+  margin-bottom: 1000px; /* Add margin-bottom for space between hex codes */
 }
 
 .hex-code-block > div {
   text-align: center;
   align-items: center; 
   display: flex;
-  flex-direction: column; /* Center text within hex code blocks */
+  flex-direction: row; /* Adjusted to row for horizontal alignment */
+  justify-content: center; /* Center horizontally */
+  margin-bottom: 500px; /* Add margin between hex values */
 }
 
 /* Responsive adjustments */
@@ -174,3 +203,113 @@ button:focus-visible {
 .button-container button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+
+/* index.css */
+
+/* Add a class for the file input button */
+.custom-file-input {
+  /* Hide the default file input button */
+  display: none;
+}
+
+/* Style the custom file input button */
+.custom-file-label {
+  display: inline-block;
+  background-color: #002C5B;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #002C5B;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.custom-file-label:hover {
+  background-color: #001A35;
+  border-color: #001A35;
+}
+
+/* Ensure the label text is vertically centered */
+.custom-file-label::before {
+  display: inline-block;
+  content: 'Choose file';
+  vertical-align: middle;
+  line-height: normal;
+}
+
+/* Reset the appearance of the file input button */
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.custom-file-input::before {
+  content: 'Choose file'; /* Default label text */
+  display: inline-block;
+  background-color: #002C5B;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #002C5B;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.custom-file-input:hover::before {
+  background-color: #001A35;
+  border-color: #001A35;
+}
+
+/* Adjust the header and footer styles to span the whole page */
+
+/* Header styles */
+.navbar {
+  padding: 20px 0; /* Adjust padding */
+  background-color: #fff; /* Set background color */
+  width: 100%; /* Make the header span the whole width */
+}
+
+.navbar-brand img {
+  margin-right: 10px;
+}
+
+.navbar-nav {
+  margin: 0; /* Remove margin from navbar items */
+}
+
+.navbar-nav .nav-link {
+  color: #000; /* Set color */
+  margin: 0; /* Remove margin */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007bff; /* Set hover color */
+}
+
+.dropdown-menu {
+  background-color: #fff; /* Set background color */
+  border: 1px solid #ddd; /* Set border */
+}
+.navbar-nav.ml-auto {
+  margin-left: auto;
+}
+
+/* Footer styles */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8f9fa; /* Set background color */
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 200px;
+}
+
+
+
+
+
+

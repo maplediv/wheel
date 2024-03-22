@@ -21,20 +21,43 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
   const colors = response?.responses?.[0]?.imagePropertiesAnnotation?.dominantColors?.colors || [];
 
   return (
-    <div className="color-tile-container">
-      {colors.map((color, index) => (
-        <div key={index} className="color-tile">
-          <ColorTile color={color.color} />
-          <div className="hex-code-blocks"> {/* Add this div with the class */}
-            <div>Hex: #{color.color.red.toString(16).padStart(2, '0').toUpperCase()}
-              {color.color.green.toString(16).padStart(2, '0').toUpperCase()}
-              {color.color.blue.toString(16).padStart(2, '0').toUpperCase()}</div>
-            <div>Red: #{color.color.red.toString(16).padStart(2, '0').toUpperCase()} ({(color.color.red / 255 * 100).toFixed(2)}%)</div>
-            <div>Green: #{color.color.green.toString(16).padStart(2, '0').toUpperCase()} ({(color.color.green / 255 * 100).toFixed(2)}%)</div>
-            <div>Blue: #{color.color.blue.toString(16).padStart(2, '0').toUpperCase()} ({(color.color.blue / 255 * 100).toFixed(2)}%)</div>
-          </div>
-        </div>
-      ))}
+    <div className="color-tiles-container"> {/* Ensure correct class */}
+      <div className="color-table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Color Tile</th>
+              <th>Hex Code</th>
+              <th>Red</th>
+              <th>Green</th>
+              <th>Blue</th>
+            </tr>
+          </thead>
+          <tbody>
+            {colors.map((color, index) => (
+              <tr key={index}>
+                <td className="color-tile">
+                  <ColorTile color={color.color} />
+                </td>
+                <td className="hex-code">
+                  #{color.color.red.toString(16).padStart(2, '0').toUpperCase()}
+                  {color.color.green.toString(16).padStart(2, '0').toUpperCase()}
+                  {color.color.blue.toString(16).padStart(2, '0').toUpperCase()}
+                </td>
+                <td className="color-value">
+                  <div>Red: {color.color.red}</div>
+                </td>
+                <td className="color-value">
+                  <div>Green: {color.color.green}</div>
+                </td>
+                <td className="color-value">
+                  <div>Blue: {color.color.blue}</div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
