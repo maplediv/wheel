@@ -36,17 +36,19 @@ h1 {
   margin-top: 20px; /* Add some space above the title */
 }
 
-button {
+btn btn-primary {
   border-radius: 8px;
   border: 1px, 000000;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #f7f2f2;
+  background-color: #020101;
   cursor: pointer;
   transition: border-color 0.25s;
   margin: 20px
+ 
+
 }
 button:hover {
   border-color: #646cff;
@@ -62,17 +64,48 @@ button:focus-visible {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center; /* Center vertically */
-  margin-top: 20px; /* Add margin between color tiles and hex code blocks */
+  margin-top: 20px; 
+  grid-template-columns: repeat(5, 1fr);
+  /* Add margin between color tiles and hex code blocks */
 }
 
 .color-tile {
-  margin: 30px;
+
+  background-color: #ffffff; /* Example background color */
+  width: 50px;
+  height: 50px;
+  margin: 50px;
+  border: 0px solid black;
+  margin-top: 20px;
+  margin-right: 80px;
+  margin-left: 80px;
+  margin-bottom: 300px;
+ 
 }
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #000000;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
 
 .hex-code-blocks {
   display: flex;
   flex-direction: column;
-  align-items: right; /* Center horizontally */
+  align-items: center; /* Center horizontally */
   text-align: center; /* Center text horizontally */
 }
 
@@ -80,11 +113,14 @@ button:focus-visible {
   margin-bottom: 10px; /* Add margin between each hex code block */
   display: flex;
   flex-direction: column;
-  align-items: right; /* Center hex code blocks vertically */
+  align-items: center; /* Center hex code blocks vertically */
 }
 
 .hex-code-block > div {
-  text-align: right; /* Center text within hex code blocks */
+  text-align: center;
+  align-items: center; 
+  display: flex;
+  flex-direction: column; /* Center text within hex code blocks */
 }
 
 /* Responsive adjustments */
@@ -96,15 +132,45 @@ button:focus-visible {
   }
 }
 
-@media screen and (min-width: 981px) {
-  .vision-api-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+@media screen and (max-width: 600px) {
   .color-tile-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Change to 2 columns */
     gap: 20px;
   }
+
+
+}
+.vision-api-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Adjustments for buttons */
+/* Adjustments for buttons */
+.upload-button-container button,
+.button-container button {
+  width: 200px; /* Set a fixed width for both buttons */
+  border-radius: 8px;
+  border: 1px solid #000000; /* Adjust border color */
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #f7f2f2;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin: 20px;
+}
+
+.upload-button-container button:hover,
+.button-container button:hover {
+  border-color: #646cff; /* Adjust hover border color */
+}
+
+.upload-button-container button:focus,
+.upload-button-container button:focus-visible,
+.button-container button:focus,
+.button-container button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }
