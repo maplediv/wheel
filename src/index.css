@@ -175,6 +175,12 @@ h1 {
     gap: 20px;
   }
 
+  .custom-button {
+    margin-bottom: 20px;
+  }
+}
+
+
 
 }
 .vision-api-container {
@@ -292,6 +298,7 @@ h1 {
   color: #007bff; /* Set hover color */
 }
 
+/*logo*/
 .navbar-brand img {
   margin-right: 10px; /* Adjust margin-right as needed */
   width: 150px; /* Set width of the logo */
