@@ -16,7 +16,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <h1>Color Detection</h1>
+      <h1>Color Recognition</h1>
       {/* Display VisionAPIComponent */}
       <VisionAPIComponent onColorResponse={handleColorResponse} />
       {/* Display color tiles if color response is available */}

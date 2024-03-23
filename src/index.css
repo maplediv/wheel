@@ -12,6 +12,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.logo d-inline-block align-top
+{
+  margin-right: 0px; /* Adjust margin-right as needed */
+  width: 1000px; /* Set width of the logo */
+  height: auto; /* Maintain aspect ratio */
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -279,13 +286,21 @@ h1 {
   margin: 0; /* Remove margin from navbar items */
 }
 
-.navbar-nav .nav-link {
-  color: #000; /* Set color */
-  margin: 0; /* Remove margin */
-}
+
 
 .navbar-nav .nav-link:hover {
   color: #007bff; /* Set hover color */
+}
+
+.navbar-brand img {
+  margin-right: 10px; /* Adjust margin-right as needed */
+  width: 150px; /* Set width of the logo */
+  height: 50px;/* Maintain aspect ratio */
+}
+
+.navbar-nav .nav-link {
+  margin-right: 10px; /* Adjust margin-right to match the logo */
+  color: #000; /* Set color */
 }
 
 .dropdown-menu {
