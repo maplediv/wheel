@@ -102,6 +102,7 @@
     align-items: center;
     margin-top: 20px;
     margin-bottom: 50px;
+   
   }
 
   .color-tile {
@@ -127,10 +128,12 @@
     align-items: center;
     text-align: center;
     margin-left: 200px;
+    margin-right: 50px;
   }
 
   .hex-code-block {
     margin-bottom: 20px;
+    margin-right: 50px;
   }
 
   .hex-code-block > div {
@@ -139,6 +142,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-right: 50px;
   }
 
   /* Footer */
@@ -244,8 +248,8 @@
     border: 4px solid rgba(0, 0, 0, 0.1);
     border-left-color: #000000;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     animation: spin 1s linear infinite;
   }
 
@@ -264,17 +268,31 @@
     }
   }
 
+  
+  
+
+    .custom-button {
+      margin-bottom: 20px;
+    }
+  
+  .background-container {
+    margin-bottom: 100px; 
+   /* Adjust the margin-bottom as needed */
+  }
+
   @media screen and (max-width: 600px) {
     .color-tile-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
-
-    .custom-button {
-      margin-bottom: 20px;
+  
+    .color-tile {
+      margin-right: 50px !important;
     }
-  }
-  .background-container {
-    margin-bottom: 100px; /* Adjust the margin-bottom as needed */
+
+    .color-value {
+     
+      margin-left: 200px; /* Adjust the right margin of the color value */
+    }
   }
