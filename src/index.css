@@ -1,10 +1,10 @@
-/* index.css */
+/* Reset */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
-  color: #000000; /* Change font color to black */
+  color: #000000;
   background-color: #eae9e9;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -12,13 +12,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.logo d-inline-block align-top
-{
-  margin-right: 0px; /* Adjust margin-right as needed */
-  width: 1000px; /* Set width of the logo */
-  height: auto; /* Maintain aspect ratio */
-}
-
+/* Links */
 a {
   font-weight: 500;
   color: #646cff;
@@ -28,24 +22,57 @@ a:hover {
   color: #535bf2;
 }
 
+/* Body */
 body {
   margin: 0;
   display: flex;
-  flex-direction: column; /* Adjusted to column for better alignment */
-  align-items: center; /* Center content horizontally */
+  flex-direction: column;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
+  margin-bottom: 100px;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  margin-top: 20px; /* Add some space above the title */
+  margin-top: 40px;
+  margin-bottom: 40px; /* Increase the margin-top to create more space */
 }
 
-/* Add this CSS to ensure both buttons have the same style and size */
 
-/* Style for both buttons */
+
+/* Header */
+.navbar {
+  padding: 20px 0;
+  background-color: #fff;
+  width: 100%;
+}
+
+.navbar-brand img {
+  margin-right: 10px;
+  width: 150px;
+  height: 50px;
+}
+
+.navbar-nav {
+  margin: 0;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007bff;
+}
+
+.dropdown-menu {
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.navbar-nav.ml-auto {
+  margin-left: auto;
+}
+
+/* Buttons */
 .btn.btn-primary.custom-button {
   display: inline-block;
   background-color: #002C5B;
@@ -57,144 +84,91 @@ h1 {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-/* Hover style for both buttons */
 .btn.btn-primary.custom-button:hover {
   background-color: #001A35;
   border-color: #001A35;
 }
 
-/* Focus style for both buttons */
 .btn.btn-primary.custom-button:focus,
 .btn.btn-primary.custom-button:focus-visible {
   outline: none;
 }
 
-
-/* Adjustments for color tiles and hex code blocks */
+/* Color Tiles and Hex Codes */
 .color-tile-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center; /* Center vertically */
-  margin-top: 20px; 
+  align-items: center;
+  margin-top: 20px;
   margin-bottom: 50px;
 }
 
-.color-tiles-container {
-  margin-bottom: 200px; /* Adjust margin-bottom as needed */
-}
-
-
 .color-tile {
-  background-color: #ffffff; /* Example background color */
+  background-color: #ffffff;
   width: 50px;
   height: 50px;
-  margin-right: 500px; /* Adjust margin-right for space between color tiles */
+  margin-right: 50px;
   border: 0px solid black;
-  margin-bottom: 2000px; /* Add margin-bottom for space between rows of color tiles */
 }
 
 .hex-code {
-  margin-right: 50px; /* Adjust margin-right for space between hex codes */
-}
-
-.footer {
-  position: relative; /* Change position to relative */
-  background-color: #f8f9fa; /* Set background color */
-  padding: 20px 0;
-  text-align: center;
-}
-
-
-.hex-code {
-  margin-right: 200px; 
-  margin-bottom: 200px;/* Adjust margin-right for space between hex codes */
+  margin-right: 50px;
 }
 
 .color-value {
-  width: 100px; 
-  margin-bottom: 200px;
+  width: 100px;
   padding-left: 20px;
 }
-
-
-
-.spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #000000;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-
-
 
 .hex-code-blocks {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center horizontally */
-  text-align: center; /* Center text horizontally */
-  margin-left: 200px; /* Add margin-left for space between color tiles and hex codes */
+  align-items: center;
+  text-align: center;
+  margin-left: 200px;
 }
 
 .hex-code-block {
-  margin-bottom: 1000px; /* Add margin-bottom for space between hex codes */
+  margin-bottom: 20px;
 }
 
 .hex-code-block > div {
   text-align: center;
-  align-items: center; 
+  align-items: center;
   display: flex;
-  flex-direction: row; /* Adjusted to row for horizontal alignment */
-  justify-content: center; /* Center horizontally */
-  margin-bottom: 500px; /* Add margin between hex values */
+  flex-direction: row;
+  justify-content: center;
 }
 
-/* Responsive adjustments */
-@media screen and (max-width: 980px) {
-  .color-tile-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-  }
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 200px;
 }
 
-@media screen and (max-width: 600px) {
-  .color-tile-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Change to 2 columns */
-    gap: 20px;
-  }
-
-  .custom-button {
-    margin-bottom: 20px;
-  }
-}
-
-
-
-}
+/* Vision API Container */
 .vision-api-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-/* Adjustments for buttons */
-/* Adjustments for buttons */
-.upload-button-container button,
-.button-container button {
-  width: 200px; /* Set a fixed width for both buttons */
+
+/* Upload Button Container */
+.upload-button-container {
+  margin-bottom: 20px;
+}
+
+.upload-button-container button {
+  width: 200px;
   border-radius: 8px;
-  border: 1px solid #000000; /* Adjust border color */
+  border: 1px solid #000000;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -205,28 +179,20 @@ h1 {
   margin: 20px;
 }
 
-.upload-button-container button:hover,
-.button-container button:hover {
-  border-color: #646cff; /* Adjust hover border color */
+.upload-button-container button:hover {
+  border-color: #646cff;
 }
 
 .upload-button-container button:focus,
-.upload-button-container button:focus-visible,
-.button-container button:focus,
-.button-container button:focus-visible {
+.upload-button-container button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-
-/* index.css */
-
-/* Add a class for the file input button */
+/* Custom File Input */
 .custom-file-input {
-  /* Hide the default file input button */
   display: none;
 }
 
-/* Style the custom file input button */
 .custom-file-label {
   display: inline-block;
   background-color: #002C5B;
@@ -243,7 +209,6 @@ h1 {
   border-color: #001A35;
 }
 
-/* Ensure the label text is vertically centered */
 .custom-file-label::before {
   display: inline-block;
   content: 'Choose file';
@@ -251,7 +216,6 @@ h1 {
   line-height: normal;
 }
 
-/* Reset the appearance of the file input button */
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
   width: 0;
@@ -259,7 +223,7 @@ h1 {
 }
 
 .custom-file-input::before {
-  content: 'Choose file'; /* Default label text */
+  content: 'Choose file';
   display: inline-block;
   background-color: #002C5B;
   color: #ffffff;
@@ -275,63 +239,39 @@ h1 {
   border-color: #001A35;
 }
 
-/* Adjust the header and footer styles to span the whole page */
-
-/* Header styles */
-.navbar {
-  padding: 20px 0; /* Adjust padding */
-  background-color: #fff; /* Set background color */
-  width: 100%; /* Make the header span the whole width */
+/* Spinner */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #000000;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
 }
 
-.navbar-brand img {
-  margin-right: 10px;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.navbar-nav {
-  margin: 0; /* Remove margin from navbar items */
+/* Responsive Adjustments */
+@media screen and (max-width: 980px) {
+  .color-tile-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
 }
 
+@media screen and (max-width: 600px) {
+  .color-tile-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
 
-
-.navbar-nav .nav-link:hover {
-  color: #007bff; /* Set hover color */
+  .custom-button {
+    margin-bottom: 20px;
+  }
 }
-
-/*logo*/
-.navbar-brand img {
-  margin-right: 10px; /* Adjust margin-right as needed */
-  width: 150px; /* Set width of the logo */
-  height: 50px;/* Maintain aspect ratio */
-}
-
-.navbar-nav .nav-link {
-  margin-right: 10px; /* Adjust margin-right to match the logo */
-  color: #000; /* Set color */
-}
-
-.dropdown-menu {
-  background-color: #fff; /* Set background color */
-  border: 1px solid #ddd; /* Set border */
-}
-.navbar-nav.ml-auto {
-  margin-left: auto;
-}
-
-/* Footer styles */
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #f8f9fa; /* Set background color */
-  padding: 20px 0;
-  text-align: center;
-  margin-top: 200px;
-}
-
-
-
-
-
-
