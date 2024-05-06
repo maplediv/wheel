@@ -62,33 +62,40 @@ const VisionAPIComponent: React.FC<{ onColorResponse: (response: any) => void }>
       setLoading(false); // Set loading state to false in case of error
     }
   };
-  
 
   return (
     <div className="vision-api-container">
-      <div className="upload-button-container">
-        <input type="file" accept="image/*" id="fileInput" className="custom-file-input" onChange={handleImageUpload} />
-        <label htmlFor="fileInput" className="btn btn-primary custom-button">Choose File</label>
-        <button className="btn btn-primary custom-button" onClick={handleImageAnalysis} disabled={loading}>
-          {loading ? 'Analyzing...' : 'Analyze Image'}
-        </button>
-      </div>
+    <div className="upload-button-container">
+  <label htmlFor="fileInput" className="btn btn-primary custom-button">
+    Choose File
+    <input
+      type="file"
+      accept="image/*"
+      id="fileInput"
+      className="custom-file-input"
+      onChange={handleImageUpload}
+      style={{ display: 'none' }}
+    />
+  </label>
+  <button className="btn btn-primary custom-button" onClick={handleImageAnalysis} disabled={loading}>
+    {loading ? 'Analyzing...' : 'Analyze Image'}
+  </button>
+</div>
+
+
       {loading && (
         <div className="spinner"></div>
       )}
       {imageUrl && (
-        <div className="image-container">
-          <img src={imageUrl} alt="Uploaded Image" style={{ maxWidth: '100%', maxHeight: '50vh' }} />
+        <div className="image-table-container">
+          <div className="image-container">
+            <img src={imageUrl} alt="Uploaded Image" style={{ maxWidth: '50%', maxHeight: '50%' }} />
+          </div>
+          {/* Your table component goes here */}
         </div>
       )}
     </div>
   );
-  
-  
-  
 };
 
 export default VisionAPIComponent;
-
-
-

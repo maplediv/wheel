@@ -12,7 +12,7 @@ const ColorTile: React.FC<ColorTileProps> = ({ color }) => {
     width: '50px',
     height: '50px',
     margin: '5px',
-    border: '1px solid black',
+   
   };
 
   return <div style={colorStyle}></div>;

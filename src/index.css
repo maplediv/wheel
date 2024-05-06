@@ -1,298 +1,251 @@
-  /* Reset */
-  :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-    color-scheme: light dark;
-    color: #000000;
-    background-color: #eae9e9;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Links */
-  a {
-    font-weight: 500;
-    color: #646cff;
-    text-decoration: none;
-  }
-  a:hover {
-    color: #535bf2;
-  }
-
-  /* Body */
-  body {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-    margin-bottom: 100px;
-  }
-
-  h1 {
-    font-size: 30px;
-    line-height: 1.1;
-    margin-top: 40px;
-    margin-bottom: 40px; /* Increase the margin-top to create more space */
-  }
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: #000000;
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 
 
-  /* Header */
-  .navbar {
-    padding: 20px 0;
-    background-color: #fff;
-    width: 100%;
-  }
 
-  .navbar-brand img {
-    margin-right: 10px;
-    width: 150px;
-    height: 50px;
-  }
 
-  .navbar-nav {
-    margin: 0;
-  }
 
-  .navbar-nav .nav-link:hover {
-    color: #007bff;
-  }
+/* Adjust the margin between the login icon and nav links */
+.navbar-nav.ml-auto .nav-link {
+  margin-right: 20px;
+}
 
-  .dropdown-menu {
-    background-color: #fff;
-    border: 1px solid #ddd;
-  }
+/* Remove margin from the last nav link */
+.navbar-nav.ml-auto .nav-link:last-child {
+  margin-right: 0;
+}
 
-  .navbar-nav.ml-auto {
-    margin-left: auto;
-  }
+/* Reduce the space between the login icon and nav links */
+.navbar-nav.ml-auto .nav-item {
+  margin-right: 10px;
+}
 
-  /* Buttons */
-  .btn.btn-primary.custom-button {
-    display: inline-block;
-    background-color: #002C5B;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: 1px solid #002C5B;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-  }
+.navbar {
+  padding: 20px 20px; 
+  background-color: #fff; /* Set your desired background color */
+}
 
-  .btn.btn-primary.custom-button:hover {
-    background-color: #001A35;
-    border-color: #001A35;
-  }
+.navbar-brand img {
+  margin-right: 10px;
+}
 
-  .btn.btn-primary.custom-button:focus,
-  .btn.btn-primary.custom-button:focus-visible {
-    outline: none;
-  }
+/* Navbar link styles */
+.navbar-nav {
+  margin: 0; /* Remove margin from navbar items */
+}
 
-  /* Color Tiles and Hex Codes */
-  .color-tile-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 50px;
-   
-  }
+.navbar-nav .nav-link {
+  color: #000; /* Set your desired color */
+  margin: 0; /* Remove margin from navbar links */
+}
 
-  .color-tile {
-    background-color: #ffffff;
-    width: 50px;
-    height: 50px;
-    margin-right: 50px;
-    border: 0px solid black;
-  }
+.navbar-nav .nav-link:hover {
+  color: #007bff; /* Set your desired hover color */
+}
 
-  .hex-code {
-    margin-right: 50px;
-  }
 
-  .color-value {
-    width: 100px;
-    padding-left: 20px;
-  }
+/* Navbar dropdown styles */
+.dropdown-menu {
+  background-color: #fff; /* Set your desired background color */
+  border: 1px solid #ddd; /* Set your desired border color */
+}
+.footer {
+  position: fixed;
+  background-color: #f8f9fa; /* Bootstrap light gray background color */
+  padding: 20px 0;
+  text-align: center;
+  width: 100%; /* Make the footer span the entire width */
+  bottom: 0; /* Position the footer at the bottom of the viewport */
+  left: 0; /* Align the footer to the left */
+  z-index: 999; /* Ensure footer is above other elements */
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+}
 
-  .hex-code-blocks {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-left: 200px;
-    margin-right: 50px;
-  }
+.footer .container {
+  text-align: center; /* Center align text content */
+}
 
-  .hex-code-block {
-    margin-bottom: 20px;
-    margin-right: 50px;
-  }
+.footer .social-icons {
+  margin-top: 0; /* Remove margin top */
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center content vertically */
+}
 
-  .hex-code-block > div {
-    text-align: center;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-right: 50px;
-  }
+.footer .social-icons a {
+  margin-right: 10px; /* Adjust margin between icons */
+}
 
-  /* Footer */
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #f8f9fa;
-    padding: 20px 0;
-    text-align: center;
-    margin-top: 200px;
-  }
 
-  /* Vision API Container */
-  .vision-api-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.footer {
+  position: fixed;
+  background-color: #f8f9fa; /* Bootstrap light gray background color */
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0; /* Ensure no margin at the bottom of the footer */
+  width: 100%; /* Make the footer span the entire width */
+  bottom: 0; /* Position the footer at the bottom of the viewport */
+  left: 0; /* Align the footer to the left */
+}
 
-  /* Upload Button Container */
-  .upload-button-container {
-    margin-bottom: 20px;
-  }
+.footer .container {
+  display: flex; /* Use flexbox for horizontal alignment */
+  justify-content: center; /* Center align the content horizontally */
+  align-items: center; /* Center align the content vertically */
+}
 
-  .upload-button-container button {
-    width: 200px;
-    border-radius: 8px;
-    border: 1px solid #000000;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #f7f2f2;
-    cursor: pointer;
-    transition: border-color 0.25s;
-    margin: 20px;
-  }
+.footer .social-icons {
+  margin-top: 10px; /* Remove the top margin */
+  margin-bottom: 10px;
+}
 
-  .upload-button-container button:hover {
-    border-color: #646cff;
-  }
+.footer .social-icons a {
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
 
-  .upload-button-container button:focus,
-  .upload-button-container button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-  }
+.color-text {
+  text-align: left;
+  margin-bottom: 75px;
+}
 
-  /* Custom File Input */
-  .custom-file-input {
-    display: none;
-  }
+.color-tile {
+  background-color: #ffffff;
+  width: 50px;
+  height: 50px;
+  margin-right: 50px;
+  border: 1px solid black; /* Add border */
+  padding: 20px;
+}
 
-  .custom-file-label {
-    display: inline-block;
-    background-color: #002C5B;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: 1px solid #002C5B;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-  }
+td,
+th {
+  border: 1px solid black; /* Add border */
+  background-color: #ffffff;
+  padding: 20px;
+}
 
-  .custom-file-label:hover {
-    background-color: #001A35;
-    border-color: #001A35;
-  }
+.table-container {
+  display: flex;
+  justify-content: center; /* Horizontally center content */
+}
 
-  .custom-file-label::before {
-    display: inline-block;
-    content: 'Choose file';
-    vertical-align: middle;
-    line-height: normal;
-  }
+.color-table-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
 
-  .custom-file-input::-webkit-file-upload-button {
-    visibility: hidden;
-    width: 0;
-    height: 0;
-  }
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .custom-file-input::before {
-    content: 'Choose file';
-    display: inline-block;
-    background-color: #002C5B;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: 1px solid #002C5B;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-  }
+.custom-header {
+  margin-top: 0; /* Remove default top margin */
+  margin-bottom: 20px; /* Add bottom margin to align with paragraph */
+}
 
-  .custom-file-input:hover::before {
-    background-color: #001A35;
-    border-color: #001A35;
-  }
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.img {
+  height: auto;
+  display: block; /* To remove extra space below inline images */
+  margin: 0 auto; /* To center the image horizontally */
+}
 
-  /* Spinner */
-  .spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: #000000;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-  }
+h1 {
+  font-size: 80px; /* Unified font size for h1 and h3 */
+  line-height: 1.1;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  color: #000000;
+  text-align: center; /* Increase the margin-top to create more space */
+}
 
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
+h2 {
+  font-size: 60px; /* Unified font size for h1 and h3 */
+  line-height: 1.1;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #000000;
+  text-align: left; /* Increase the margin-top to create more space */
+  margin-right: 0px;
+}
 
-  /* Responsive Adjustments */
-  @media screen and (max-width: 980px) {
-    .color-tile-container {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
-    }
-  }
+h3 {
+  font-size: 24px; /* Unified font size for h1 and h3 */
+  line-height: 1.1;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #000000;
+  text-align: left; /* Increase the margin-top to create more space */
+}
 
+#galacticCenterContent {
+  padding: 0;
+  margin: 0;
+}
+
+.row.align-items-start {
+  height: auto;
+  max-height: 100%;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: 20px; /* Adjust this value as needed */
+  max-width: 100%;
+}
+
+.galactic-center-container {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 600px;
+  background-color:#fff
+}
+
+.img-fluid {
+  width: auto; /* Let the browser calculate the width to maintain aspect ratio */
+  height: auto; /* Let the browser calculate the height to maintain aspect ratio */
+  max-width: 400px; /* Set the maximum width of the image */
+  max-height: 400px; /* Set the maximum height of the image */
+  display: block; /* Ensure proper rendering */
+  margin: 0; /* Set margin to 0 */
+}
+
+.text-left{
+  text-align: left;
+}
+
+.text-center {
+  margin-right: auto;
+  margin-left: auto;
   
-  
+}
 
-    .custom-button {
-      margin-bottom: 20px;
-    }
-  
-  .background-container {
-    margin-bottom: 100px; 
-   /* Adjust the margin-bottom as needed */
-  }
-
-  @media screen and (max-width: 600px) {
-    .color-tile-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-  
-    .color-tile {
-      margin-right: 50px !important;
-    }
-
-    .color-value {
-     
-      margin-left: 200px; /* Adjust the right margin of the color value */
-    }
-  }
+.home-button {
+  display: inline-block;
+  background-color: #002C5B;
+}

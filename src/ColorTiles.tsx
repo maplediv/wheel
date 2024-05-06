@@ -26,7 +26,7 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
         <table>
           <thead>
             <tr>
-              <th>Color Tile</th>
+              <th>Colors</th>
               <th>Hex Code</th>
               <th>Red</th>
               <th>Green</th>
@@ -44,15 +44,9 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
                   {color.color.green.toString(16).padStart(2, '0').toUpperCase()}
                   {color.color.blue.toString(16).padStart(2, '0').toUpperCase()}
                 </td>
-                <td className="color-value">
-                  <div>Red: {color.color.red}</div>
-                </td>
-                <td className="color-value">
-                  <div>Green: {color.color.green}</div>
-                </td>
-                <td className="color-value">
-                  <div>Blue: {color.color.blue}</div>
-                </td>
+                <td>{color.color.red}</td>
+                <td>{color.color.green}</td>
+                <td>{color.color.blue}</td>
               </tr>
             ))}
           </tbody>
