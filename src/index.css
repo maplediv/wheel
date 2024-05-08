@@ -11,7 +11,58 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.input-small {
+  width: 500px; /* Adjust the width as needed */
+}
 
+
+.custom-button.no-bottom-padding {
+  margin-bottom: 0;
+}
+
+.button-container {
+  margin-bottom: 40px; /* Adjust the margin value as needed */
+}
+
+
+.upload-button-container {
+  text-align: left; /* Override global text-center style */
+}
+
+.upload-button-container .btn {
+  margin-right: 0px; /* Add margin between buttons */
+}
+
+.uploaded-image {
+  width: 100%; /* Set the width of the uploaded image to 100% */
+  max-width: 100%; /* Ensure the image does not exceed its container width */
+}
+
+.home-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content at the top */
+  height: 100%;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align text at the top */
+}
+
+.text-left {
+  text-align: left;
+}
+
+.home-page-content {
+  margin-top: auto; /* Align the home page content at the top */
+}
+
+.color-text {
+  margin-top: 0; /* Remove top margin */
+  margin-bottom: 20px; /* Add bottom margin */
+}
 
 
 
@@ -141,6 +192,7 @@ th {
 .table-container {
   display: flex;
   justify-content: center; /* Horizontally center content */
+ 
 }
 
 .color-table-container {
@@ -148,7 +200,7 @@ th {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 100px;
 }
 

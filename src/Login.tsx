@@ -38,7 +38,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container mx-auto">
       <h2>Create an Account</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -46,7 +46,7 @@ const LoginPage: React.FC = () => {
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            className="form-control"
+            className="form-control input-small"
             placeholder="First Name"
             required
           />
@@ -56,7 +56,7 @@ const LoginPage: React.FC = () => {
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            className="form-control"
+            className="form-control input-small"
             placeholder="Last Name"
             required
           />
@@ -66,7 +66,7 @@ const LoginPage: React.FC = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="form-control"
+            className="form-control input-small"
             placeholder="Email"
             required
           />
@@ -76,7 +76,7 @@ const LoginPage: React.FC = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="form-control"
+            className="form-control input-small"
             placeholder="Password"
             required
           />
