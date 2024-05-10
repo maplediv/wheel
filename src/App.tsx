@@ -39,7 +39,7 @@ const HomePage = () => {
       </div>
       
       {/* Second section */}
-      <div className="container home-page-content">
+      <div className="container home-page-content footer-spacing">
         <div className="row align-items-start">
           <div className="col-md-6 order-md-4">
             <div className="text-container">
