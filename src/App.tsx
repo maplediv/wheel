@@ -83,8 +83,8 @@ const PaintPage = () => {
 
   return (
     <div className="container">
-      <div className="row justify-content-center"> {/* Center all content */}
-        <div className="col-md-8"> {/* Adjust the width of the column */}
+      <div className="row justify-content-center align-items-start"> {/* Center all content and align items at the start */}
+        <div className="col-md-6"> {/* Adjust the width of the column */}
           <div className="text-left">
             <div className="color-canvas">
               <h1>Color Canvas</h1>
@@ -101,16 +101,23 @@ const PaintPage = () => {
               </p>
               {/* Display VisionAPIComponent only on the paint page */}
               <VisionAPIComponent onColorResponse={handleColorResponse} />
-              {/* Display color tiles if color response is available */}
-              {colorResponse && <ColorTiles response={colorResponse} />}
             </div>
           </div>
+        </div>
+  
+        <div className="col-md-6 color-table-column"> {/* Adjust the width of the column */}
+          {/* Display color tiles if color response is available */}
+          {colorResponse && <ColorTiles response={colorResponse} />}
         </div>
       </div>
     </div>
   );
-};
+  
+  
+  };
+  
 
+  
 
 
 const App = () => {

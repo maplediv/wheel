@@ -11,6 +11,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.color-table-column {
+  margin-top: 500px; /* Adjust the value as needed */
+}
 
 
 .home-button {
@@ -116,25 +119,21 @@
 }
 
 
-.navbar-collapse.show {
-  text-align: left; /* Align the content within the dropdown menu to the left */
-}
+
 
 .navbar-collapse.show .nav-link {
   display: block; /* Ensure nav links are displayed as blocks */
   text-align: left; /* Align nav links to the left */
 }
 
-.navbar-collapse.show img {
-  display: inline-block; /* Ensure the icon is displayed inline */
-}
+
 
 
 
 .dropdown-menu .nav-link{
   background-color: #fff; /* Set your desired background color */
   border: 1px solid #ddd; /* Set your desired border color */
-  text-align: left; /* Align content to the left */
+  
   margin-left: 0px;
 }
 
@@ -172,17 +171,7 @@
 }
 
 
-.footer {
-  position: fixed;
-  background-color: #f8f9fa; /* Bootstrap light gray background color */
-  padding: 20px 0;
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 0; /* Ensure no margin at the bottom of the footer */
-  width: 100%; /* Make the footer span the entire width */
-  bottom: 0; /* Position the footer at the bottom of the viewport */
-  left: 0; /* Align the footer to the left */
-}
+
 
 .footer .container {
   display: flex; /* Use flexbox for horizontal alignment */
@@ -338,8 +327,33 @@ h3 {
   }
 }
 
-@media (min-width: 767px) {}
+@media (min-width: 767px) {
  .text-left {
 margin-bottom: 50px;
 }
+}
 
+@media (max-width: 767px) {
+  h1 {
+    font-size: 50px; /* Smaller font size for mobile devices */
+  }
+  h2 {
+    font-size: 40px; /* Smaller font size for mobile devices */
+  }
+  .color-table-column {
+    margin-top: 40px; /* Adjust the value as needed */
+  }
+  .color-table-container {
+
+    margin-bottom: 200px;
+  }
+  .img-fluid {
+    max-width: 100%; /* Set the maximum width of the image to 100% */
+    height: auto; /* Let the browser calculate the height to maintain aspect ratio */
+    display: block; /* Ensure proper rendering */
+    margin: 0 auto; /* Center the image horizontally */
+    max-height: 200px; /* Set the maximum height of the image */
+    overflow-x: hidden; /* Hide horizontal overflow */
+  }
+  
+}

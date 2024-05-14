@@ -20,6 +20,11 @@ interface ColorTilesProps {
 const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
   const colors = response?.responses?.[0]?.imagePropertiesAnnotation?.dominantColors?.colors || [];
 
+  // Render nothing if colors are not available
+  if (colors.length === 0) {
+    return null;
+  }
+
   return (
     <div className="color-tiles-container"> {/* Ensure correct class */}
       <div className="color-table-container">
