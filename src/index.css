@@ -375,7 +375,7 @@ margin-bottom: 50px;
   }
   .color-table-container {
     overflow-x: auto; /* Enable horizontal scrolling if necessary */
-    width: 100%; /* Ensure the table container spans the full width */
+    max-width: 100%;  /* Ensure the table container spans the full width */
   }
 
   .color-table-container table {
@@ -407,6 +407,14 @@ margin-bottom: 50px;
     order: 3; /* Ensure the menu items come after the hamburger icon */
   }
 }
+.col-md-6 {
+  max-width: 100%; /* Ensure the column takes up full width on mobile */
+}
+
+.form-control {
+  max-width: 100%; /* Ensure form inputs take up full width on mobile */
+}
+
 
 
 

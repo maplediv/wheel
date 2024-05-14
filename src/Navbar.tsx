@@ -8,7 +8,7 @@ const Navbar: React.FC = () => {
     <div className="container-fluid">
       <a className="navbar-brand" href="#">
         <div className="logo-container">
-          <img src="/src/images/art.svg" alt="Logo" width="311" height="30" />
+          <img src="/src/images/art.svg" alt="Logo" width="100" height="100" />
         </div>
       </a>
      
