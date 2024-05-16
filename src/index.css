@@ -334,6 +334,10 @@ margin-bottom: 50px;
 }
 
 @media (max-width: 767px) {
+  .custom-margin-bottom {
+    margin-bottom: 150px; /* Adjust the value as needed */
+  }
+  
   h1 {
     font-size: 50px; /* Smaller font size for mobile devices */
   }

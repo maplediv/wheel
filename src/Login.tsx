@@ -97,7 +97,8 @@ const LoginPage: React.FC = () => {
               <button type="submit" className="btn btn-primary">Create Account</button>
             </div>
             <div className="mb-3 d-flex justify-content-between align-items-center">
-              <p className="mb-0">Already have an account? <button type="button" className="btn btn-link" onClick={handleLoginLinkClick}>{showLoginForm ? 'Hide Login Form' : 'Login'}</button></p>
+            <p className="custom-margin-bottom">Already have an account? <button type="button" class="btn btn-link">Login</button></p>
+
             </div>
           </form>
           {showSuccessMessage && (
