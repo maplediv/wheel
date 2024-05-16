@@ -8,24 +8,34 @@ const LoginPage: React.FC = () => {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    // Here you can add logic to handle the account creation request
-    console.log('First Name:', firstName);
-    console.log('Last Name:', lastName);
-    console.log('Email:', email);
-    console.log('Password:', password);
+    try {
+      const response = await fetch('http://localhost:5001/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          password,
+        }),
+      });
 
-    // Simulate successful account creation
-    // You should replace this with your actual logic
-    // For now, just set the success message to true
-    setShowSuccessMessage(true);
-
-    // Reset the form fields after submission
-    setFirstName('');
-    setLastName('');
-    setEmail('');
-    setPassword('');
+      if (response.ok) {
+        setShowSuccessMessage(true);
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setPassword('');
+      } else {
+        console.error('Failed to register user');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   const handleLoginLinkClick = () => {
@@ -87,7 +97,7 @@ const LoginPage: React.FC = () => {
               <button type="submit" className="btn btn-primary">Create Account</button>
             </div>
             <div className="mb-3 d-flex justify-content-between align-items-center">
-              <p className="mb-0">Already have an account? <button className="btn btn-link" onClick={handleLoginLinkClick}>{showLoginForm ? 'Hide Login Form' : 'Login'}</button></p>
+              <p className="mb-0">Already have an account? <button type="button" className="btn btn-link" onClick={handleLoginLinkClick}>{showLoginForm ? 'Hide Login Form' : 'Login'}</button></p>
             </div>
           </form>
           {showSuccessMessage && (

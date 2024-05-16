@@ -11,7 +11,7 @@ export default defineConfig({
     }),
   ],
   server: {
-    port: 10000, // Specify the port number
+    port: 3000, // Specify the port number
     host: '0.0.0.0'
   },
   build: {
