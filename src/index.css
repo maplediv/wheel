@@ -337,7 +337,23 @@ margin-bottom: 50px;
   .custom-margin-bottom {
     margin-bottom: 150px; /* Adjust the value as needed */
   }
+  .home-button {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 50px;
+  }
   
+  .home-button:hover {
+    background-color: #0056b3; /* Darker shade of primary color for hover */
+  }
+  
+
   h1 {
     font-size: 50px; /* Smaller font size for mobile devices */
   }

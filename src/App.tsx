@@ -22,7 +22,7 @@ const HomePage = () => {
                 <p className="responsive-text">
                   This is some paragraph text. This is some paragraph text. <br />This is some paragraph text. This is some paragraph text. <br />This is some paragraph text. This is some paragraph text. <br />This is some paragraph text. This is some paragraph text.<br /> This is some paragraph text. This is some paragraph text. <br />This is some paragraph text. This is some paragraph text.
                 </p>
-                <button className="home-button btn btn-primary" onClick={() => { window.location.href = '/apod'; }}>Try Now</button>
+                <button className="home-button btn btn-primary" onClick={() => { window.location.href = '/paint'; }}>Try Now</button>
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@ const HomePage = () => {
                 <p className="responsive-text">
                   This is some paragraph text. This is some paragraph text. <br />This is some paragraph text. This is some paragraph text. <br />This is some paragraph text. This is some paragraph text. <br />This is some paragraph text. This is some paragraph text.<br /> This is some paragraph text. This is some paragraph text. <br />This is some paragraph text. This is some paragraph text.
                 </p>
-                <button className="home-button btn btn-primary" onClick={() => { window.location.href = '/apod'; }}>View Photo</button>
+                <button className="home-button btn btn-primary" onClick={() => { window.location.href = '/paint'; }}>Learn More</button>
               </div>
             </div>
           </div>
