@@ -11,8 +11,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.account-heading {
+  font-size: 50px;  /* Adjust the size as needed */
+  color: #333;      /* Adjust the color as needed */
+  text-align: left; /* Center the text */
+  margin-top: 40px; /* Add space below the heading */
+  margin-bottom: 40px;
+}
+
+
 .color-table-column {
-  margin-top: 500px; /* Adjust the value as needed */
+  margin-top: 505px; /* Adjust the value as needed */
 }
 
 
@@ -88,9 +97,9 @@
 
 .color-text {
   margin-top: 0; /* Remove top margin */
-  margin-bottom: 20px; /* Add bottom margin */
+  margin-bottom: 40px; /* Add bottom margin */
+  text-align: left;
 }
-
 
 
 
@@ -190,10 +199,7 @@
   margin-right: 20px;
 }
 
-.color-text {
-  text-align: left;
-  margin-bottom: 75px;
-}
+
 
 .color-tile {
   background-color: #ffffff;
@@ -333,9 +339,25 @@ margin-bottom: 50px;
 }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1599px){
+  h1 {
+    font-size: 50px; /* Smaller font size for mobile devices */
+  }
+  h2 {
+    font-size: 40px; /* Smaller font size for mobile devices */
+  }
+  .color-table-column {
+    margin-top: 475px; /* Adjust the value as needed */
+  }
+}
+
+
+@media (max-width: 1199px) {
   .custom-margin-bottom {
     margin-bottom: 150px; /* Adjust the value as needed */
+  }
+  .color-table-column {
+    margin-top: 600px; /* Adjust the value as needed */
   }
   .home-button {
     background-color: #007bff; /* Bootstrap primary color */

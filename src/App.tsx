@@ -87,7 +87,7 @@ const PaintPage = () => {
         <div className="col-md-6"> {/* Adjust the width of the column */}
           <div className="text-left">
             <div className="color-canvas">
-              <h1>Color Canvas</h1>
+              <h1 className="account-heading">Color Canvas</h1>
               <p className="color-text">
                 Click the "Choose File" button and upload any file to return the dominant colors in the image. <br />
                 Click the "Analyze Image" button to initialize the image analysis processing.<br />
