@@ -12,7 +12,7 @@ const LoginPage: React.FC = () => {
     event.preventDefault();
     console.log('Form submitted'); // Debugging step
     try {
-      const response = await fetch('https://wheel-8b7y.onrender.com/login', {
+      const response = await fetch('https://wheel-8b7y.onrender.com/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
