@@ -3,9 +3,12 @@ const bcrypt = require('bcrypt');
 const { Client } = require('pg');
 const cors = require('cors');
 
-// Create a new PostgreSQL client instance
+// Create a new PostgreSQL client instance using the connection string from the environment variables
 const db = new Client({
-  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:Magic323!@localhost:5432/paint',
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false, // Required for connecting to Render PostgreSQL
+  },
 });
 
 // Connect to the database
