@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const LoginPage: React.FC = () => {
   const [firstName, setFirstName] = useState('');
@@ -8,21 +8,34 @@ const LoginPage: React.FC = () => {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
+  useEffect(() => {
+    const loginIcon = document.getElementById('loginIcon');
+    if (loginIcon) {
+      loginIcon.addEventListener('click', handleLoginIconClick);
+    }
+    return () => {
+      if (loginIcon) {
+        loginIcon.removeEventListener('click', handleLoginIconClick);
+      }
+    };
+  }, []);
+
+  const handleLoginIconClick = (event: MouseEvent) => {
+    event.preventDefault();
+    console.log('Login icon clicked!');
+    // Replace history.push('/login') with your desired logic for handling the click event
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log('Form submitted'); // Debugging step
+    console.log('Form submitted');
     try {
       const response = await fetch('https://wheelback.onrender.com/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          email,
-          password,
-        }),
+        body: JSON.stringify({ firstName, lastName, email, password }),
       });
 
       if (response.ok) {
@@ -39,13 +52,13 @@ const LoginPage: React.FC = () => {
     }
   };
 
-  const handleLoginLinkClick = () => {
-    setShowLoginForm(true);
+  const handleLoginFormSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    // Add logic to handle login form submission
   };
 
-  const handleLoginFormSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    // Here you can add logic to handle the login form submission
+  const handleLoginLinkClick = () => {
+    setShowLoginForm(true);
   };
 
   return (
@@ -74,20 +87,20 @@ const LoginPage: React.FC = () => {
                 </div>
                 <button type="submit" className="btn btn-primary">Login</button>
                 <div className="mt-3">
-                  <p className="custom-margin-bottom">Don't have an account? <button type="button" className="btn btn-link" onClick={() => setShowLoginForm(false)}>Create Account</button></p>
+                  <p>Don't have an account? <button type="button" className="btn btn-link" onClick={() => setShowLoginForm(false)}>Create Account</button></p>
                 </div>
               </form>
             </>
           ) : (
             <>
-              <h1 className="account-heading">Create Account</h1>
+              <h1>Create Account</h1>
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <input
                     type="text"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="form-control input-small"
+                    className="form-control"
                     placeholder="First Name"
                     required
                   />
@@ -97,7 +110,7 @@ const LoginPage: React.FC = () => {
                     type="text"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="form-control input-small"
+                    className="form-control"
                     placeholder="Last Name"
                     required
                   />
@@ -107,7 +120,7 @@ const LoginPage: React.FC = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="form-control input-small"
+                    className="form-control"
                     placeholder="Email"
                     required
                   />
@@ -117,7 +130,7 @@ const LoginPage: React.FC = () => {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="form-control input-small"
+                    className="form-control"
                     placeholder="Password"
                     required
                   />
@@ -126,7 +139,7 @@ const LoginPage: React.FC = () => {
                   <button type="submit" className="btn btn-primary">Create Account</button>
                 </div>
                 <div className="mb-3 d-flex justify-content-between align-items-center">
-                  <p className="custom-margin-bottom">Already have an account? <button type="button" className="btn btn-link" onClick={handleLoginLinkClick}>Login</button></p>
+                  <p>Already have an account? <button type="button" className="btn btn-link" onClick={handleLoginLinkClick}>Login</button></p>
                 </div>
               </form>
               {showSuccessMessage && (
