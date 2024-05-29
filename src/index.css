@@ -21,7 +21,7 @@
 
 
 .color-table-column {
-  margin-top: 505px; /* Adjust the value as needed */
+  margin-top: 360px; /* Adjust the value as needed */
 }
 
 
@@ -228,7 +228,7 @@ th {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 0px;
   margin-bottom: 100px;
 }
 
@@ -347,17 +347,23 @@ margin-bottom: 50px;
     font-size: 40px; /* Smaller font size for mobile devices */
   }
   .color-table-column {
-    margin-top: 475px; /* Adjust the value as needed */
+    margin-top: 420px; /* Adjust the value as needed */
   }
 }
-
+@media (min-width: 1199px) {
+  .custom-margin-bottom {
+    margin-bottom: 150px; /* Adjust the value as needed */
+  }
+  .color-table-column {
+    margin-top: 400px; /* Adjust the value as needed */
+  }
 
 @media (max-width: 1199px) {
   .custom-margin-bottom {
     margin-bottom: 150px; /* Adjust the value as needed */
   }
   .color-table-column {
-    margin-top: 600px; /* Adjust the value as needed */
+    margin-top: 200px; /* Adjust the value as needed */
   }
   .home-button {
     background-color: #007bff; /* Bootstrap primary color */
