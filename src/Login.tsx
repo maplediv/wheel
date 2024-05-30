@@ -68,28 +68,30 @@ const LoginPage: React.FC = () => {
           {showLoginForm ? (
             <>
               <h2>Login</h2>
-              <form onSubmit={handleLoginFormSubmit}>
-                <div className="mb-3">
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Email"
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="Password"
-                    required
-                  />
-                </div>
-                <button type="submit" className="btn btn-primary">Login</button>
-                <div className="mt-3">
-                  <p>Don't have an account? <button type="button" className="btn btn-link" onClick={() => setShowLoginForm(false)}>Create Account</button></p>
-                </div>
-              </form>
+              <div className="form-container">
+                <form onSubmit={handleLoginFormSubmit}>
+                  <div className="mb-3">
+                    <input
+                      type="email"
+                      className="form-control"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Password"
+                      required
+                    />
+                  </div>
+                  <button type="submit" className="btn btn-primary">Login</button>
+                  <div className="mt-3">
+                    <p className="footer-text">Don't have an account? <button type="button" className="btn btn-link" onClick={() => setShowLoginForm(false)}>Create Account</button></p>
+                  </div>
+                </form>
+              </div>
             </>
           ) : (
             <>
@@ -139,7 +141,7 @@ const LoginPage: React.FC = () => {
                   <button type="submit" className="btn btn-primary">Create Account</button>
                 </div>
                 <div className="mb-3 d-flex justify-content-between align-items-center">
-                  <p>Already have an account? <button type="button" className="btn btn-link" onClick={handleLoginLinkClick}>Login</button></p>
+                  <p className="footer-text">Already have an account? <button type="button" className="btn btn-link" onClick={handleLoginLinkClick}>Login</button></p>
                 </div>
               </form>
               {showSuccessMessage && (

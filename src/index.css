@@ -10,6 +10,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.form-container {
+  margin-bottom: 50px; /* Adjust the value as needed */
+}
+
+.footer-text {
+  margin-top: 400px; /* Adjust the value as needed */
+}
+
 .btn-primary {
   border: none; /* Remove the border */
   box-shadow: none; /* Remove the box shadow */
@@ -169,8 +178,11 @@
   display: flex; /* Use flexbox for layout */
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
-
+  margin-bottom: 50px;
 }
+
+
+
 
 
 .footer .social-icons {
@@ -323,6 +335,10 @@ h3 {
   margin-left: auto;
   
 }
+.custom-submit-btn {
+  margin-bottom: 20px; /* Adjust the value as needed */
+}
+
 
 /* Add this media query to your existing CSS */
 
@@ -330,15 +346,12 @@ h3 {
   .navbar-nav {
     margin-left: auto !important; /* Important to override the ml-auto class */
   }
+  .color-table-column {
+    margin-top: 40px; /* Adjust the value as needed */
+  }
 }
 
-@media (min-width: 767px) {
- .text-left {
-margin-bottom: 50px;
-}
-}
-
-@media (max-width: 1599px){
+@media (max-width: 1599px) {
   h1 {
     font-size: 50px; /* Smaller font size for mobile devices */
   }
@@ -356,6 +369,7 @@ margin-bottom: 50px;
     margin-bottom: 80px;
   }
 }
+
 @media (min-width: 1199px) {
   .custom-margin-bottom {
     margin-bottom: 150px; /* Adjust the value as needed */
@@ -363,6 +377,7 @@ margin-bottom: 50px;
   .color-table-column {
     margin-top: 520px; /* Adjust the value as needed */
   }
+}
 
 @media (max-width: 1199px) {
   .custom-margin-bottom {
@@ -404,35 +419,39 @@ margin-bottom: 50px;
     margin-top: 40px; /* Adjust the value as needed */
   }
   .color-table-container {
-
     margin-bottom: 200px;
   }
+}
+
+@media (max-width: 768px) {
   .img-fluid {
     max-width: 100%; /* Set the maximum width of the image to 100% */
-    height: auto; /* Let the browser calculate the height to maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
     display: block; /* Ensure proper rendering */
     margin: 0 auto; /* Center the image horizontally */
     max-height: 200px; /* Set the maximum height of the image */
     overflow-x: hidden; /* Hide horizontal overflow */
   }
-  .image-container-home img {
-    
-    object-fit: cover;
-    width: 100%;
-    height: auto;
-    max-width: 100%; /* Ensure the image does not exceed its container width */
-    max-height: 100%; /* Ensure the image does not exceed its container height */
-    object-fit: contain;
-  }
-  td,
-  th {
-    font-size: 12px; /* Adjust the font size as needed */
+
+  .color-table-container {
+    margin-top: 20px; /* Reduce margin above the color table */
+    margin-bottom: 50px; /* Adjust bottom margin as needed */
   }
 
-  /* Reduce padding to make the table more compact */
-  .table-container table {
+  .color-table-column {
+    margin-top: 20px; /* Reduce margin above the color table column */
+  }
+
+  td,
+  th {
+    font-size: 12px; /* Adjust font size as needed */
+    padding: 8px; /* Adjust cell padding to make the table more compact */
+  }
+
+  .table-container {
     padding: 5px; /* Adjust padding as needed */
   }
+
   .color-table-container {
     overflow-x: auto; /* Enable horizontal scrolling if necessary */
     max-width: 100%;  /* Ensure the table container spans the full width */
@@ -449,42 +468,25 @@ margin-bottom: 50px;
     font-size: 14px; /* Adjust font size as needed */
     /* Add any other necessary styling adjustments */
   }
-  .navbar {
-    display: flex;
-    justify-content: space-between; /* Align logo and hamburger icon at opposite ends */
-    align-items: center; /* Center vertically */
-  }
-
-  .navbar-brand {
-    order: 1; /* Move the logo to the left */
-  }
-
-  .navbar-toggler {
-    order: 2; /* Move the hamburger icon to the right */
-  }
-
-  .navbar-collapse {
-    order: 3; /* Ensure the menu items come after the hamburger icon */
-  }
-}
-.col-md-6 {
-  max-width: 100%; /* Ensure the column takes up full width on mobile */
 }
 
-.form-control {
-  max-width: 100%; /* Ensure form inputs take up full width on mobile */
+@media screen and (max-width: 460px) {
+  body {
+      font-size: 14px;
+      padding: 10px;
+  }
+
+  .header {
+      font-size: 1.5em;
+  }
+
+  .content {
+      display: block;
+      margin: 0 auto;
+      padding: 10px;
+  }
+
+  .sidebar {
+      display: none; /* Hide sidebar on small screens */
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
