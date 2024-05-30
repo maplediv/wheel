@@ -10,13 +10,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.btn-primary {
+  border: none; /* Remove the border */
+  box-shadow: none; /* Remove the box shadow */
+  background-color: #000000;
+}
+
 
 .account-heading {
-  font-size: 50px;  /* Adjust the size as needed */
+  font-size: 80px;  /* Adjust the size as needed */
   color: #333;      /* Adjust the color as needed */
   text-align: left; /* Center the text */
-  margin-top: 40px; /* Add space below the heading */
-  margin-bottom: 40px;
+  margin-top: 80px; /* Add space below the heading */
+  margin-bottom: 80px;
 }
 
 
@@ -27,8 +33,9 @@
 
 .home-button {
   display: inline-block;
-  background-color: #002C5B;
+  background-color: #000000;
   margin-top: 46.59px;
+  margin-bottom: 46.59px;
 }
 
 .footer-spacing{
@@ -165,40 +172,32 @@
 
 }
 
-.footer .container {
-  text-align: center; /* Center align text content */
-}
 
 .footer .social-icons {
   margin-top: 0; /* Remove margin top */
   display: flex; /* Use flexbox for layout */
   align-items: center; /* Center content vertically */
+  margin-top: 10px; /* Remove the top margin */
+  margin-bottom: 10px;
 }
-
-.footer .social-icons a {
-  margin-right: 10px; /* Adjust margin between icons */
-}
-
-
 
 
 .footer .container {
   display: flex; /* Use flexbox for horizontal alignment */
   justify-content: center; /* Center align the content horizontally */
   align-items: center; /* Center align the content vertically */
-  
+  text-align: center; /* Center align text content */
 }
 
-.footer .social-icons {
-  margin-top: 10px; /* Remove the top margin */
-  margin-bottom: 10px;
-}
 
 .footer .social-icons a {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   margin-right: 20px;
 }
 
+p.footer-text {
+  margin: 0;
+}
 
 
 .color-tile {
@@ -349,13 +348,20 @@ margin-bottom: 50px;
   .color-table-column {
     margin-top: 420px; /* Adjust the value as needed */
   }
+  .account-heading {
+    font-size: 50px;  /* Adjust the size as needed */
+    color: #333;      /* Adjust the color as needed */
+    text-align: left; /* Center the text */
+    margin-top: 80px; /* Add space below the heading */
+    margin-bottom: 80px;
+  }
 }
 @media (min-width: 1199px) {
   .custom-margin-bottom {
     margin-bottom: 150px; /* Adjust the value as needed */
   }
   .color-table-column {
-    margin-top: 400px; /* Adjust the value as needed */
+    margin-top: 520px; /* Adjust the value as needed */
   }
 
 @media (max-width: 1199px) {
@@ -366,7 +372,7 @@ margin-bottom: 50px;
     margin-top: 200px; /* Adjust the value as needed */
   }
   .home-button {
-    background-color: #007bff; /* Bootstrap primary color */
+    background-color: #000000; /* Bootstrap primary color */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -378,9 +384,15 @@ margin-bottom: 50px;
   }
   
   .home-button:hover {
-    background-color: #0056b3; /* Darker shade of primary color for hover */
+    background-color: #000000; /* Darker shade of primary color for hover */
   }
-  
+  .account-heading {
+    font-size: 50px;  /* Adjust the size as needed */
+    color: #333;      /* Adjust the color as needed */
+    text-align: left; /* Center the text */
+    margin-top: 80px; /* Add space below the heading */
+    margin-bottom: 80px;
+  }
 
   h1 {
     font-size: 50px; /* Smaller font size for mobile devices */
