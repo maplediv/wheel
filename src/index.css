@@ -342,6 +342,10 @@ h3 {
 /* Add this media query to your existing CSS */
 
 @media (min-width: 981px) {
+  body {
+   
+    padding-bottom: 80px;
+  }
   .navbar-nav {
     margin-left: auto !important; /* Important to override the ml-auto class */
   }
@@ -351,6 +355,10 @@ h3 {
 }
 
 @media (max-width: 1599px) {
+  body {
+   
+    padding-bottom: 80px;
+  }
   h1 {
     font-size: 50px; /* Smaller font size for mobile devices */
   }
@@ -376,9 +384,17 @@ h3 {
   .color-table-column {
     margin-top: 520px; /* Adjust the value as needed */
   }
+  body {
+   
+    padding-bottom: 80px;
+  }
 }
 
 @media (max-width: 1199px) {
+  body {
+   
+    padding-bottom: 80px;
+  }
   .custom-margin-bottom {
     margin-bottom: 150px; /* Adjust the value as needed */
   }
@@ -423,6 +439,7 @@ h3 {
 }
 
 @media (max-width: 768px) {
+  
   .img-fluid,
   .image-container-home img {
     width: 100%; /* Ensure images take up full width */
@@ -467,12 +484,17 @@ h3 {
     padding: 8px; /* Adjust cell padding as needed */
     font-size: 14px; /* Adjust font size as needed */
   }
+  body {
+   
+    padding-bottom: 80px;
+  }
 }
 
 @media screen and (max-width: 460px) {
   body {
     font-size: 14px;
     padding: 10px;
+    padding-bottom: 80px;
   }
 
   .header {
