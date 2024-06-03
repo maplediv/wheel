@@ -38,6 +38,7 @@ const LoginPage: React.FC = () => {
       });
 
       if (response.ok) {
+        console.log('User registered successfully');
         setShowSuccessMessage(true);
         setShowErrorMessage('');
         setFirstName('');
@@ -46,10 +47,12 @@ const LoginPage: React.FC = () => {
         setPassword('');
       } else {
         const data = await response.json();
+        console.log('Failed to register user:', data.message);
         setShowErrorMessage(data.message);
         setShowSuccessMessage(false);
       }
     } catch (error) {
+      console.log('Error registering user:', error);
       setShowErrorMessage('Error registering user');
       setShowSuccessMessage(false);
     }
@@ -57,6 +60,7 @@ const LoginPage: React.FC = () => {
 
   const handleLoginFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    console.log('Login form submitted');
     try {
       const response = await fetch('https://wheelback.onrender.com/login', {
         method: 'POST',
@@ -67,14 +71,17 @@ const LoginPage: React.FC = () => {
       });
 
       if (response.ok) {
+        console.log('User logged in successfully');
         setShowSuccessMessage(true);
         setShowErrorMessage('');
       } else {
         const data = await response.json();
+        console.log('Failed to log in:', data.message);
         setShowErrorMessage(data.message);
         setShowSuccessMessage(false);
       }
     } catch (error) {
+      console.log('Error logging in:', error);
       setShowErrorMessage('Error logging in');
       setShowSuccessMessage(false);
     }
