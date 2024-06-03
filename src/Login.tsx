@@ -82,6 +82,8 @@ const LoginPage: React.FC = () => {
 
   const handleLoginLinkClick = () => {
     setShowLoginForm(true);
+    setShowSuccessMessage(false);
+    setShowErrorMessage('');
   };
 
   return (
@@ -119,6 +121,16 @@ const LoginPage: React.FC = () => {
                   </div>
                 </form>
               </div>
+              {showSuccessMessage && (
+                <div className="alert alert-success mt-3" role="alert">
+                  Logged in successfully!
+                </div>
+              )}
+              {showErrorMessage && (
+                <div className="alert alert-danger mt-3" role="alert">
+                  {showErrorMessage}
+                </div>
+              )}
             </>
           ) : (
             <>
