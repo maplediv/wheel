@@ -69,11 +69,13 @@ const LoginPage: React.FC = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-
+  
       if (response.ok) {
         console.log('User logged in successfully');
         setShowSuccessMessage(true);
         setShowErrorMessage('');
+        setEmail(''); // Reset email state variable
+        setPassword(''); // Reset password state variable
       } else {
         const data = await response.json();
         console.log('Failed to log in:', data.message);
@@ -86,6 +88,7 @@ const LoginPage: React.FC = () => {
       setShowSuccessMessage(false);
     }
   };
+  
 
   const handleLoginLinkClick = () => {
     setShowLoginForm(true);
