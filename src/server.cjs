@@ -23,16 +23,39 @@ app.use(cors({
 }));
 app.use(express.json());
 
-app.post('/register', async (req, res, next) => {
+app.post('/register', async (req, res) => {
+  const { firstName, lastName, email, password } = req.body;
   try {
-    const { firstName, lastName, email, password } = req.body;
+    const userCheck = await db.query('SELECT email FROM users WHERE email = $1', [email]);
+    if (userCheck.rows.length > 0) {
+      return res.status(400).json({ message: 'User already exists' });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    await db.query('INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4)', [firstName, lastName, email, hashedPassword]);
-
+    await db.query('INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4)', 
+                   [firstName, lastName, email, hashedPassword]);
     res.status(201).json({ message: 'User registered successfully' });
   } catch (err) {
-    next(err);
+    res.status(500).json({ message: 'Error registering user' });
+  }
+});
+
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+    if (user.rows.length === 0) {
+      return res.status(400).json({ message: 'Invalid email or password' });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.rows[0].password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid email or password' });
+    }
+
+    res.status(200).json({ message: 'Logged in successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Error logging in' });
   }
 });
 

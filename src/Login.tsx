@@ -7,6 +7,7 @@ const LoginPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState('');
 
   useEffect(() => {
     const loginIcon = document.getElementById('loginIcon');
@@ -23,12 +24,10 @@ const LoginPage: React.FC = () => {
   const handleLoginIconClick = (event: MouseEvent) => {
     event.preventDefault();
     console.log('Login icon clicked!');
-    // Replace history.push('/login') with your desired logic for handling the click event
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log('Form submitted');
     try {
       const response = await fetch('https://wheelback.onrender.com/register', {
         method: 'POST',
@@ -40,21 +39,45 @@ const LoginPage: React.FC = () => {
 
       if (response.ok) {
         setShowSuccessMessage(true);
+        setShowErrorMessage('');
         setFirstName('');
         setLastName('');
         setEmail('');
         setPassword('');
       } else {
-        console.error('Failed to register user');
+        const data = await response.json();
+        setShowErrorMessage(data.message);
+        setShowSuccessMessage(false);
       }
     } catch (error) {
-      console.error('Error:', error);
+      setShowErrorMessage('Error registering user');
+      setShowSuccessMessage(false);
     }
   };
 
   const handleLoginFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    // Add logic to handle login form submission
+    try {
+      const response = await fetch('https://wheelback.onrender.com/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        setShowSuccessMessage(true);
+        setShowErrorMessage('');
+      } else {
+        const data = await response.json();
+        setShowErrorMessage(data.message);
+        setShowSuccessMessage(false);
+      }
+    } catch (error) {
+      setShowErrorMessage('Error logging in');
+      setShowSuccessMessage(false);
+    }
   };
 
   const handleLoginLinkClick = () => {
@@ -74,6 +97,8 @@ const LoginPage: React.FC = () => {
                     <input
                       type="email"
                       className="form-control"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="Email"
                       required
                     />
@@ -82,6 +107,8 @@ const LoginPage: React.FC = () => {
                     <input
                       type="password"
                       className="form-control"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       placeholder="Password"
                       required
                     />
@@ -147,6 +174,11 @@ const LoginPage: React.FC = () => {
               {showSuccessMessage && (
                 <div className="alert alert-success mt-3" role="alert">
                   Account created successfully! You can now login.
+                </div>
+              )}
+              {showErrorMessage && (
+                <div className="alert alert-danger mt-3" role="alert">
+                  {showErrorMessage}
                 </div>
               )}
             </>
