@@ -40,6 +40,22 @@ app.post('/register', async (req, res) => {
   }
 });
 
+app.get('/user', async (req, res) => {
+  try {
+    const { email } = req.query; // Assuming email is provided as a query parameter
+    const user = await db.query('SELECT firstname FROM users WHERE email = $1', [email]);
+    if (user.rows.length === 0) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    const userData = user.rows[0];
+    res.status(200).json(userData);
+  } catch (err) {
+    console.error('Error fetching user data:', err);
+    res.status(500).json({ message: 'Error fetching user data' });
+  }
+});
+
+
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
