@@ -51,7 +51,7 @@ const Navbar: React.FC = () => {
               {userFirstName ? (
                 <span className="nav-link">Welcome, {userFirstName}</span>
               ) : (
-                <a className="nav-link" href="#" id="loginIcon" onClick={handleLoginIconClick}>
+                <a className="nav-link" href="#" id="loginIcon" onClick={() => handleLoginIconClick(handleSuccessfulLogin)}>
                   <img src="/src/images/login.svg" alt="Login" width="24" height="24" />
                 </a>
               )}
