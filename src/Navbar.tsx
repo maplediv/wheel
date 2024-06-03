@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { handleLoginIconClick } from './globalEvents'; // Import the event handler function
 
 const Navbar: React.FC = () => {
   const [userFirstName, setUserFirstName] = useState<string | null>(null); // State variable to store user's first name
+
+  // Log the value of userFirstName whenever it changes
+  useEffect(() => {
+    console.log('User first name:', userFirstName);
+  }, [userFirstName]);
+
+  const handleSuccessfulLogin = (firstName: string) => {
+    console.log('User logged in successfully:', firstName);
+    setUserFirstName(firstName); // Update user's first name upon successful login
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
