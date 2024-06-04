@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 interface LoginPageProps {
   handleSuccessfulLogin: (firstName: string) => void;
@@ -12,24 +12,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState('');
-
-  useEffect(() => {
-    const loginIcon = document.getElementById('loginIcon');
-    if (loginIcon) {
-      loginIcon.addEventListener('click', handleLoginIconClick);
-    }
-    return () => {
-      if (loginIcon) {
-        loginIcon.removeEventListener('click', handleLoginIconClick);
-      }
-    };
-  }, []);
-
-  const handleLoginIconClick = (event: MouseEvent) => {
-    event.preventDefault();
-    console.log('Login icon clicked!');
-    setShowLoginForm(true);
-  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -77,14 +59,14 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
 
       if (response.ok) {
         console.log('User logged in successfully');
-        
+
         const userResponse = await fetch(`https://wheelback.onrender.com/user?email=${email}`);
         if (userResponse.ok) {
           const userData = await userResponse.json();
           const firstName = userData.firstname;
           handleSuccessfulLogin(firstName);
         }
-        
+
         setShowSuccessMessage(true);
         setShowErrorMessage('');
         setEmail('');
@@ -102,120 +84,77 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
     }
   };
 
-  const handleLoginLinkClick = () => {
-    setShowLoginForm(true);
-    setShowSuccessMessage(false);
-    setShowErrorMessage('');
-  };
-
   return (
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-md-6">
-          {showLoginForm ? (
-            <>
-              <h2>Login</h2>
-              <div className="form-container">
-                <form onSubmit={handleLoginFormSubmit}>
+          <h2>{showLoginForm ? 'Login' : 'Create Account'}</h2>
+          <div className="form-container">
+            <form onSubmit={showLoginForm ? handleLoginFormSubmit : handleSubmit}>
+              {!showLoginForm && (
+                <>
                   <div className="mb-3">
                     <input
-                      type="email"
+                      type="text"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                       className="form-control"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Email"
+                      placeholder="First Name"
                       required
                     />
                   </div>
                   <div className="mb-3">
                     <input
-                      type="password"
+                      type="text"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                       className="form-control"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Password"
+                      placeholder="Last Name"
                       required
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary">Login</button>
-                  <div className="mt-3">
-                    <p className="footer-text">Don't have an account? <button type="button" className="btn btn-link" onClick={() => setShowLoginForm(false)}>Create Account</button></p>
-                  </div>
-                </form>
+                </>
+              )}
+              <div className="mb-3">
+                <input
+                  type="email"
+                  className="form-control"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email"
+                  required
+                />
               </div>
-              {showSuccessMessage && (
-                <div className="alert alert-success mt-3" role="alert">
-                  Logged in successfully!
-                </div>
-              )}
-              {showErrorMessage && (
-                <div className="alert alert-danger mt-3" role="alert">
-                  {showErrorMessage}
-                </div>
-              )}
-            </>
-          ) : (
-            <>
-              <h1>Create Account</h1>
-              <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                  <input
-                    type="text"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    className="form-control"
-                    placeholder="First Name"
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <input
-                    type="text"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    className="form-control"
-                    placeholder="Last Name"
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="form-control"
-                    placeholder="Email"
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="form-control"
-                    placeholder="Password"
-                    required
-                  />
-                </div>
-                <div className="mb-3 d-flex justify-content-between align-items-center">
-                  <button type="submit" className="btn btn-primary">Create Account</button>
-                </div>
-                <div className="mb-3 d-flex justify-content-between align-items-center">
-                  <p className="footer-text">Already have an account? <button type="button" className="btn btn-link" onClick={handleLoginLinkClick}>Login</button></p>
-                </div>
-              </form>
-              {showSuccessMessage && (
-                <div className="alert alert-success mt-3" role="alert">
-                  Account created successfully! You can now login.
-                </div>
-              )}
-              {showErrorMessage && (
-                <div className="alert alert-danger mt-3" role="alert">
-                  {showErrorMessage}
-                </div>
-              )}
-            </>
+              <div className="mb-3">
+                <input
+                  type="password"
+                  className="form-control"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <button type="submit" className="btn btn-primary">{showLoginForm ? 'Login' : 'Create Account'}</button>
+              <div className="mt-3">
+                <p className="footer-text">
+                  {showLoginForm ? "Don't have an account?" : "Already have an account?"}{' '}
+                  <button type="button" className="btn btn-link" onClick={() => setShowLoginForm(!showLoginForm)}>
+                    {showLoginForm ? 'Create Account' : 'Login'}
+                  </button>
+                </p>
+              </div>
+            </form>
+          </div>
+          {showSuccessMessage && (
+            <div className="alert alert-success mt-3" role="alert">
+              {showLoginForm ? 'Logged in successfully!' : 'Account created successfully! You can now login.'}
+            </div>
+          )}
+          {showErrorMessage && (
+            <div className="alert alert-danger mt-3" role="alert">
+              {showErrorMessage}
+            </div>
           )}
         </div>
       </div>
