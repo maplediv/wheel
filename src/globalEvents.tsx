@@ -1,8 +1,5 @@
 // globalEvents.tsx
 
-
-
-// eslint-disable-next-line
 import React from 'react';
 
 // Event handler function for the login icon click event

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-const LoginPage: React.FC = () => {
+interface LoginPageProps {
+  handleSuccessfulLogin: (firstName: string) => void;
+}
+
+const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -24,6 +28,7 @@ const LoginPage: React.FC = () => {
   const handleLoginIconClick = (event: MouseEvent) => {
     event.preventDefault();
     console.log('Login icon clicked!');
+    setShowLoginForm(true);
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -69,13 +74,21 @@ const LoginPage: React.FC = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-  
+
       if (response.ok) {
         console.log('User logged in successfully');
+        
+        const userResponse = await fetch(`https://wheelback.onrender.com/user?email=${email}`);
+        if (userResponse.ok) {
+          const userData = await userResponse.json();
+          const firstName = userData.firstname;
+          handleSuccessfulLogin(firstName);
+        }
+        
         setShowSuccessMessage(true);
         setShowErrorMessage('');
-        setEmail(''); // Reset email state variable
-        setPassword(''); // Reset password state variable
+        setEmail('');
+        setPassword('');
       } else {
         const data = await response.json();
         console.log('Failed to log in:', data.message);
@@ -88,7 +101,6 @@ const LoginPage: React.FC = () => {
       setShowSuccessMessage(false);
     }
   };
-  
 
   const handleLoginLinkClick = () => {
     setShowLoginForm(true);

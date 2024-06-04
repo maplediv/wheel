@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { handleLoginIconClick } from './globalEvents'; // Import the event handler function
+import { handleLoginIconClick } from './globalEvents'; // Ensure this import is correct or define it below
 
 const Navbar: React.FC = () => {
-  const [userFirstName, setUserFirstName] = useState<string | null>(null); // State variable to store user's first name
+  const [userFirstName, setUserFirstName] = useState<string | null>(null);
 
-  // Log the value of userFirstName whenever it changes
   useEffect(() => {
     console.log('User first name:', userFirstName);
   }, [userFirstName]);
 
   const handleSuccessfulLogin = (firstName: string) => {
     console.log('User logged in successfully:', firstName);
-    setUserFirstName(firstName); // Update user's first name upon successful login
+    setUserFirstName(firstName);
   };
 
   return (
@@ -51,7 +50,7 @@ const Navbar: React.FC = () => {
               {userFirstName ? (
                 <span className="nav-link">Welcome, {userFirstName}</span>
               ) : (
-                <a className="nav-link" href="#" id="loginIcon" onClick={() => handleLoginIconClick(handleSuccessfulLogin)}>
+                <a className="nav-link" href="#" id="loginIcon">
                   <img src="/src/images/login.svg" alt="Login" width="24" height="24" />
                 </a>
               )}
