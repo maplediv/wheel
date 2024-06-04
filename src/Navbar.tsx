@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import LoginPage from './Login'; // Ensure this path is correct based on your project structure
 
 const Navbar: React.FC = () => {
   const [userFirstName, setUserFirstName] = useState<string | null>(null);
