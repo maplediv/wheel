@@ -340,151 +340,54 @@ h3 {
 
 /* Add this media query to your existing CSS */
 
-@media (min-width: 981px) {
+/* Mobile devices (up to 375px) */
+@media (max-width: 375px) {
   body {
     padding-bottom: 80px;
-  }
-  .navbar-nav {
-    margin-left: auto !important; /* Important to override the ml-auto class */
-  }
-  .color-table-column {
-    margin-top: 550px; /* Adjust the value as needed */
-  }
-}
-
-@media (max-width: 1599px) {
-  body {
-    padding-bottom: 80px;
-  }
-  h1 {
-    font-size: 50px; /* Smaller font size for mobile devices */
-  }
-  h2 {
-    font-size: 40px; /* Smaller font size for mobile devices */
-  }
-  .color-table-column {
-    margin-top: 550px; /* Adjust the value as needed */
-  }
-  .account-heading {
-    font-size: 50px;  /* Adjust the size as needed */
-    color: #333;      /* Adjust the color as needed */
-    text-align: left; /* Center the text */
-    margin-top: 80px; /* Add space below the heading */
-    margin-bottom: 80px;
-  }
-}
-
-@media (min-width: 1199px) {
-  .custom-margin-bottom {
-    margin-bottom: 150px; /* Adjust the value as needed */
-  }
-  .color-table-column {
-    margin-top: 550px; /* Adjust the value as needed */
-  }
-  body {
-    padding-bottom: 80px;
-  }
-}
-
-@media (max-width: 1199px) and (min-width: 768px) {
-  body {
-    padding-bottom: 80px;
-  }
-  .custom-margin-bottom {
-    margin-bottom: 150px; /* Adjust the value as needed */
-  }
-  .color-table-column {
-    margin-top: 540px; /* Adjust the value as needed */
-  }
-  .home-button {
-    background-color: #000000; /* Bootstrap primary color */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 50px;
+    font-size: 14px;
+    padding: 10px;
   }
 
-  .home-button:hover {
-    background-color: #000000; /* Darker shade of primary color for hover */
-  }
-  .account-heading {
-    font-size: 50px;  /* Adjust the size as needed */
-    color: #333;      /* Adjust the color as needed */
-    text-align: left; /* Center the text */
-    margin-top: 80px; /* Add space below the heading */
-    margin-bottom: 80px;
-  }
-
-  h1 {
-    font-size: 50px; /* Smaller font size for mobile devices */
-  }
-  h2 {
-    font-size: 40px; /* Smaller font size for mobile devices */
-  }
-  .color-table-container {
-    margin-bottom: 200px;
-  }
-}
-
-@media (max-width: 768px) {
   .img-fluid,
   .image-container-home img {
-    width: 100%; /* Ensure images take up full width */
-    height: auto; /* Maintain aspect ratio */
-    max-width: 100%; /* Ensure the image does not exceed its container width */
-    display: block; /* Ensure proper rendering */
-    margin: 0 auto; /* Center the image horizontally */
-    object-fit: cover; /* Ensure the image covers the full width */
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
   }
 
   .color-table-container {
-    margin-top: 20px; /* Reduce margin above the color table */
-    margin-bottom: 50px; /* Adjust bottom margin as needed */
+    margin-top: 20px;
+    margin-bottom: 50px;
+    overflow-x: auto;
+    max-width: 100%;
   }
 
   .color-table-column {
-    margin-top: 550px; /* Reduce margin above the color table column */
+    margin-top: 40px;
   }
 
   td,
   th {
-    font-size: 12px; /* Adjust font size as needed */
-    padding: 8px; /* Adjust cell padding to make the table more compact */
+    font-size: 12px;
+    padding: 8px;
   }
 
   .table-container {
-    padding: 5px; /* Adjust padding as needed */
-  }
-
-  .color-table-container {
-    overflow-x: auto; /* Enable horizontal scrolling if necessary */
-    max-width: 100%;  /* Ensure the table container spans the full width */
+    padding: 5px;
   }
 
   .color-table-container table {
-    width: 100%; /* Make the table span the full width of its container */
-    max-width: unset; /* Remove any maximum width constraints */
+    width: 100%;
+    max-width: unset;
   }
 
   .color-table-container th,
   .color-table-container td {
-    padding: 8px; /* Adjust cell padding as needed */
-    font-size: 14px; /* Adjust font size as needed */
-  }
-  body {
-    padding-bottom: 80px;
-  }
-}
-
-@media screen and (max-width: 460px) {
-  body {
+    padding: 8px;
     font-size: 14px;
-    padding: 10px;
-    padding-bottom: 80px;
   }
 
   .header {
@@ -498,22 +401,95 @@ h3 {
   }
 
   .sidebar {
-    display: none; /* Hide sidebar on small screens */
+    display: none;
   }
 }
 
-@media (max-width: 991px) and (min-width: 767px) {
+/* Tablet devices (376px to 768px) */
+@media (min-width: 376px) and (max-width: 768px) {
   body {
     padding-bottom: 80px;
   }
-  .custom-margin-bottom {
-    margin-bottom: 150px; /* Adjust the value as needed */
+
+  .img-fluid,
+  .image-container-home img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
   }
+
+  .color-table-container {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
   .color-table-column {
-    margin-top: 575px; /* Adjust the value as needed */
+    margin-top: 697px;
   }
+
+  td,
+  th {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .table-container {
+    padding: 5px;
+  }
+
+  .color-table-container table {
+    width: 100%;
+    max-width: unset;
+  }
+
+  .color-table-container th,
+  .color-table-container td {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+/* Desktop devices (769px and above) */
+@media (min-width: 769px) {
+  body {
+    padding-bottom: 80px;
+  }
+
+  .navbar-nav {
+    margin-left: auto !important;
+  }
+
+  .color-table-column {
+    margin-top: 523px;
+  }
+
+  h1 {
+    font-size: 50px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+
+  .account-heading {
+    font-size: 50px;
+    color: #333;
+    text-align: left;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  .custom-margin-bottom {
+    margin-bottom: 150px;
+  }
+
   .home-button {
-    background-color: #000000; /* Bootstrap primary color */
+    background-color: #000000;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -525,23 +501,11 @@ h3 {
   }
 
   .home-button:hover {
-    background-color: #000000; /* Darker shade of primary color for hover */
-  }
-  .account-heading {
-    font-size: 50px;  /* Adjust the size as needed */
-    color: #333;      /* Adjust the color as needed */
-    text-align: left; /* Center the text */
-    margin-top: 80px; /* Add space below the heading */
-    margin-bottom: 80px;
+    background-color: #000000;
   }
 
-  h1 {
-    font-size: 50px; /* Smaller font size for mobile devices */
-  }
-  h2 {
-    font-size: 40px; /* Smaller font size for mobile devices */
-  }
   .color-table-container {
     margin-bottom: 200px;
   }
 }
+
