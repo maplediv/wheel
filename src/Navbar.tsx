@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import LoginPage from './Login'; // Ensure this path is correct based on your project structure
 
 const Navbar: React.FC = () => {
   const [userFirstName, setUserFirstName] = useState<string | null>(null);
+  const [showLoginForm, setShowLoginForm] = useState<boolean>(false);
 
   useEffect(() => {
     console.log('User first name:', userFirstName);
@@ -11,17 +12,24 @@ const Navbar: React.FC = () => {
   const handleSuccessfulLogin = (firstName: string) => {
     console.log('User logged in successfully:', firstName);
     setUserFirstName(firstName);
+    setShowLoginForm(false); // Hide login form upon successful login
+  };
+
+  const handleLoginIconClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    console.log('Login icon clicked!');
+    setShowLoginForm(true);
   };
 
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
+          <a className="navbar-brand" href="#">
             <div className="logo-container">
               <img src="/src/images/art.svg" alt="Logo" width="100" height="100" />
             </div>
-          </Link>
+          </a>
 
           <button
             className="navbar-toggler"
@@ -38,28 +46,32 @@ const Navbar: React.FC = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <a className="nav-link" href="/">
                   Home
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/paint">
+                <a className="nav-link" href="/paint">
                   Paint
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
                 {userFirstName ? (
                   <span className="nav-link">Welcome, {userFirstName}</span>
                 ) : (
-                  <Link className="nav-link" to="/login">
+                  <a className="nav-link" href="#" id="loginIcon" onClick={handleLoginIconClick}>
                     <img src="/src/images/login.svg" alt="Login" width="24" height="24" />
-                  </Link>
+                  </a>
                 )}
               </li>
             </ul>
           </div>
         </div>
       </nav>
+
+      {showLoginForm && (
+        <LoginPage handleSuccessfulLogin={handleSuccessfulLogin} />
+      )}
     </>
   );
 };
