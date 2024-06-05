@@ -135,32 +135,31 @@
 }
 
 .navbar-nav .nav-link {
-  color: #000; /* Set your desired color */
+  color: #000000 !important; /* Set the nav link color to black and use !important to override other styles */
   margin: 0; /* Remove margin from navbar links */
 }
 
 .navbar-nav .nav-link:hover {
-  color: #007bff; /* Set your desired hover color */
+  color: #000000 !important; /* Set the hover color to black and use !important to override other styles */
 }
-
-
-
 
 .navbar-collapse.show .nav-link {
   display: block; /* Ensure nav links are displayed as blocks */
   text-align: left; /* Align nav links to the left */
 }
 
-
-
-
-
-.dropdown-menu .nav-link{
-  background-color: #fff; /* Set your desired background color */
-  border: 1px solid #ddd; /* Set your desired border color */
-  
+.dropdown-menu .nav-link {
+  background-color: #fff; /* Set background color to white */
+  border: 1px solid #ddd; /* Set border color */
+  color: #000000 !important; /* Ensure the nav link color is black and use !important to override other styles */
   margin-left: 0px;
 }
+
+.dropdown-menu .nav-link:hover {
+  background-color: #f8f9fa; /* Optional: set a background color on hover */
+  color: #000000 !important; /* Ensure hover color is black in the dropdown and use !important to override other styles */
+}
+
 
 
 
@@ -343,20 +342,18 @@ h3 {
 
 @media (min-width: 981px) {
   body {
-   
     padding-bottom: 80px;
   }
   .navbar-nav {
     margin-left: auto !important; /* Important to override the ml-auto class */
   }
   .color-table-column {
-    margin-top: 40px; /* Adjust the value as needed */
+    margin-top: 550px; /* Adjust the value as needed */
   }
 }
 
 @media (max-width: 1599px) {
   body {
-   
     padding-bottom: 80px;
   }
   h1 {
@@ -366,7 +363,7 @@ h3 {
     font-size: 40px; /* Smaller font size for mobile devices */
   }
   .color-table-column {
-    margin-top: 420px; /* Adjust the value as needed */
+    margin-top: 550px; /* Adjust the value as needed */
   }
   .account-heading {
     font-size: 50px;  /* Adjust the size as needed */
@@ -382,24 +379,22 @@ h3 {
     margin-bottom: 150px; /* Adjust the value as needed */
   }
   .color-table-column {
-    margin-top: 520px; /* Adjust the value as needed */
+    margin-top: 550px; /* Adjust the value as needed */
   }
   body {
-   
     padding-bottom: 80px;
   }
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1199px) and (min-width: 768px) {
   body {
-   
     padding-bottom: 80px;
   }
   .custom-margin-bottom {
     margin-bottom: 150px; /* Adjust the value as needed */
   }
   .color-table-column {
-    margin-top: 200px; /* Adjust the value as needed */
+    margin-top: 540px; /* Adjust the value as needed */
   }
   .home-button {
     background-color: #000000; /* Bootstrap primary color */
@@ -412,7 +407,7 @@ h3 {
     transition: background-color 0.3s ease;
     margin-bottom: 50px;
   }
-  
+
   .home-button:hover {
     background-color: #000000; /* Darker shade of primary color for hover */
   }
@@ -430,16 +425,12 @@ h3 {
   h2 {
     font-size: 40px; /* Smaller font size for mobile devices */
   }
-  .color-table-column {
-    margin-top: 40px; /* Adjust the value as needed */
-  }
   .color-table-container {
     margin-bottom: 200px;
   }
 }
 
 @media (max-width: 768px) {
-  
   .img-fluid,
   .image-container-home img {
     width: 100%; /* Ensure images take up full width */
@@ -456,7 +447,7 @@ h3 {
   }
 
   .color-table-column {
-    margin-top: 20px; /* Reduce margin above the color table column */
+    margin-top: 550px; /* Reduce margin above the color table column */
   }
 
   td,
@@ -485,7 +476,6 @@ h3 {
     font-size: 14px; /* Adjust font size as needed */
   }
   body {
-   
     padding-bottom: 80px;
   }
 }
@@ -509,5 +499,49 @@ h3 {
 
   .sidebar {
     display: none; /* Hide sidebar on small screens */
+  }
+}
+
+@media (max-width: 991px) and (min-width: 767px) {
+  body {
+    padding-bottom: 80px;
+  }
+  .custom-margin-bottom {
+    margin-bottom: 150px; /* Adjust the value as needed */
+  }
+  .color-table-column {
+    margin-top: 575px; /* Adjust the value as needed */
+  }
+  .home-button {
+    background-color: #000000; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 50px;
+  }
+
+  .home-button:hover {
+    background-color: #000000; /* Darker shade of primary color for hover */
+  }
+  .account-heading {
+    font-size: 50px;  /* Adjust the size as needed */
+    color: #333;      /* Adjust the color as needed */
+    text-align: left; /* Center the text */
+    margin-top: 80px; /* Add space below the heading */
+    margin-bottom: 80px;
+  }
+
+  h1 {
+    font-size: 50px; /* Smaller font size for mobile devices */
+  }
+  h2 {
+    font-size: 40px; /* Smaller font size for mobile devices */
+  }
+  .color-table-container {
+    margin-bottom: 200px;
   }
 }
