@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface LoginPageProps {
@@ -14,21 +14,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState('');
 
-  const [userFirstName, setUserFirstName] = useState<string | null>(null);
-
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log('User first name:', userFirstName);
-  }, [userFirstName]);
-
-  const handleLoginSuccessful = (firstName: string) => {
-    console.log('User logged in successfully:', firstName);
-    setUserFirstName(firstName);
-    setShowLoginForm(false);
-    handleSuccessfulLogin(firstName);
-    navigate('/'); // Redirect to home page after login
-  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -42,7 +28,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
       });
 
       if (response.ok) {
-        console.log('User registered successfully');
         setShowSuccessMessage(true);
         setShowErrorMessage('');
         setFirstName('');
@@ -51,12 +36,10 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
         setPassword('');
       } else {
         const data = await response.json();
-        console.log('Failed to register user:', data.message);
         setShowErrorMessage(data.message);
         setShowSuccessMessage(false);
       }
     } catch (error) {
-      console.log('Error registering user:', error);
       setShowErrorMessage('Error registering user');
       setShowSuccessMessage(false);
     }
@@ -64,7 +47,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
 
   const handleLoginFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log('Login form submitted');
     try {
       const response = await fetch('https://wheelback.onrender.com/login', {
         method: 'POST',
@@ -75,27 +57,19 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
       });
 
       if (response.ok) {
-        console.log('User logged in successfully');
-
         const userResponse = await fetch(`https://wheelback.onrender.com/user?email=${email}`);
         if (userResponse.ok) {
           const userData = await userResponse.json();
           const firstName = userData.firstname;
-          handleLoginSuccessful(firstName);
+          handleSuccessfulLogin(firstName);
+          navigate('/');
         }
-
-        setShowSuccessMessage(true);
-        setShowErrorMessage('');
-        setEmail('');
-        setPassword('');
       } else {
         const data = await response.json();
-        console.log('Failed to log in:', data.message);
         setShowErrorMessage(data.message);
         setShowSuccessMessage(false);
       }
     } catch (error) {
-      console.log('Error logging in:', error);
       setShowErrorMessage('Error logging in');
       setShowSuccessMessage(false);
     }
@@ -174,15 +148,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
             </div>
           )}
         </div>
-      </div>
-      <div>
-        <nav>
-          <a href="#" onClick={(e) => {
-            e.preventDefault();
-            setShowLoginForm(true);
-          }}>Login</a>
-        </nav>
-        {userFirstName && <p>Welcome, {userFirstName}!</p>}
       </div>
     </div>
   );

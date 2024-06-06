@@ -102,14 +102,20 @@ const PaintPage = () => {
 };
 
 const App = () => {
+  const [userFirstName, setUserFirstName] = useState<string | null>(null);
+
+  const handleSuccessfulLogin = (firstName: string) => {
+    setUserFirstName(firstName);
+  };
+
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <Navbar userFirstName={userFirstName} />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/paint" element={<PaintPage />} />
-          <Route path="/login" element={<LoginPage handleSuccessfulLogin={() => {}} />} />
+          <Route path="/login" element={<LoginPage handleSuccessfulLogin={handleSuccessfulLogin} />} />
         </Routes>
       </div>
     </Router>
