@@ -1,12 +1,11 @@
+// src/Navbar.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
-interface NavbarProps {
-  userFirstName: string | null;
-  handleLogout: () => void;
-}
+const Navbar: React.FC = () => {
+  const { user, logout } = useAuth();
 
-const Navbar: React.FC<NavbarProps> = ({ userFirstName, handleLogout }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -26,13 +25,13 @@ const Navbar: React.FC<NavbarProps> = ({ userFirstName, handleLogout }) => {
             <li className="nav-item">
               <Link className="nav-link" to="/paint">Paint</Link>
             </li>
-            {userFirstName ? (
+            {user ? (
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {userFirstName}
+                  {user.firstName}
                 </a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <button className="dropdown-item" onClick={handleLogout}>Logout</button>
+                  <button className="dropdown-item" onClick={logout}>Logout</button>
                 </div>
               </li>
             ) : (

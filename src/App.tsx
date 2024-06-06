@@ -1,22 +1,23 @@
-import React, { useState } from 'react';
+// src/App.js
+import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import ColorTiles from './ColorTiles';
 import './index.css';
 import VisionAPIComponent from './VisionAPIComponent';
 import LoginPage from './Login';
+import { AuthProvider } from './AuthContext';
 
 const HomePage = () => {
   return (
     <div className="home-page-container">
-       <h1 className="home-page-title">Welcome to Art Genius!</h1>
+      <h1 className="home-page-title">Welcome to Art Genius!</h1>
       <div className="container home-page-content">
         <div className="row align-items-start">
           <div className="col-md-6 order-md-1">
             <div className="text-container">
               <div className="text-left">
-              <h2 className="home-page-title">A tool for artists</h2>
-            
+                <h2 className="home-page-title">A tool for artists</h2>
                 <p className="responsive-text">
                   Visual artists can elevate their creative process by using our app's sophisticated color image recognition feature.
                   By uploading images, artists can seamlessly identify and analyze the color palette within their artwork, enabling them to experiment with new hues and shades.
@@ -41,8 +42,7 @@ const HomePage = () => {
           <div className="col-md-6 order-md-4">
             <div className="text-container">
               <div className="text-left">
-              <h1 className="home-page-title">Infinite imagination</h1>
-            
+                <h1 className="home-page-title">Infinite imagination</h1>
                 <p className="responsive-text">
                   This tool not only assists in color matching but also offers insights into the dominant colors and their proportions, helping artists maintain harmony and balance in their compositions.
                   Whether refining a piece or seeking inspiration, our app empowers artists to harness the power of color with precision and ease.
@@ -67,10 +67,10 @@ const HomePage = () => {
 };
 
 const PaintPage = () => {
-  const [colorResponse, setColorResponse] = useState<any>(null);
+  const [colorResponse, setColorResponse] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleColorResponse = (response: any) => {
+  const handleColorResponse = (response) => {
     setColorResponse(response);
     setLoading(false);
   };
@@ -104,23 +104,19 @@ const PaintPage = () => {
 };
 
 const App = () => {
-  const [userFirstName, setUserFirstName] = useState<string | null>(null);
-
-  const handleSuccessfulLogin = (firstName: string) => {
-    setUserFirstName(firstName);
-  };
-
   return (
-    <Router>
-      <div className="App">
-        <Navbar userFirstName={userFirstName} />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/paint" element={<PaintPage />} />
-          <Route path="/login" element={<LoginPage handleSuccessfulLogin={handleSuccessfulLogin} />} />
-        </Routes>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/paint" element={<PaintPage />} />
+            <Route path="/login" element={<LoginPage />} />
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 };
 

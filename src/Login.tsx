@@ -1,11 +1,9 @@
+// src/Login.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
-interface LoginPageProps {
-  handleSuccessfulLogin: (firstName: string) => void;
-}
-
-const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
+const Login: React.FC = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -14,6 +12,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState('');
 
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -61,7 +60,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
         if (userResponse.ok) {
           const userData = await userResponse.json();
           const firstName = userData.firstname;
-          handleSuccessfulLogin(firstName);
+          login({ firstName, email });
           navigate('/');
         }
       } else {
@@ -134,23 +133,23 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
                     {showLoginForm ? 'Create Account' : 'Login'}
                   </button>
                 </p>
+              </form>
+            </div>
+            {showSuccessMessage && (
+              <div className="alert alert-success mt-3" role="alert">
+                {showLoginForm ? 'Logged in successfully!' : 'Account created successfully! You can now login.'}
               </div>
-            </form>
+            )}
+            {showErrorMessage && (
+              <div className="alert alert-danger mt-3" role="alert">
+                {showErrorMessage}
+              </div>
+            )}
           </div>
-          {showSuccessMessage && (
-            <div className="alert alert-success mt-3" role="alert">
-              {showLoginForm ? 'Logged in successfully!' : 'Account created successfully! You can now login.'}
-            </div>
-          )}
-          {showErrorMessage && (
-            <div className="alert alert-danger mt-3" role="alert">
-              {showErrorMessage}
-            </div>
-          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default Login;
