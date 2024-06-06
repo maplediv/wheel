@@ -348,6 +348,16 @@ h3 {
     padding: 10px;
   }
 
+  h2 {
+    font-size: 16px; /* Adjust the font size as needed */
+    margin-top: 40px; /* Add or adjust margin as needed */
+    margin-bottom: 40px; /* Add or adjust margin as needed */
+  }
+}
+  .home-page-title {
+    font-size: 2rem; /* Reducing font size of h1 */
+  }
+
   .img-fluid,
   .image-container-home img {
     width: 100%;
@@ -357,6 +367,9 @@ h3 {
     margin: 0 auto;
     object-fit: cover;
   }
+ 
+  
+  
 
   .color-table-container {
     margin-top: 20px;
@@ -403,7 +416,7 @@ h3 {
   .sidebar {
     display: none;
   }
-}
+
 
 /* Tablet devices (376px to 768px) */
 @media (min-width: 376px) and (max-width: 768px) {
@@ -465,7 +478,7 @@ h3 {
   }
 
   .color-table-column {
-    margin-top: 523px;
+    margin-top: 502px;
   }
 
   h1 {
