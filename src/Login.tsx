@@ -133,8 +133,10 @@ const Login: React.FC = () => {
                     {showLoginForm ? 'Create Account' : 'Login'}
                   </button>
                 </p>
-              </form>
-            </div>
+              </div>
+            </form>
+          </div>
+
             {showSuccessMessage && (
               <div className="alert alert-success mt-3" role="alert">
                 {showLoginForm ? 'Logged in successfully!' : 'Account created successfully! You can now login.'}
