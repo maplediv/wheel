@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface LoginPageProps {
   handleSuccessfulLogin: (firstName: string) => void;
@@ -12,6 +13,22 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
   const [showLoginForm, setShowLoginForm] = useState(true);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState('');
+
+  const [userFirstName, setUserFirstName] = useState<string | null>(null);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log('User first name:', userFirstName);
+  }, [userFirstName]);
+
+  const handleLoginSuccessful = (firstName: string) => {
+    console.log('User logged in successfully:', firstName);
+    setUserFirstName(firstName);
+    setShowLoginForm(false);
+    handleSuccessfulLogin(firstName);
+    navigate('/'); // Redirect to home page after login
+  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -28,6 +45,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
         console.log('User registered successfully');
         setShowSuccessMessage(true);
         setShowErrorMessage('');
+        setFirstName('');
+        setLastName('');
         setEmail('');
         setPassword('');
       } else {
@@ -62,7 +81,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
         if (userResponse.ok) {
           const userData = await userResponse.json();
           const firstName = userData.firstname;
-          handleSuccessfulLogin(firstName);
+          handleLoginSuccessful(firstName);
         }
 
         setShowSuccessMessage(true);
@@ -155,6 +174,15 @@ const LoginPage: React.FC<LoginPageProps> = ({ handleSuccessfulLogin }) => {
             </div>
           )}
         </div>
+      </div>
+      <div>
+        <nav>
+          <a href="#" onClick={(e) => {
+            e.preventDefault();
+            setShowLoginForm(true);
+          }}>Login</a>
+        </nav>
+        {userFirstName && <p>Welcome, {userFirstName}!</p>}
       </div>
     </div>
   );
