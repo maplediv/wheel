@@ -11,13 +11,13 @@ import { AuthProvider } from './AuthContext';
 const HomePage = () => {
   return (
     <div className="home-page-container">
-      <h1 className="home-page-title">Welcome to Art Genius!</h1>
+      <h1>Welcome to Art Genius!</h1>
       <div className="container home-page-content">
         <div className="row align-items-start">
           <div className="col-md-6 order-md-1">
             <div className="text-container">
               <div className="text-left">
-                <h2 className="home-page-title">A tool for artists</h2>
+                <h2>A tool for artists</h2>
                 <p className="responsive-text">
                   Visual artists can elevate their creative process by using our app's sophisticated color image recognition feature.
                   By uploading images, artists can seamlessly identify and analyze the color palette within their artwork, enabling them to experiment with new hues and shades.
@@ -42,7 +42,7 @@ const HomePage = () => {
           <div className="col-md-6 order-md-4">
             <div className="text-container">
               <div className="text-left">
-                <h1 className="home-page-title">Infinite imagination</h1>
+                <h2>Infinite imagination</h2>
                 <p className="responsive-text">
                   This tool not only assists in color matching but also offers insights into the dominant colors and their proportions, helping artists maintain harmony and balance in their compositions.
                   Whether refining a piece or seeking inspiration, our app empowers artists to harness the power of color with precision and ease.
@@ -81,7 +81,7 @@ const PaintPage = () => {
         <div className="col-md-6">
           <div className="text-left">
             <div className="color-canvas">
-              <h1 className="account-heading">Color Canvas</h1>
+              <h1>Color Canvas</h1>
               <div className="color-text">
                 <ul>
                   <li>Click the "Choose File" button and upload any file to return the dominant colors in the image.</li>

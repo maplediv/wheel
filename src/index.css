@@ -266,7 +266,7 @@ th {
 }
 
 h1 {
-  font-size: 80px; /* Unified font size for h1 and h3 */
+ 
   line-height: 1.1;
   margin-top: 80px;
   margin-bottom: 80px;
@@ -275,7 +275,7 @@ h1 {
 }
 
 h2 {
-  font-size: 60px; /* Unified font size for h1 and h3 */
+ 
   line-height: 1.1;
   margin-top: 0px;
   margin-bottom: 40px;
@@ -348,10 +348,12 @@ h3 {
     padding: 10px;
   }
 
+  h1 {
+    font-size: 25px;
+  }
+
   h2 {
-    font-size: 16px; /* Adjust the font size as needed */
-    margin-top: 40px; /* Add or adjust margin as needed */
-    margin-bottom: 40px; /* Add or adjust margin as needed */
+    font-size: 20px;
   }
 }
   .home-page-title {
@@ -424,6 +426,13 @@ h3 {
     padding-bottom: 80px;
   }
 
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
   .img-fluid,
   .image-container-home img {
     width: 100%;
@@ -468,7 +477,7 @@ h3 {
 }
 
 /* Desktop devices (769px and above) */
-@media (min-width: 769px) {
+@media (min-width: 769px) and (max-width:1439) {
   body {
     padding-bottom: 80px;
   }
@@ -482,7 +491,61 @@ h3 {
   }
 
   h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  .account-heading {
     font-size: 50px;
+    color: #333;
+    text-align: left;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  .custom-margin-bottom {
+    margin-bottom: 150px;
+  }
+
+  .home-button {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 50px;
+  }
+
+  .home-button:hover {
+    background-color: #000000;
+  }
+
+  .color-table-container {
+    margin-bottom: 200px;
+  }
+}
+
+@media (min-width: 1440px)  {
+  body {
+    padding-bottom: 80px;
+  }
+
+  .navbar-nav {
+    margin-left: auto !important;
+  }
+
+  .color-table-column {
+    margin-top: 502px;
+  }
+
+  h1 {
+    font-size: 60px;
   }
 
   h2 {

@@ -78,7 +78,7 @@ const Login: React.FC = () => {
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <h2>{showLoginForm ? 'Login' : 'Create Account'}</h2>
+          <h1>{showLoginForm ? 'Login' : 'Create Account'}</h1>
           <div className="form-container">
             <form onSubmit={showLoginForm ? handleLoginFormSubmit : handleSubmit}>
               {!showLoginForm && (
