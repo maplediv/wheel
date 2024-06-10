@@ -127,7 +127,7 @@ const Login: React.FC = () => {
               </div>
               <button type="submit" className="btn btn-primary">{showLoginForm ? 'Login' : 'Create Account'}</button>
               <div className="mt-3">
-                <p className="footer-text">
+                <p className="login-text">
                   {showLoginForm ? "Don't have an account?" : "Already have an account?"}{' '}
                   <button type="button" className="btn btn-link" onClick={() => setShowLoginForm(!showLoginForm)}>
                     {showLoginForm ? 'Create Account' : 'Login'}

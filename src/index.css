@@ -160,11 +160,6 @@
   color: #000000 !important; /* Ensure hover color is black in the dropdown and use !important to override other styles */
 }
 
-
-
-
-
-
 .footer {
   position: fixed;
   background-color: #f8f9fa; /* Bootstrap light gray background color */
@@ -179,10 +174,6 @@
   align-items: center; /* Center content vertically */
 }
 
-
-
-
-
 .footer .social-icons {
   margin-top: 0; /* Remove margin top */
   display: flex; /* Use flexbox for layout */
@@ -191,14 +182,12 @@
   margin-bottom: 10px;
 }
 
-
 .footer .container {
   display: flex; /* Use flexbox for horizontal alignment */
   justify-content: center; /* Center align the content horizontally */
   align-items: center; /* Center align the content vertically */
   text-align: center; /* Center align text content */
 }
-
 
 .footer .social-icons a {
   margin-bottom: 0px;
@@ -263,6 +252,14 @@ th {
   height: auto;
   display: block; /* To remove extra space below inline images */
   margin: 0 auto; /* To center the image horizontally */
+}
+.left-h1 {
+ 
+  line-height: 1.1;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  color: #000000;
+  text-align: left; /* Increase the margin-top to create more space */
 }
 
 h1 {
@@ -342,18 +339,36 @@ h3 {
 
 /* Mobile devices (up to 375px) */
 @media (max-width: 375px) {
+  
+  p.login-text {
+    margin-bottom: 100px;
+  }
+  
   body {
     padding-bottom: 80px;
     font-size: 14px;
     padding: 10px;
   }
 
+  p.responsive-text {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+  }
+
   h1 {
-    font-size: 25px;
+    font-size: 36px;
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 28px;
+  }
+  .home-button {
+    display: inline-block;
+    background-color: #000000;
+    margin-top: 46.59px;
+    margin-bottom: 46.59px;
+    font-size: 14px;
   }
 }
   .home-page-title {
@@ -370,9 +385,6 @@ h3 {
     object-fit: cover;
   }
  
-  
-  
-
   .color-table-container {
     margin-top: 20px;
     margin-bottom: 50px;
@@ -425,13 +437,25 @@ h3 {
   body {
     padding-bottom: 80px;
   }
+  p.responsive-text {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+  }
+  .home-button {
+    display: inline-block;
+    background-color: #000000;
+    margin-top: 46.59px;
+    margin-bottom: 46.59px;
+    font-size: 16px;
+  }
 
   h1 {
-    font-size: 30px;
+    font-size: 40px;
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 32px;
   }
   .img-fluid,
   .image-container-home img {
@@ -490,12 +514,26 @@ h3 {
     margin-top: 502px;
   }
 
+  p.responsive-text {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+  }
+
+  .home-button {
+    display: inline-block;
+    background-color: #000000;
+    margin-top: 46.59px;
+    margin-bottom: 46.59px;
+    font-size: 18px;
+  }
+
   h1 {
-    font-size: 40px;
+    font-size: 48px;
   }
 
   h2 {
-    font-size: 30px;
+    font-size: 36px;
   }
 
   .account-heading {

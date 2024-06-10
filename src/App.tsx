@@ -81,7 +81,7 @@ const PaintPage = () => {
         <div className="col-md-6">
           <div className="text-left">
             <div className="color-canvas">
-              <h1>Color Canvas</h1>
+              <h1 className='left-h1'>Color Canvas</h1>
               <div className="color-text">
                 <ul>
                   <li>Click the "Choose File" button and upload any file to return the dominant colors in the image.</li>
