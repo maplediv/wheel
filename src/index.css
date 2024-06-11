@@ -343,12 +343,12 @@ th {
 @media (max-width: 375px) {
 
   .dropdown-item.logout-button {
-    width: 50px; /* Set the width to 50px */
+    width: 20px; /* Set the width to 50px */
     margin-left: auto; /* Automatically adjust margin on the left */
     margin-right: auto; /* Automatically adjust margin on the right */
     display: block; /* Ensure it behaves like a block element */
     text-align: center; /* Center the text inside the button */
-    padding: 5px 0; /* Adjust padding as needed */
+    padding: 0px 0; /* Adjust padding as needed */
     background-color: transparent; /* Remove any background color */
     border: none; /* Remove border */
     box-shadow: none; /* Remove box-shadow */
@@ -458,7 +458,7 @@ th {
 /* Tablet devices (376px to 768px) */
 @media (min-width: 376px) and (max-width: 768px) {
   .dropdown-item.logout-button {
-    width: 50px; /* Set the width to 50px */
+    width: 20px; /* Set the width to 50px */
     margin-left: auto; /* Automatically adjust margin on the left */
     margin-right: auto; /* Automatically adjust margin on the right */
     display: block; /* Ensure it behaves like a block element */
@@ -539,12 +539,12 @@ th {
 /* Desktop devices (769px and above) */
 @media (min-width: 769px)  {
   .dropdown-item.logout-button {
-    width: 50px; /* Set the width to 50px */
+    width: 20px; /* Set the width to 50px */
     margin-left: auto; /* Automatically adjust margin on the left */
     margin-right: auto; /* Automatically adjust margin on the right */
     display: block; /* Ensure it behaves like a block element */
     text-align: center; /* Center the text inside the button */
-    padding: 5px 0; /* Adjust padding as needed */
+    padding: 0px 0; /* Adjust padding as needed */
     background-color: transparent; /* Remove any background color */
     border: none; /* Remove border */
     box-shadow: none; /* Remove box-shadow */
@@ -620,12 +620,12 @@ th {
 
 @media (min-width: 1440px)  {
   .dropdown-item.logout-button {
-    width: 50px; /* Set the width to 50px */
+    width: 20px; /* Set the width to 50px */
     margin-left: auto; /* Automatically adjust margin on the left */
     margin-right: auto; /* Automatically adjust margin on the right */
     display: block; /* Ensure it behaves like a block element */
     text-align: center; /* Center the text inside the button */
-    padding: 5px 0; /* Adjust padding as needed */
+    padding: 0px 0; /* Adjust padding as needed */
     background-color: transparent; /* Remove any background color */
     border: none; /* Remove border */
     box-shadow: none; /* Remove box-shadow */
