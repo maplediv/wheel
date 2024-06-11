@@ -10,6 +10,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.dropdown-item {
+  border: none; /* Remove border */
+  background-color: transparent; /* Remove background color */
+  box-shadow: none; /* Remove any box-shadow */
+  padding: 10px 20px; /* Adjust padding as needed */
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #f8f9fa; /* Optional: Add a background color on hover/focus */
+  outline: none; /* Remove focus outline */
+}
+
 
 .left-h1 {
  
@@ -579,14 +592,7 @@ th {
     padding-bottom: 80px;
   }
 
-  .show {
-    margin-right: 80px;
-  }
-  .dropdown-menu {
-    padding-right: 20px; /* Add padding to the right */
-    padding-left: 0px; /* Add padding to the left if needed */
-     /* Ensure padding is included in the element's total width */
-  }
+  
     
   .navbar-nav {
     margin-left: auto !important;
