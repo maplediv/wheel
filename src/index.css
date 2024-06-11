@@ -625,7 +625,7 @@ th {
     margin-right: auto; /* Automatically adjust margin on the right */
     display: block; /* Ensure it behaves like a block element */
     text-align: center; /* Center the text inside the button */
-    padding: 0px 0; /* Adjust padding as needed */
+    padding: 200px 0; /* Adjust padding as needed */
     background-color: transparent; /* Remove any background color */
     border: none; /* Remove border */
     box-shadow: none; /* Remove box-shadow */
