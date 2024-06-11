@@ -448,11 +448,13 @@ th {
   }
   .dropdown-item.logout-button {
     width: 50px;
+  }
 
 /* Tablet devices (376px to 768px) */
 @media (min-width: 376px) and (max-width: 768px) {
   .dropdown-item.logout-button {
     width: 50px;
+  }
   body {
     padding-bottom: 80px;
   }
@@ -525,6 +527,7 @@ th {
 @media (min-width: 769px)  {
   .dropdown-item.logout-button {
     width: 50px;
+  }
   body {
     padding-bottom: 80px;
   }
@@ -597,6 +600,8 @@ th {
 @media (min-width: 1440px)  {
   .dropdown-item.logout-button {
     width: 50px;
+  }
+  }
   body {
     padding-bottom: 80px;
   }
