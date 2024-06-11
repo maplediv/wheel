@@ -17,7 +17,7 @@
  
   line-height: 1.1;
   margin-top: 80px;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   color: #000000;
   text-align: left; /* Increase the margin-top to create more space */
 }
@@ -447,13 +447,13 @@ th {
     display: none;
   }
   .dropdown-item {
-    width: 50px; /* Set the width to 50px */
+    width: 20px; /* Set the width to 50px */
   }
 
 /* Tablet devices (376px to 768px) */
 @media (min-width: 376px) and (max-width: 768px) {
   .dropdown-item {
-    width: 50px; /* Set the width to 50px */
+    width: 20px; /* Set the width to 50px */
   }
   body {
     padding-bottom: 80px;
