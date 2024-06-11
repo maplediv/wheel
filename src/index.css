@@ -11,6 +11,42 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.left-h1 {
+ 
+  line-height: 1.1;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  color: #000000;
+  text-align: left; /* Increase the margin-top to create more space */
+}
+
+.h1-custom {
+ 
+  line-height: 1.1;
+  color: #000000;
+  text-align: center; /* Increase the margin-top to create more space */
+}
+
+h2 {
+ 
+  line-height: 1.1;
+  margin-top: 0px;
+  margin-bottom: 40px;
+  color: #000000;
+  text-align: left; /* Increase the margin-top to create more space */
+  margin-right: 0px;
+}
+
+h3 {
+  font-size: 24px; /* Unified font size for h1 and h3 */
+  line-height: 1.1;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #000000;
+  text-align: left; /* Increase the margin-top to create more space */
+}
+
+
 .form-container {
   margin-bottom: 50px; /* Adjust the value as needed */
 }
@@ -253,42 +289,6 @@ th {
   display: block; /* To remove extra space below inline images */
   margin: 0 auto; /* To center the image horizontally */
 }
-.left-h1 {
- 
-  line-height: 1.1;
-  margin-top: 80px;
-  margin-bottom: 80px;
-  color: #000000;
-  text-align: left; /* Increase the margin-top to create more space */
-}
-
-h1 {
- 
-  line-height: 1.1;
-  margin-top: 80px;
-  margin-bottom: 80px;
-  color: #000000;
-  text-align: center; /* Increase the margin-top to create more space */
-}
-
-h2 {
- 
-  line-height: 1.1;
-  margin-top: 0px;
-  margin-bottom: 40px;
-  color: #000000;
-  text-align: left; /* Increase the margin-top to create more space */
-  margin-right: 0px;
-}
-
-h3 {
-  font-size: 24px; /* Unified font size for h1 and h3 */
-  line-height: 1.1;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  color: #000000;
-  text-align: left; /* Increase the margin-top to create more space */
-}
 
 #galacticCenterContent {
   padding: 0;
@@ -358,6 +358,7 @@ h3 {
 
   h1 {
     font-size: 36px;
+    margin-bottom: 40;
   }
 
   h2 {
@@ -452,6 +453,8 @@ h3 {
 
   h1 {
     font-size: 40px;
+    margin-top: 80px;
+  margin-bottom: 40px;
   }
 
   h2 {
@@ -501,7 +504,7 @@ h3 {
 }
 
 /* Desktop devices (769px and above) */
-@media (min-width: 769px) and (max-width:1439) {
+@media (min-width: 769px)  {
   body {
     padding-bottom: 80px;
   }
@@ -529,7 +532,9 @@ h3 {
   }
 
   h1 {
-    font-size: 48px;
+    font-size: 40px;
+    margin-top: 80px;
+    margin-bottom: 80px;
   }
 
   h2 {
@@ -574,6 +579,15 @@ h3 {
     padding-bottom: 80px;
   }
 
+  .show {
+    margin-right: 80px;
+  }
+  .dropdown-menu {
+    padding-right: 20px; /* Add padding to the right */
+    padding-left: 20px; /* Add padding to the left if needed */
+    box-sizing: border-box; /* Ensure padding is included in the element's total width */
+  }
+    
   .navbar-nav {
     margin-left: auto !important;
   }
@@ -583,11 +597,13 @@ h3 {
   }
 
   h1 {
-    font-size: 60px;
+    font-size: 48px;
+    margin-top: 80px;
+  margin-bottom: 80px;
   }
 
   h2 {
-    font-size: 40px;
+    font-size: 36px;
   }
 
   .account-heading {
