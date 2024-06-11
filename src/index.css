@@ -10,18 +10,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.dropdown-item {
-  border: none; /* Remove border */
-  background-color: transparent; /* Remove background color */
-  box-shadow: none; /* Remove any box-shadow */
-  padding: 10px 20px; /* Adjust padding as needed */
-}
 
-.dropdown-item:hover,
-.dropdown-item:focus {
-  background-color: #f8f9fa; /* Optional: Add a background color on hover/focus */
-  outline: none; /* Remove focus outline */
-}
 
 
 .left-h1 {
@@ -352,6 +341,19 @@ th {
 
 /* Mobile devices (up to 375px) */
 @media (max-width: 375px) {
+
+  .dropdown-item {
+    border: none; /* Remove border */
+    background-color: transparent; /* Remove background color */
+    box-shadow: none; /* Remove any box-shadow */
+    padding: 10px 20px; /* Adjust padding as needed */
+  }
+  
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    background-color: #f8f9fa; /* Optional: Add a background color on hover/focus */
+    outline: none; /* Remove focus outline */
+  }
   
   p.login-text {
     margin-bottom: 100px;
