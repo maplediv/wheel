@@ -446,10 +446,15 @@ th {
   .sidebar {
     display: none;
   }
-
+  .dropdown-item {
+    width: 50px; /* Set the width to 50px */
+  }
 
 /* Tablet devices (376px to 768px) */
 @media (min-width: 376px) and (max-width: 768px) {
+  .dropdown-item {
+    width: 50px; /* Set the width to 50px */
+  }
   body {
     padding-bottom: 80px;
   }
