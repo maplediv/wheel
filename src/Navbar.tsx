@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
                   {user.firstName}
                 </a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <button className="dropdown-item" onClick={logout}>Logout</button>
+                  <button className="dropdown-item logout-button" onClick={logout}>Logout</button>
                 </div>
               </li>
             ) : (
