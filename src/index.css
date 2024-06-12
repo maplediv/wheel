@@ -619,6 +619,17 @@ th {
 }
 
 @media (min-width: 1440px)  {
+
+  .dropdown-menu {
+    background-color: #fff; /* Set background color to white */
+    border: 1px solid #ddd; /* Set border color */
+    color: #000000 !important; /* Ensure the nav link color is black and use !important to override other styles */
+    margin-left: 0px;
+  }
+  .dropdown-menu.show {
+    display: flex;
+    box-shadow: 0, 3px, 6px #ddd;
+  }
   .dropdown-item.logout-button {
     width: 20px; /* Set the width to 50px */
     margin-left: auto; /* Automatically adjust margin on the left */
