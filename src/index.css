@@ -637,7 +637,7 @@ th {
   }
   
   .dropdown-item.logout-button {
-    width: 30px;
+    width: 50px;
     margin-left: auto; /* Automatically adjust margin on the left */
     margin-right: auto; /* Automatically adjust margin on the right */
     display: flex; /* Ensure it behaves like a block element */
