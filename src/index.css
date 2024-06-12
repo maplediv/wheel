@@ -341,12 +341,14 @@ th {
 
 /* Mobile devices (up to 375px) */
 @media (max-width: 375px) {
-
+  .dropdown-menu.show {
+    display: flex;
+    box-shadow: 0, 3px, 6px #ddd;
+  }
   .dropdown-item.logout-button {
-    width: 20px; /* Set the width to 50px */
+    display: flex;
     margin-left: auto; /* Automatically adjust margin on the left */
     margin-right: auto; /* Automatically adjust margin on the right */
-    display: block; /* Ensure it behaves like a block element */
     text-align: center; /* Center the text inside the button */
     padding: 0px 0; /* Adjust padding as needed */
     background-color: transparent; /* Remove any background color */
@@ -457,13 +459,17 @@ th {
 
 /* Tablet devices (376px to 768px) */
 @media (min-width: 376px) and (max-width: 768px) {
+  .dropdown-menu.show {
+    display: flex;
+    box-shadow: 0, 3px, 6px #ddd;
+  }
+  
   .dropdown-item.logout-button {
-    width: 20px; /* Set the width to 50px */
     margin-left: auto; /* Automatically adjust margin on the left */
     margin-right: auto; /* Automatically adjust margin on the right */
-    display: block; /* Ensure it behaves like a block element */
+    display: flex;
     text-align: center; /* Center the text inside the button */
-    padding: 5px 0; /* Adjust padding as needed */
+    padding: 0px 0; /* Adjust padding as needed */
     background-color: transparent; /* Remove any background color */
     border: none; /* Remove border */
     box-shadow: none; /* Remove box-shadow */
@@ -539,15 +545,19 @@ th {
 /* Desktop devices (769px and above) */
 @media (min-width: 769px)  {
   .dropdown-item.logout-button {
-    width: 20px; /* Set the width to 50px */
     margin-left: auto; /* Automatically adjust margin on the left */
     margin-right: auto; /* Automatically adjust margin on the right */
-    display: block; /* Ensure it behaves like a block element */
+    display: flex;
     text-align: center; /* Center the text inside the button */
     padding: 0px 0; /* Adjust padding as needed */
     background-color: transparent; /* Remove any background color */
     border: none; /* Remove border */
     box-shadow: none; /* Remove box-shadow */
+  }
+
+  .dropdown-menu.show {
+    display: flex;
+    box-shadow: 0, 3px, 6px #ddd;
   }
   body {
     padding-bottom: 80px;
