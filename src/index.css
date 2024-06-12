@@ -631,12 +631,12 @@ th {
     box-shadow: 0, 3px, 6px #ddd;
   }
   .dropdown-item.logout-button {
-    width: 20px; /* Set the width to 50px */
+   
     margin-left: auto; /* Automatically adjust margin on the left */
     margin-right: auto; /* Automatically adjust margin on the right */
-    display: block; /* Ensure it behaves like a block element */
+    display: flex; /* Ensure it behaves like a block element */
     text-align: center; /* Center the text inside the button */
-    padding: 200px 0; /* Adjust padding as needed */
+    padding:  0px; /* Adjust padding as needed */
     background-color: transparent; /* Remove any background color */
     border: none; /* Remove border */
     box-shadow: none; /* Remove box-shadow */
