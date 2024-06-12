@@ -341,20 +341,26 @@ th {
 
 /* Mobile devices (up to 375px) */
 @media (max-width: 375px) {
-  .dropdown-menu.show {
-    display: flex;
-    box-shadow: 0, 3px, 6px #ddd;
+  .dropdown-menu {
+    right: 0;
+    left: auto;
+    transform: translateX(-0%); /* Adjust based on your layout */
+    width: auto; /* Adjust width as necessary */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   }
+  
   .dropdown-item.logout-button {
-    display: flex;
+    width: 50px;
     margin-left: auto; /* Automatically adjust margin on the left */
     margin-right: auto; /* Automatically adjust margin on the right */
+    display: flex; /* Ensure it behaves like a block element */
     text-align: center; /* Center the text inside the button */
-    padding: 0px 0; /* Adjust padding as needed */
+    padding:  0px; /* Adjust padding as needed */
     background-color: transparent; /* Remove any background color */
     border: none; /* Remove border */
     box-shadow: none; /* Remove box-shadow */
   }
+  
   
   .dropdown-item:hover,
   .dropdown-item:focus {
@@ -457,21 +463,26 @@ th {
 
 /* Tablet devices (376px to 768px) */
 @media (min-width: 376px) and (max-width: 768px) {
-  .dropdown-menu.show {
-    display: flex;
-    box-shadow: 0, 3px, 6px #ddd;
+  .dropdown-menu {
+    right: 0;
+    left: auto;
+    transform: translateX(-0%); /* Adjust based on your layout */
+    width: auto; /* Adjust width as necessary */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   }
   
   .dropdown-item.logout-button {
+    width: 50px;
     margin-left: auto; /* Automatically adjust margin on the left */
     margin-right: auto; /* Automatically adjust margin on the right */
-    display: flex;
+    display: flex; /* Ensure it behaves like a block element */
     text-align: center; /* Center the text inside the button */
-    padding: 0px 0; /* Adjust padding as needed */
+    padding:  0px; /* Adjust padding as needed */
     background-color: transparent; /* Remove any background color */
     border: none; /* Remove border */
     box-shadow: none; /* Remove box-shadow */
   }
+  
   body {
     padding-bottom: 80px;
   }
@@ -542,21 +553,26 @@ th {
 
 /* Desktop devices (769px and above) */
 @media (min-width: 769px)  {
+  .dropdown-menu {
+    right: 0;
+    left: auto;
+    transform: translateX(-0%); /* Adjust based on your layout */
+    width: auto; /* Adjust width as necessary */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
   .dropdown-item.logout-button {
+    width: 50px;
     margin-left: auto; /* Automatically adjust margin on the left */
     margin-right: auto; /* Automatically adjust margin on the right */
-    display: flex;
+    display: flex; /* Ensure it behaves like a block element */
     text-align: center; /* Center the text inside the button */
-    padding: 0px 0; /* Adjust padding as needed */
+    padding:  0px; /* Adjust padding as needed */
     background-color: transparent; /* Remove any background color */
     border: none; /* Remove border */
     box-shadow: none; /* Remove box-shadow */
   }
-
-  .dropdown-menu.show {
-    display: flex;
-    box-shadow: 0, 3px, 6px #ddd;
-  }
+  
   body {
     padding-bottom: 80px;
   }

@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
+import { Helmet } from 'react-helmet';
+
 
 const Login: React.FC = () => {
   const [firstName, setFirstName] = useState('');
@@ -76,6 +78,9 @@ const Login: React.FC = () => {
 
   return (
     <div className="container">
+      <Helmet>
+        <title>{showLoginForm ? 'Login' : 'Create Account'}</title>
+      </Helmet>
       <div className="row justify-content-center">
         <div className="col-md-6">
           <h1 className='left-h1'>{showLoginForm ? 'Login' : 'Create Account'}</h1>
@@ -129,8 +134,8 @@ const Login: React.FC = () => {
               <div className="mt-3">
                 <p className="login-text">
                   {showLoginForm ? "Don't have an account?" : "Already have an account?"}{' '}
-                  <button type="button" className="btn btn-link" onClick={() => setShowLoginForm(!showLoginForm)}>
-                    {showLoginForm ? 'Create Account' : 'Login'}
+                  <button type="button" className="btn btn-link" onClick={() => setShowLoginForm(!showLoginForm)}>  
+                  {showLoginForm ? 'Create Account' : 'Login'}
                   </button>
                 </p>
               </div>
