@@ -634,7 +634,7 @@ th {
     right: 0;
     left: auto;
     transform: translateX(-5%); /* Adjust based on your layout */
-    width: 18px; /* Adjust width as necessary */
+    width: auto; /* Adjust width as necessary */
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   }
   .dropdown-menu.show {
@@ -642,7 +642,7 @@ th {
     box-shadow: 0, 3px, 6px #ddd;
   }
   .dropdown-item.logout-button {
-    width: 18px;
+    width: 30px;
     margin-left: auto; /* Automatically adjust margin on the left */
     margin-right: auto; /* Automatically adjust margin on the right */
     display: flex; /* Ensure it behaves like a block element */
