@@ -633,8 +633,8 @@ th {
   .dropdown-menu {
     right: 0;
     left: auto;
-    transform: translateX(-10%); /* Adjust based on your layout */
-    width: 50px; /* Adjust width as necessary */
+    transform: translateX(-5%); /* Adjust based on your layout */
+    width: 30px; /* Adjust width as necessary */
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   }
   .dropdown-menu.show {
