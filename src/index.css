@@ -453,9 +453,7 @@ th {
   .sidebar {
     display: none;
   }
-  .dropdown-item.logout-button {
-    width: 50px;
-  }
+  
 
 /* Tablet devices (376px to 768px) */
 @media (min-width: 376px) and (max-width: 768px) {
@@ -633,14 +631,11 @@ th {
   .dropdown-menu {
     right: 0;
     left: auto;
-    transform: translateX(-5%); /* Adjust based on your layout */
+    transform: translateX(-0%); /* Adjust based on your layout */
     width: auto; /* Adjust width as necessary */
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   }
-  .dropdown-menu.show {
-    display: flex;
-    box-shadow: 0, 3px, 6px #ddd;
-  }
+  
   .dropdown-item.logout-button {
     width: 30px;
     margin-left: auto; /* Automatically adjust margin on the left */
