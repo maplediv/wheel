@@ -631,10 +631,11 @@ th {
 @media (min-width: 1440px)  {
 
   .dropdown-menu {
-    background-color: #fff; /* Set background color to white */
-    border: 1px solid #ddd; /* Set border color */
-    color: #000000 !important; /* Ensure the nav link color is black and use !important to override other styles */
-    margin-left: 0px;
+    right: 0;
+    left: auto;
+    transform: translateX(-50%); /* Adjust based on your layout */
+    width: 150px; /* Adjust width as necessary */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   }
   .dropdown-menu.show {
     display: flex;

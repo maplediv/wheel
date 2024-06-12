@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {user.firstName}
                 </a>
-                <div className="dropdown-item logout-button" aria-labelledby="navbarDropdown">
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <button className="dropdown-item logout-button" onClick={logout}>Logout</button>
                 </div>
               </li>
