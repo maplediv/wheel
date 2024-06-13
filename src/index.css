@@ -469,11 +469,16 @@ th {
 /* Tablet devices (376px to 768px) */
 @media (min-width: 376px) and (max-width: 768px) {
   .dropdown-menu {
+    max-width: 100px; 
     right: 0;
     left: auto;
     transform: translateX(-10%); /* Adjust based on your layout */
     width: auto; /* Adjust width as necessary */
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .dropdown-menu.show{
+    width: 50px;
   }
   
   .dropdown-item.logout-button {
@@ -559,11 +564,15 @@ th {
 /* Desktop devices (769px and above) */
 @media (min-width: 769px)  {
   .dropdown-menu {
+    max-width: 100px;
     right: 0;
     left: auto;
     transform: translateX(-0%); /* Adjust based on your layout */
     width: auto; /* Adjust width as necessary */
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  .dropdown-menu.show{
+    width: 50px;
   }
   
   .dropdown-item.logout-button {
@@ -650,11 +659,16 @@ th {
 @media (min-width: 1440px)  {
 
   .dropdown-menu {
+    max-width: 100px;
     right: 0;
     left: auto;
     transform: translateX(-0%); /* Adjust based on your layout */
     width: auto; /* Adjust width as necessary */
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .dropdown-menu.show{
+    width: 50px;
   }
   
   .dropdown-item.logout-button {
