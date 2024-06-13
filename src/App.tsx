@@ -7,10 +7,14 @@ import './index.css';
 import VisionAPIComponent from './VisionAPIComponent';
 import LoginPage from './Login';
 import { AuthProvider } from './AuthContext';
+import { Helmet } from 'react-helmet';
 
 const HomePage = () => {
   return (
     <div className="home-page-container">
+       <Helmet>
+       <title>Home</title>
+      </Helmet>
       <h1>Welcome to Art Genius!</h1>
       <div className="container home-page-content">
         <div className="row align-items-start">
@@ -77,11 +81,14 @@ const PaintPage = () => {
 
   return (
     <div className="container">
+      <Helmet>
+       <title>Paint</title>
+      </Helmet>
       <div className="row justify-content-center align-items-start">
         <div className="col-md-6">
           <div className="text-left">
             <div className="color-canvas">
-              <h1 className='left-h1'>Color Canvas</h1>
+              <h1 className='left-h1'>Paint Colors</h1>
               <div className="color-text">
                 <ul>
                   <li>Click the "Choose File" button and upload any file to return the dominant colors in the image.</li>
