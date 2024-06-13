@@ -349,7 +349,7 @@ th {
     max-width: 50px; 
     right: 0;
     left: auto;
-    transform: translateX(-10%); /* Adjust based on your layout */
+    transform: translateX(-0%); /* Adjust based on your layout */
     width: auto; /* Adjust width as necessary */
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   }
@@ -472,7 +472,7 @@ th {
     max-width: 50px; 
     right: 0;
     left: auto;
-    transform: translateX(-10%); /* Adjust based on your layout */
+    transform: translateX(-0%); /* Adjust based on your layout */
     width: auto; /* Adjust width as necessary */
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   }
