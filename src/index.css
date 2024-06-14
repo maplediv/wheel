@@ -501,6 +501,12 @@ th {
 
 /* Tablet devices (376px to 768px) */
 @media (min-width: 394px) and (max-width: 768px) {
+  .custom-list-item{
+    margin-left: 20px;
+  }
+  .left-h1{
+    margin-top: 40px;
+  }
   .dropdown-menu {
     max-width: 50px; 
     right: 0;
@@ -542,9 +548,13 @@ th {
     font-size: 16px;
   }
 
+  .row.align-items-start.justify-content-center{
+    margin-bottom: 0px;
+  }
+
   h1 {
-    font-size: 40px;
-    margin-top: 80px;
+    font-size: 40px !important;
+    margin-top: 40px;
   margin-bottom: 40px;
   }
 
@@ -603,6 +613,12 @@ th {
 
 /* Desktop devices (769px and above) */
 @media (min-width: 769px)  {
+  .custom-list-item{
+    margin-left: 20px;
+  }
+  .left-h1{
+    margin-top: 40px;
+  }
   .dropdown-menu {
     max-width: 50px;
     right: 0;
@@ -636,7 +652,7 @@ th {
   }
 
   .color-table-column {
-    margin-top: 502px;
+    margin-top: 445px !important;
   }
 
   p.responsive-text {
@@ -734,10 +750,14 @@ th {
     padding-bottom: 80px;
   }
 
-  
+  .navbar {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
     
   .navbar-nav {
     margin-left: auto !important;
+    padding-top: 0px;
   }
 
   .color-table-column {
@@ -783,11 +803,11 @@ th {
   }
 
   .color-table-container {
-    margin-bottom: 200px;
+    margin-bottom: 40px !important;
   }
 
   .footer-spacing{
-    margin-bottom: 40px;
+    margin-bottom: 0px;
   }
     .row.align-items-start{
       margin-bottom: 40px;
