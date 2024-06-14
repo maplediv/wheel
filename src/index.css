@@ -721,6 +721,10 @@ th {
 
 @media (min-width: 1440px)  {
 
+  .responsive-text{
+    max-width: 500px;
+  }
+
   .dropdown-menu {
     max-width: 50px;
     right: 0;
