@@ -341,8 +341,32 @@ th {
 
 /* Mobile devices (up to 375px) */
 @media (max-width: 393px) {
-.footer-spacing{
+
+.custom-list-item{
+  margin-left: 20px;
+}
+.row.align-items-start.justify-content-center{
+  margin-bottom: 0px;
+}
+
+.left-h1{
+  margin-top: 40px;
   margin-bottom: 40px;
+}
+
+.logo-container{
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  margin: 0;
+}
+.navbar{
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.footer-spacing{
+  margin-bottom: 20px !important;
 }
   .row.align-items-start{
     margin-bottom: 40px;
@@ -381,13 +405,13 @@ th {
   }
   
   p.login-text {
-    margin-bottom: 100px;
+    margin-bottom: 40px;
   }
   
   body {
     padding-bottom: 80px;
     font-size: 14px;
-    padding: 10px;
+    padding: 0px;
   }
 
   p.responsive-text {
@@ -397,13 +421,13 @@ th {
   }
 
   h1 {
-    font-size: 36px;
+    font-size: 32px !important;
     margin-bottom: 40;
-    margin-top: 60px;
+    margin-top: 40px;
   }
 
   h2 {
-    font-size: 28px;
+    font-size: 28px !important;
   }
   .home-button {
     display: inline-block;
@@ -429,13 +453,14 @@ th {
  
   .color-table-container {
     margin-top: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 40px !important;
     overflow-x: auto;
     max-width: 100%;
   }
 
   .color-table-column {
-    margin-top: 40px;
+    margin-top: 40px !important;
+    margin-bottom: 0px !important;
   }
 
   td,
@@ -569,6 +594,13 @@ th {
   }
 }
 
+.footer-spacing{
+  margin-bottom: 40px;
+}
+  .row.align-items-start{
+    margin-bottom: 40px;
+  }
+
 /* Desktop devices (769px and above) */
 @media (min-width: 769px)  {
   .dropdown-menu {
@@ -664,6 +696,13 @@ th {
   }
 }
 
+.footer-spacing{
+  margin-bottom: 40px;
+}
+  .row.align-items-start{
+    margin-bottom: 40px;
+  }
+
 @media (min-width: 1440px)  {
 
   .dropdown-menu {
@@ -707,8 +746,8 @@ th {
 
   h1 {
     font-size: 48px;
-    margin-top: 40px;
-  margin-bottom: 40px;
+    margin-top: 60px;
+  margin-bottom: 60px;
   }
 
   h2 {
@@ -746,5 +785,12 @@ th {
   .color-table-container {
     margin-bottom: 200px;
   }
+
+  .footer-spacing{
+    margin-bottom: 40px;
+  }
+    .row.align-items-start{
+      margin-bottom: 40px;
+    }
 
 

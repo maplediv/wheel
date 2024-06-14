@@ -91,11 +91,11 @@ const PaintPage = () => {
               <h1 className='left-h1'>Color Canvas</h1>
               <div className="color-text">
                 <ul>
-                  <li>Click the "Choose File" button and upload any file to return the dominant colors in the image.</li>
+                  <li className='custom-list-item'>Click the "Choose File" button and upload any file to return the dominant colors in the image.</li>
                   <br />
-                  <li>Click the "Analyze Image" button to initialize the image analysis processing.</li>
+                  <li className='custom-list-item'>Click the "Analyze Image" button to initialize the image analysis processing.</li>
                   <br />
-                  <li>Color Canvas supports a variety of image file types, including but not limited to: JPEG, PNG, GIF (including animated GIFs), BMP, TIFF, WEBP.</li>
+                  <li className='custom-list-item'>Color Canvas supports a variety of image file types, including but not limited to: JPEG, PNG, GIF (including animated GIFs), BMP, TIFF, WEBP.</li>
                 </ul>
               </div>
               <VisionAPIComponent onColorResponse={handleColorResponse} />
