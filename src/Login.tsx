@@ -14,6 +14,13 @@ const Login: React.FC = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState('');
 
+
+  
+  const handleShowLoginFormToggle = () => {
+    setShowLoginForm(!showLoginForm);
+    setShowSuccessMessage(false); // Reset success message on toggle
+    // ... (rest of the function)
+  };
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -134,7 +141,7 @@ const Login: React.FC = () => {
               <div className="mt-3">
                 <p className="login-text">
                   {showLoginForm ? "Don't have an account?" : "Already have an account?"}{' '}
-                  <button type="button" className="btn btn-link" onClick={() => setShowLoginForm(!showLoginForm)}>  
+                  <button type="button" className="btn btn-link" onClick={handleShowLoginFormToggle}>  
                   {showLoginForm ? 'Create Account' : 'Login'}
                   </button>
                 </p>

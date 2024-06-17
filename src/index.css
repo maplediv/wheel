@@ -369,7 +369,7 @@ th {
   margin-bottom: 20px !important;
 }
   .row.align-items-start{
-    margin-bottom: 40px;
+    margin-bottom: 40px !important;
   }
 
   .dropdown-menu.show{
