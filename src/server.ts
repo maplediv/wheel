@@ -1,54 +1,84 @@
-// Import necessary modules
-const express = require('express');
-const bcrypt = require('bcrypt');
-const { Client } = require('pg'); // Import Client from pg
+import express, { Request, Response } from 'express';
+import bcrypt from 'bcrypt';
+import { Client } from 'pg';
+import cors from 'cors';
 
-// Create a new PostgreSQL client instance
-const client = new Client({
-  connectionString: 'postgres://postgres:Magic323!@localhost:5432/paint',
+const db = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
-// Connect to the database
-client.connect()
+db.connect()
   .then(() => console.log('Connected to PostgreSQL database'))
   .catch(err => console.error('Error connecting to PostgreSQL database:', err));
 
 const app = express();
 
-// Middleware
+app.use(cors({
+  origin: 'https://wheel-8b7y.onrender.com',
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: 'Content-Type,Authorization'
+}));
 app.use(express.json());
 
-// Define the route handler for /timestamp
-app.get('/timestamp', (req, res) => {
-  // Get the current timestamp
-  const timestamp = new Date().toISOString();
-  
-  // Send the timestamp as a JSON response
-  res.json({ timestamp });
-});
-
-
-
-// Register a new user
-app.post('/register', async (req, res, next) => {
+app.post('/register', async (req: Request, res: Response) => {
+  const { firstName, lastName, email, password } = req.body;
   try {
-    const { firstName, lastName, email, password } = req.body;
-    
-    // Hash the password
+    const userCheck = await db.query('SELECT email FROM users WHERE email = $1', [email]);
+    if (userCheck.rows.length > 0) {
+      return res.status(400).json({ message: 'User already exists' });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Insert the new user into the database
-    const query = 'INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4)';
-    await client.query(query, [firstName, lastName, email, hashedPassword]);
-
+    await db.query(
+      'INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4)',
+      [firstName, lastName, email, hashedPassword]
+    );
     res.status(201).json({ message: 'User registered successfully' });
   } catch (err) {
-    next(err);
+    res.status(500).json({ message: 'Error registering user' });
   }
 });
- 
-// Start the server
-const PORT = process.env.PORT || 5001;
+
+app.get('/user', async (req: Request, res: Response) => {
+  try {
+    const { email } = req.query; // Assuming email is provided as a query parameter
+    const user = await db.query('SELECT firstname FROM users WHERE email = $1', [email as string]);
+    if (user.rows.length === 0) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    const userData = user.rows[0];
+    res.status(200).json(userData);
+  } catch (err) {
+    console.error('Error fetching user data:', err);
+    res.status(500).json({ message: 'Error fetching user data' });
+  }
+});
+
+app.post('/login', async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+  try {
+    const user = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+    if (user.rows.length === 0) {
+      return res.status(400).json({ message: 'Invalid email or password' });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.rows[0].password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid email or password' });
+    }
+
+    res.status(200).json({ message: 'Logged in successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Error logging in' });
+  }
+});
+
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+export default db;
