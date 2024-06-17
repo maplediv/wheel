@@ -1,9 +1,7 @@
-// src/Login.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import { Helmet } from 'react-helmet';
-
 
 const Login: React.FC = () => {
   const [firstName, setFirstName] = useState('');
@@ -11,16 +9,10 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showLoginForm, setShowLoginForm] = useState(true);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showRegistrationSuccessMessage, setShowRegistrationSuccessMessage] = useState(false);
+  const [showLoginSuccessMessage, setShowLoginSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState('');
 
-
-  
-  const handleShowLoginFormToggle = () => {
-    setShowLoginForm(!showLoginForm);
-    setShowSuccessMessage(false); // Reset success message on toggle
-    // ... (rest of the function)
-  };
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -36,7 +28,7 @@ const Login: React.FC = () => {
       });
 
       if (response.ok) {
-        setShowSuccessMessage(true);
+        setShowRegistrationSuccessMessage(true);
         setShowErrorMessage('');
         setFirstName('');
         setLastName('');
@@ -45,11 +37,11 @@ const Login: React.FC = () => {
       } else {
         const data = await response.json();
         setShowErrorMessage(data.message);
-        setShowSuccessMessage(false);
+        setShowRegistrationSuccessMessage(false);
       }
     } catch (error) {
       setShowErrorMessage('Error registering user');
-      setShowSuccessMessage(false);
+      setShowRegistrationSuccessMessage(false);
     }
   };
 
@@ -70,16 +62,18 @@ const Login: React.FC = () => {
           const userData = await userResponse.json();
           const firstName = userData.firstname;
           login({ firstName, email });
+          setShowLoginSuccessMessage(true);
+          setShowErrorMessage('');
           navigate('/');
         }
       } else {
         const data = await response.json();
         setShowErrorMessage(data.message);
-        setShowSuccessMessage(false);
+        setShowLoginSuccessMessage(false);
       }
     } catch (error) {
       setShowErrorMessage('Error logging in');
-      setShowSuccessMessage(false);
+      setShowLoginSuccessMessage(false);
     }
   };
 
@@ -141,28 +135,37 @@ const Login: React.FC = () => {
               <div className="mt-3">
                 <p className="login-text">
                   {showLoginForm ? "Don't have an account?" : "Already have an account?"}{' '}
-                  <button type="button" className="btn btn-link" onClick={handleShowLoginFormToggle}>  
-                  {showLoginForm ? 'Create Account' : 'Login'}
+                  <button type="button" className="btn btn-link" onClick={() => {
+                    setShowLoginForm(!showLoginForm);
+                    setShowRegistrationSuccessMessage(false);
+                    setShowLoginSuccessMessage(false);
+                    setShowErrorMessage('');
+                  }}>
+                    {showLoginForm ? 'Create Account' : 'Login'}
                   </button>
                 </p>
               </div>
             </form>
           </div>
 
-            {showSuccessMessage && (
-              <div className="alert alert-success mt-3" role="alert">
-                {showLoginForm ? 'Logged in successfully!' : 'Account created successfully! You can now login.'}
-              </div>
-            )}
-            {showErrorMessage && (
-              <div className="alert alert-danger mt-3" role="alert">
-                {showErrorMessage}
-              </div>
-            )}
-          </div>
+          {showRegistrationSuccessMessage && (
+            <div className="alert alert-success mt-3" role="alert">
+              Account created successfully! You can now login.
+            </div>
+          )}
+          {showLoginSuccessMessage && (
+            <div className="alert alert-success mt-3" role="alert">
+              Logged in successfully!
+            </div>
+          )}
+          {showErrorMessage && (
+            <div className="alert alert-danger mt-3" role="alert">
+              {showErrorMessage}
+            </div>
+          )}
         </div>
       </div>
-    
+    </div>
   );
 };
 
