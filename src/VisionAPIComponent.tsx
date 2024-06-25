@@ -66,7 +66,7 @@ const VisionAPIComponent: React.FC<{ onColorResponse: (response: any) => void }>
   return (
     <div className="vision-api-container">
       <div className="upload-button-container d-flex align-items-center button-container">
-        <label htmlFor="fileInput" className="btn btn-primary custom-button no-bottom-padding mr-2">
+        <label htmlFor="fileInput" className="btn btn-primary custom-button no-bottom-padding mr-2 full-width-mobile">
           Choose File
           <input
             type="file"
@@ -77,7 +77,7 @@ const VisionAPIComponent: React.FC<{ onColorResponse: (response: any) => void }>
             style={{ display: 'none' }}
           />
         </label>
-        <button className="btn btn-primary custom-button" onClick={handleImageAnalysis} disabled={loading}>
+        <button className="btn btn-primary custom-button full-width-mobile" onClick={handleImageAnalysis} disabled={loading}>
           {loading ? 'Analyzing...' : 'Analyze Image'}
         </button>
       </div>

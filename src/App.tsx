@@ -26,7 +26,7 @@ const HomePage = () => {
                   Visual artists can elevate their creative process by using our app's sophisticated color image recognition feature.
                   By uploading images, artists can seamlessly identify and analyze the color palette within their artwork, enabling them to experiment with new hues and shades.
                 </p>
-                <button className="home-button btn btn-primary" onClick={() => { window.location.href = '/paint'; }}>Try Now</button>
+                <button className="home-button btn btn-primary full-width-mobile" onClick={() => { window.location.href = '/paint'; }}>Try Now</button>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@ const HomePage = () => {
                   This tool not only assists in color matching but also offers insights into the dominant colors and their proportions, helping artists maintain harmony and balance in their compositions.
                   Whether refining a piece or seeking inspiration, our app empowers artists to harness the power of color with precision and ease.
                 </p>
-                <button className="home-button btn btn-primary" onClick={() => { window.location.href = '/paint'; }}>Learn More</button>
+                <button className="home-button btn btn-primary full-width-mobile" onClick={() => { window.location.href = '/paint'; }}>Learn More</button>
               </div>
             </div>
           </div>

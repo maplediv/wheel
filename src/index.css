@@ -497,7 +497,43 @@ th {
   .sidebar {
     display: none;
   }
-  
+
+  .full-width-mobile {
+    display: block;
+    width: 100%;
+    margin-bottom: 0px; /* Add margin if you need spacing between buttons */
+  }
+
+  .upload-button-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between buttons */
+    flex-direction: column; /* Stack buttons vertically on mobile */
+    align-items: stretch; /* Stretch buttons to fill container width */
+  }
+
+  .btn {
+    margin-bottom: 5px !important;
+    margin-top: 5px !important; 
+    padding: 15px;
+    margin-right: 0px !important;
+}
+
+.btn-primary{
+    color: #ffffff !important;
+    background-color: #000000;
+    border: #000000;
+}
+
+.custom-button{
+    margin-bottom: 0px !important;
+}
+
+.home-button{
+  margin-bottom: 40px !important;
+  margin-top: 40px !important; 
+}
+
 
 /* Tablet devices (376px to 768px) */
 @media (min-width: 394px) and (max-width: 768px) {
