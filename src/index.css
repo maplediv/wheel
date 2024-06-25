@@ -499,18 +499,11 @@ th {
   }
 
   .full-width-mobile {
-    display: block;
     width: 100%;
     margin-bottom: 0px; /* Add margin if you need spacing between buttons */
   }
 
-  .upload-button-container {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem; /* Space between buttons */
-    flex-direction: column; /* Stack buttons vertically on mobile */
-    align-items: stretch; /* Stretch buttons to fill container width */
-  }
+  
 
   .btn {
     margin-bottom: 5px !important;
@@ -536,7 +529,39 @@ th {
 
 
 /* Tablet devices (376px to 768px) */
-@media (min-width: 394px) and (max-width: 768px) {
+@media (min-width: 375px) and (max-width: 768px) {
+  .full-width-mobile {
+    width: 100%;
+    margin-bottom: 0px; /* Add margin if you need spacing between buttons */
+  }
+
+  .upload-button-container {
+    flex-direction: column; /* Stack buttons vertically on mobile */
+    align-items: stretch; /* Stretch buttons to full width */
+  }
+
+  .btn {
+    margin-bottom: 5px !important;
+    margin-top: 5px !important; 
+    padding: 15px;
+    margin-right: 0px !important;
+}
+
+.btn-primary{
+    color: #ffffff !important;
+    background-color: #000000;
+    border: #000000;
+}
+
+.custom-button{
+    margin-bottom: 0px !important;
+}
+
+.home-button{
+  margin-bottom: 40px !important;
+  margin-top: 40px !important; 
+}
+
   .custom-list-item{
     margin-left: 20px;
   }
@@ -647,8 +672,40 @@ th {
     margin-bottom: 40px;
   }
 
-/* Desktop devices (769px and above) */
+
 @media (min-width: 769px)  {
+  .full-width-mobile {
+    width: auto; 
+  }
+
+  .upload-button-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between buttons */
+  }
+  
+
+  .btn {
+    margin-bottom: 5px !important;
+    margin-top: 5px !important; 
+    padding: 15px;
+    margin-right: 0px !important;
+}
+
+.btn-primary{
+    color: #ffffff !important;
+    background-color: #000000;
+    border: #000000;
+}
+
+.custom-button{
+    margin-bottom: 0px !important;
+}
+
+.home-button{
+  margin-bottom: 0px !important;
+  margin-top: 40px !important; 
+}
   .custom-list-item{
     margin-left: 20px;
   }
@@ -697,13 +754,7 @@ th {
     font-size: 18px;
   }
 
-  .home-button {
-    display: inline-block;
-    background-color: #000000;
-    margin-top: 46.59px;
-    margin-bottom: 46.59px;
-    font-size: 18px;
-  }
+  
 
   h1 {
     font-size: 40px;
@@ -739,6 +790,8 @@ th {
     margin-bottom: 50px;
   }
 
+  
+
   .home-button:hover {
     background-color: #000000;
   }
@@ -756,7 +809,29 @@ th {
   }
 
 @media (min-width: 1440px)  {
+  .btn {
+    margin-bottom: 5px !important;
+    margin-top: 5px !important; 
+    padding-right: 30px;
+    margin-right: 0px !important;
+}
 
+.btn-primary{
+    color: #ffffff !important;
+    background-color: #000000;
+    border: #000000;
+    padding-right: 30px;
+}
+
+.custom-button{
+    margin-bottom: 0px !important;
+    padding-right: 30px;
+}
+
+.home-button{
+  margin-bottom: 0px !important;
+  margin-top: 40px !important; 
+}
   .responsive-text{
     max-width: 500px;
   }
