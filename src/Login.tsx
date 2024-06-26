@@ -131,7 +131,7 @@ const Login: React.FC = () => {
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-primary custom-button full-width-mobile">{showLoginForm ? 'Login' : 'Create Account'}</button>
+              <button type="submit" className="btn btn-primary desktop-wide full-width-mobile">{showLoginForm ? 'Login' : 'Create Account'}</button>
               <div className="mt-3">
                 <p className="login-text">
                   {showLoginForm ? "Don't have an account?" : "Already have an account?"}{' '}
