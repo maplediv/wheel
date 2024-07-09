@@ -329,6 +329,16 @@ th {
 
 /* Mobile devices (up to 375px) */
 @media (max-width: 393px) {
+  .form{
+    margin-bottom: 20px;
+  }
+.uploaded-image{
+  margin-top: 20px;
+}
+  .custom-ul {
+  margin-bottom: 0px;
+}
+
 
 .custom-list-item{
   margin-left: 20px;
@@ -338,8 +348,8 @@ th {
 }
 
 .left-h1{
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .logo-container{
@@ -354,14 +364,18 @@ th {
   padding-bottom: 0px;
 }
 .footer-spacing{
-  margin-bottom: 20px !important;
+  margin-bottom: 0px !important;
 }
-  .row.align-items-start{
-    margin-bottom: 40px !important;
+ .row.align-items-start{
+    margin-bottom: 20px !important;
   }
 
   .dropdown-menu.show{
     width: 25px;
+  }
+
+  .img-fluid{
+    margin-bottom: 0px !important;
   }
   
   .dropdown-menu {
@@ -393,11 +407,11 @@ th {
   }
   
   p.login-text {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
   
   body {
-    padding-bottom: 80px;
+    padding-bottom: 0px;
     font-size: 14px;
     padding: 0px;
   }
@@ -410,12 +424,13 @@ th {
 
   h1 {
     font-size: 32px !important;
-    margin-bottom: 20 !important;
+    margin-bottom: 20px !important;
     margin-top: 20px !important;
   }
 
   h2 {
     font-size: 28px !important;
+    margin-bottom: 20px !important;
   }
   .home-button {
     display: inline-block;
@@ -441,13 +456,13 @@ th {
  
   .color-table-container {
     margin-top: 20px;
-    margin-bottom: 40px !important;
+    margin-bottom: 20px !important;
     overflow-x: auto;
     max-width: 100%;
   }
 
   .color-table-column {
-    margin-top: 40px !important;
+    margin-top: 20px !important;
     margin-bottom: 0px !important;
   }
 
@@ -486,18 +501,18 @@ th {
     display: none;
   }
 
-  .full-width-mobile {
-    width: 100%;
-    margin-bottom: 0px; /* Add margin if you need spacing between buttons */
-  }
-
-  
 
   .btn {
     margin-bottom: 5px !important;
-    margin-top: 5px !important; 
+    margin-top: 20px !important; 
     padding: 15px;
     margin-right: 0px !important;
+}
+
+.btn-link{
+  border: none;
+  background-color: #ffffff;
+  margin-left: 10px;
 }
 
 .btn-primary{
@@ -511,15 +526,31 @@ th {
 }
 
 .home-button{
-  margin-bottom: 40px !important;
-  margin-top: 40px !important; 
+  margin-bottom: 20px !important;
+  margin-top: 20px !important; 
+}
+image-container-home{
+  margin-bottom: 20px !important;
+  margin-top: 0px !important; 
+
 }
 
+.home-page-content{
+  margin-bottom: 0px !important;
+}
 
+.color-text {
+  margin-bottom: 0px !important;
+}
+
+.full-width-mobile {
+  width: 100% !important;
+  margin-bottom: 0px; /* Add margin if you need spacing between buttons */
+}
 /* Tablet devices (376px to 768px) */
-@media (min-width: 375px) and (max-width: 768px) {
+@media (min-width: 394px) and (max-width: 768px) {
   .full-width-mobile {
-    width: 100%;
+    width: 100% !important;
     margin-bottom: 0px; /* Add margin if you need spacing between buttons */
   }
 
@@ -582,7 +613,7 @@ th {
   }
   
   body {
-    padding-bottom: 80px;
+    padding-bottom: 0px;
   }
   p.responsive-text {
     margin: 0;
@@ -603,8 +634,8 @@ th {
 
   h1 {
     font-size: 40px !important;
-    margin-top: 40px !important;
-  margin-bottom: 40px !important;
+    margin-top: 20px !important;
+  margin-bottom: 20px !important;
   }
 
   h2 {
@@ -656,9 +687,7 @@ th {
 .footer-spacing{
   margin-bottom: 40px;
 }
-  .row.align-items-start{
-    margin-bottom: 40px !important;
-  }
+ 
 
 
 @media (min-width: 769px)  {

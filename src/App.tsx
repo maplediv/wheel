@@ -90,7 +90,7 @@ const PaintPage = () => {
             <div className="color-canvas">
               <h1 className='left-h1'>Color Canvas</h1>
               <div className="color-text">
-                <ul>
+                <ul className="custom-ul">
                   <li className='custom-list-item'>Click the "Choose File" button and upload any file to return the dominant colors in the image.</li>
                   <br />
                   <li className='custom-list-item'>Click the "Analyze Image" button to initialize the image analysis processing.</li>

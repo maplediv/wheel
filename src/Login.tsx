@@ -135,7 +135,7 @@ const Login: React.FC = () => {
               <div className="mt-3">
                 <p className="login-text">
                   {showLoginForm ? "Don't have an account?" : "Already have an account?"}{' '}
-                  <button type="button" className="btn btn-link" onClick={() => {
+                  <button type="button" className="btn-link" onClick={() => {
                     setShowLoginForm(!showLoginForm);
                     setShowRegistrationSuccessMessage(false);
                     setShowLoginSuccessMessage(false);
