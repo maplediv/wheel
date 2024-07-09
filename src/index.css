@@ -343,7 +343,7 @@ th {
 .custom-list-item{
   margin-left: 20px;
 }
-.row.align-items-start.justify-content-center{
+.justify-content-center{
   margin-bottom: 0px;
 }
 
@@ -529,11 +529,6 @@ th {
   margin-bottom: 20px !important;
   margin-top: 20px !important; 
 }
-image-container-home{
-  margin-bottom: 20px !important;
-  margin-top: 0px !important; 
-
-}
 
 .home-page-content{
   margin-bottom: 0px !important;
@@ -549,6 +544,11 @@ image-container-home{
 }
 /* Tablet devices (376px to 768px) */
 @media (min-width: 394px) and (max-width: 768px) {
+
+  .row.align-items-start{
+    margin-bottom: 20px !important;
+  }
+
   .full-width-mobile {
     width: 100% !important;
     margin-bottom: 0px; /* Add margin if you need spacing between buttons */
@@ -573,19 +573,19 @@ image-container-home{
 }
 
 .custom-button{
-    margin-bottom: 0px !important;
+    margin-bottom: 20px !important;
 }
 
 .home-button{
-  margin-bottom: 40px !important;
-  margin-top: 40px !important; 
+  margin-bottom: 20px !important;
+  margin-top: 20px !important; 
 }
 
   .custom-list-item{
     margin-left: 20px;
   }
   .left-h1{
-    margin-top: 40px;
+    margin-top: 20px;
   }
   .dropdown-menu {
     max-width: 50px; 
@@ -628,7 +628,7 @@ image-container-home{
     font-size: 16px;
   }
 
-  .row.align-items-start.justify-content-center{
+  .justify-content-center{
     margin-bottom: 0px;
   }
 
@@ -640,6 +640,7 @@ image-container-home{
 
   h2 {
     font-size: 32px;
+    margin-bottom: 20px !important;
   }
   .img-fluid,
   .image-container-home img {
@@ -659,7 +660,8 @@ image-container-home{
   }
 
   .color-table-column {
-    margin-top: 40px;
+    margin-top: 20px !important;
+    margin-bottom: 0px !important;
   }
 
   td,
@@ -695,7 +697,7 @@ image-container-home{
     margin-bottom: 20px;
   }
   .full-width-mobile {
-    width: auto; 
+    width: auto !important; 
   }
 
   .desktop-wide.full-width-mobile{
@@ -835,6 +837,9 @@ image-container-home{
   }
 
 @media (min-width: 1440px)  {
+  .full-width-mobile {
+    width: auto !important; 
+  }
   .btn {
     margin-bottom: 5px !important;
     margin-top: 5px !important; 
@@ -848,11 +853,7 @@ image-container-home{
     border: #000000;
 }
 
-.desktop-wide.full-width-mobile{
-    margin-bottom: 0px !important;
-    width: 100%;
-    padding: 0px;
-}
+
 
 .home-button{
   margin-bottom: 0px !important;
@@ -951,7 +952,7 @@ image-container-home{
     margin-bottom: 0px;
   }
     .row.align-items-start{
-      margin-bottom: 80px;
+      margin-bottom: 40px;
     }
 
 
