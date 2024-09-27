@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1661985649375" clover="3.2.0">
+  <project timestamp="1661985649375" name="All files">
+    <metrics statements="23" coveredstatements="23" conditionals="6" coveredconditionals="6" methods="11" coveredmethods="11" elements="40" coveredelements="40" complexity="0" loc="23" ncloc="23" packages="1" files="7" classes="7"/>
+    <file name="App.js" path="/Users/elie/Desktop/curric/exercises/react-router-dogfinder/solution/dog-finder/src/App.js">
+      <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <line num="22" count="2" type="stmt"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="29" count="1" type="stmt"/>
+      <line num="35" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="36" count="1" type="stmt"/>
+      <line num="37" count="1" type="stmt"/>
+      <line num="40" count="1" type="stmt"/>
+    </file>
+    <file name="DogDetails.js" path="/Users/elie/Desktop/curric/exercises/react-router-dogfinder/solution/dog-finder/src/DogDetails.js">
+      <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <line num="21" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="23" count="2" type="stmt"/>
+      <line num="31" count="6" type="stmt"/>
+    </file>
+    <file name="DogList.js" path="/Users/elie/Desktop/curric/exercises/react-router-dogfinder/solution/dog-finder/src/DogList.js">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <line num="18" count="3" type="stmt"/>
+      <line num="29" count="6" type="stmt"/>
+    </file>
+    <file name="FilterDogDetails.js" path="/Users/elie/Desktop/curric/exercises/react-router-dogfinder/solution/dog-finder/src/FilterDogDetails.js">
+      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <line num="20" count="3" type="stmt"/>
+      <line num="22" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="23" count="2" type="stmt"/>
+      <line num="24" count="3" type="stmt"/>
+      <line num="26" count="2" type="stmt"/>
+      <line num="29" count="1" type="stmt"/>
+    </file>
+    <file name="NavBar.js" path="/Users/elie/Desktop/curric/exercises/react-router-dogfinder/solution/dog-finder/src/NavBar.js">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="2" type="stmt"/>
+      <line num="14" count="1" type="stmt"/>
+    </file>
+    <file name="RouteList.js" path="/Users/elie/Desktop/curric/exercises/react-router-dogfinder/solution/dog-finder/src/RouteList.js">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="10" count="5" type="stmt"/>
+    </file>
+    <file name="_testCommon.js" path="/Users/elie/Desktop/curric/exercises/react-router-dogfinder/solution/dog-finder/src/_testCommon.js">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <line num="1" count="3" type="stmt"/>
+    </file>
+  </project>
+</coverage>

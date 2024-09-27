@@ -1,0 +1,5 @@
+.DogDetails img {
+  max-width: 50%;
+  border-radius: 5%;
+  margin-top: 1rem;
+}

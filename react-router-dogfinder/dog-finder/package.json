@@ -1,0 +1,48 @@
+{
+  "name": "part-1-dog-finder",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "*",
+    "@testing-library/react": "*",
+    "@testing-library/user-event": "*",
+    "axios": "*",
+    "concurrently": "*",
+    "json-server": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-router-dom": "*",
+    "react-scripts": "*",
+    "web-vitals": "*"
+  },
+  "scripts": {
+    "start": "concurrently --kill-others \"npm run start-fe\" \"npm run start-be\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "start-fe": "react-scripts start",
+    "start-be": "json-server --watch db.json --delay 500 --port 5001"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.js",
+      "!src/reportWebVitals.js"
+    ]
+}
+}
