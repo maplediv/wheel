@@ -1,0 +1,20 @@
+
+.chips {
+  background-color: rgb(255, 150, 97);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chip-img {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+
+
+.chips a {
+  font-size: 30px;
+}
