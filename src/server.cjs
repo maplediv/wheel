@@ -14,6 +14,12 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
+  console.log(req.headers); // Log incoming headers for debugging
+  next();
+});
+
 app.use(express.json());
 
 const db = new Client({
