@@ -1,5 +1,5 @@
 // src/AuthContext.tsx
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface AuthContextType {
   user: { firstName: string; email: string } | null;
@@ -12,12 +12,22 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<{ firstName: string; email: string } | null>(null);
 
+  // Load user data from localStorage on initial load
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
   const login = (userData: { firstName: string; email: string }) => {
     setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData)); // Save to localStorage
   };
 
   const logout = () => {
     setUser(null);
+    localStorage.removeItem('user'); // Remove user from localStorage
   };
 
   return (

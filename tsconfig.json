@@ -15,8 +15,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
+    "types": ["node", "jest"]  // Added jest types here
   },
   "include": ["src"]
 }
-
-

@@ -1,4 +1,4 @@
-// src/App.js
+// src/App.tsx
 import React, { useState } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
@@ -8,12 +8,27 @@ import VisionAPIComponent from './VisionAPIComponent';
 import LoginPage from './Login';
 import { AuthProvider } from './AuthContext';
 import { Helmet } from 'react-helmet';
+import PalettesPage from './PalettesPage';
 
-const HomePage = () => {
+interface ColorResponse {
+  responses?: {
+    imagePropertiesAnnotation?: {
+      dominantColors?: {
+        colors: {
+          color: { red: number; green: number; blue: number };
+          score: number;
+          pixelFraction: number;
+        }[];
+      };
+    };
+  }[];
+}
+
+const HomePage: React.FC = () => {
   return (
     <div className="home-page-container">
-       <Helmet>
-       <title>Home</title>
+      <Helmet>
+        <title>Home</title>
       </Helmet>
       <h1>Welcome to Art Genius!</h1>
       <div className="container home-page-content">
@@ -59,7 +74,7 @@ const HomePage = () => {
             <div className="text-container">
               <div className="text-left">
                 <div className="image-container-home">
-                  <img src="/src/images/acrylic1.jpg" alt="Picasso Picture" className="img-fluid" />
+                  <img src="/src/images/acrylic1.jpg" alt="Acrylic painting" className="img-fluid" />
                 </div>
               </div>
             </div>
@@ -70,11 +85,11 @@ const HomePage = () => {
   );
 };
 
-const PaintPage = () => {
-  const [colorResponse, setColorResponse] = useState(null);
-  const [loading, setLoading] = useState(false);
+const PaintPage: React.FC = () => {
+  const [colorResponse, setColorResponse] = useState<ColorResponse | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleColorResponse = (response) => {
+  const handleColorResponse = (response: ColorResponse) => {
     setColorResponse(response);
     setLoading(false);
   };
@@ -82,8 +97,9 @@ const PaintPage = () => {
   return (
     <div className="container">
       <Helmet>
-       <title>Color Canvas</title>
+        <title>Color Canvas</title>
       </Helmet>
+      
       <div className="row justify-content-center align-items-start">
         <div className="col-md-6">
           <div className="text-left">
@@ -110,7 +126,7 @@ const PaintPage = () => {
   );
 };
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
@@ -120,6 +136,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/paint" element={<PaintPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/palettes" element={<PalettesPage />} />
           </Routes>
         </div>
       </Router>

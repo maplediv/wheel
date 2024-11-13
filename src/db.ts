@@ -1,6 +1,18 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
+import cors from 'cors';  // Import the cors package
 import bcrypt from 'bcrypt';
 import { Client } from 'pg'; // Import Client from pg
+
+const app: Application = express();
+
+// Enable CORS for your frontend
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://wheel-8b7y.onrender.com'], // Allow both localhost and production origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow necessary HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Add any other necessary headers
+};
+
+app.use(cors(corsOptions)); // Use CORS middleware with the configured options
 
 // Create a new PostgreSQL client instance
 const db = new Client({
@@ -12,29 +24,21 @@ db.connect()
   .then(() => console.log('Connected to PostgreSQL database'))
   .catch(err => console.error('Error connecting to PostgreSQL database:', err));
 
-const app: Application = express();
-
 // Middleware
 app.use(express.json());
 
 // Register a new user
 app.post('/register', async (req: Request, res: Response, next: NextFunction) => {
   try {
-    // Destructure the required fields from the request body
     const { firstName, lastName, email, password } = req.body;
-
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Insert the new user into the database
     await db.query('INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4)', [firstName, lastName, email, hashedPassword]);
-
     res.status(201).json({ message: 'User registered successfully' });
   } catch (err) {
     next(err);
   }
 });
- 
+
 // Start the server
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {

@@ -11,6 +11,39 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.saved-palettes {
+  margin-top: 2rem;
+}
+
+.saved-palettes h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.saved-palettes ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.saved-palettes li {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.palette-colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.palette-colors div {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
 
 
 .left-h1 {
@@ -501,7 +534,10 @@ th {
     display: none;
   }
 
-
+  .full-width-mobile {
+    width: 100% !important;
+    margin-bottom: 0px; /* Add margin if you need spacing between buttons */
+  }
   .btn {
     margin-bottom: 5px !important;
     margin-top: 20px !important; 
@@ -538,10 +574,7 @@ th {
   margin-bottom: 0px !important;
 }
 
-.full-width-mobile {
-  width: 100% !important;
-  margin-bottom: 0px; /* Add margin if you need spacing between buttons */
-}
+
 /* Tablet devices (376px to 768px) */
 @media (min-width: 394px) and (max-width: 768px) {
 
@@ -693,6 +726,9 @@ th {
 
 
 @media (min-width: 769px)  {
+  .color-table-column {
+    margin-top: 420px !important;
+  }
   .row.align-items-start{
     margin-bottom: 20px;
   }
@@ -710,6 +746,7 @@ th {
     display: flex;
     align-items: center;
     gap: 0.5rem; /* Space between buttons */
+    margin-bottom: 40px;
   }
   
 
@@ -770,10 +807,6 @@ th {
 
   .navbar-nav {
     margin-left: auto !important;
-  }
-
-  .color-table-column {
-    margin-top: 445px !important;
   }
 
   p.responsive-text {
