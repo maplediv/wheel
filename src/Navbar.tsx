@@ -6,7 +6,7 @@ import './index.css';
 
 const Navbar: React.FC = () => {
   const { user, logout } = useAuth();
-
+  console.log('User in Navbar:', user);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">

@@ -51,30 +51,29 @@ const Login: React.FC = () => {
     event.preventDefault();
     console.log("Login form submitted");
     try {
-      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/login'`, {
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
       });
-
+  
       console.log('Login response status:', response.status); // Log the response status
-
+  
       if (response.ok) {
-        const userResponse = await fetch(`https://wheelback.onrender.com/user?email=${email}`);
-        console.log('User response:', userResponse);
-        if (userResponse.ok) {
-          const userData = await userResponse.json();
-          console.log('User data:', userData);
-          const firstName = userData.firstname;
+        const data = await response.json();
+        console.log('Login data:', data);
+  
+        // Check if the user data exists in the response
+        if (data.user) {
+          const { firstName, email } = data.user;
           login({ firstName, email });
           setShowLoginSuccessMessage(true);
           setShowErrorMessage('');
           navigate('/');
-        }else {
-          console.log('User data fetch failed');
-          setShowErrorMessage('User fetch failed');
+        } else {
+          setShowErrorMessage('User data not found');
           setShowLoginSuccessMessage(false);
         }
       } else {
@@ -89,6 +88,8 @@ const Login: React.FC = () => {
       setShowLoginSuccessMessage(false);
     }
   };
+  
+  
 
   return (
     <div className="container">

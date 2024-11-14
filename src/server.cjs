@@ -180,11 +180,19 @@ app.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
 
-    res.status(200).json({ message: 'Logged in successfully' });
+    // Return user data (e.g., firstName, email) along with the success message
+    res.status(200).json({
+      message: 'Logged in successfully',
+      user: {
+        firstName: user.rows[0].firstname, // Adjust field as needed
+        email: user.rows[0].email
+      }
+    });
   } catch (err) {
     res.status(500).json({ message: 'Error logging in' });
   }
 });
+
 
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
