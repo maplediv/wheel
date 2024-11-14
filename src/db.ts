@@ -29,6 +29,7 @@ app.use(express.json());
 
 // Register a new user
 app.post('/register', async (req: Request, res: Response, next: NextFunction) => {
+  console.log("Received registration data:", req.body);
   try {
     const { firstName, lastName, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);

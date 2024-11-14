@@ -18,6 +18,7 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    console.log("Register button clicked");
     try {
       const response = await fetch('https://wheelback.onrender.com/register', {
         method: 'POST',
@@ -47,6 +48,7 @@ const Login: React.FC = () => {
 
   const handleLoginFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    console.log("Login form submitted");
     try {
       const response = await fetch('https://wheelback.onrender.com/login', {
         method: 'POST',
@@ -56,22 +58,32 @@ const Login: React.FC = () => {
         body: JSON.stringify({ email, password }),
       });
 
+      console.log('Login response status:', response.status); // Log the response status
+
       if (response.ok) {
         const userResponse = await fetch(`https://wheelback.onrender.com/user?email=${email}`);
+        console.log('User response:', userResponse);
         if (userResponse.ok) {
           const userData = await userResponse.json();
+          console.log('User data:', userData);
           const firstName = userData.firstname;
           login({ firstName, email });
           setShowLoginSuccessMessage(true);
           setShowErrorMessage('');
           navigate('/');
+        }else {
+          console.log('User data fetch failed');
+          setShowErrorMessage('User fetch failed');
+          setShowLoginSuccessMessage(false);
         }
       } else {
         const data = await response.json();
+        console.log('Error data:', data); // Log error message
         setShowErrorMessage(data.message);
         setShowLoginSuccessMessage(false);
       }
     } catch (error) {
+      console.log('Error logging in:', error);
       setShowErrorMessage('Error logging in');
       setShowLoginSuccessMessage(false);
     }
