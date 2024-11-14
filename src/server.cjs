@@ -15,7 +15,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use((req, res, next) => {
+app.use((req, _, next) => {
   console.log(req.headers); // Log incoming headers for debugging
   next();
 });
@@ -23,7 +23,11 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 const db = new Client({
-  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:Magic323!@localhost:5432/paint',
+  user: process.env.PGUSER || 'Joe',
+  host: process.env.PGHOST || 'localhost',
+  database: process.env.PGDATABASE || 'paint',
+  password: process.env.PGPASSWORD || 'Magic323!',
+  port: process.env.PGPORT ? parseInt(process.env.PGPORT, 10) : 5432,
 });
 
 db.connect()
@@ -90,11 +94,22 @@ app.get('/palettes/:paletteId', async (req, res) => {
   }
 });
 
-app.get('/', (req, res) => {
+app.get('/test-db-connection', async (res) => {
+  try {
+    const result = await db.query('SELECT NOW()'); // Simple query to test connection
+    res.json({ success: true, time: result.rows[0].now });
+  } catch (error) {
+    console.error('Database connection error:', error);
+    res.status(500).json({ success: false, message: 'Database connection failed' });
+  }
+});
+
+app.get('/', (_, res) => {
   res.send('Welcome to the Art Genius API');
 });
 
 app.post('/register', async (req, res) => {
+  console.log(req.body);
   const { firstName, lastName, email, password } = req.body;
   try {
     const userCheck = await db.query('SELECT email FROM users WHERE email = $1', [email]);

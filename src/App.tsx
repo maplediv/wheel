@@ -10,6 +10,7 @@ import { AuthProvider } from './AuthContext';
 import { Helmet } from 'react-helmet';
 import PalettesPage from './PalettesPage';
 
+
 interface ColorResponse {
   responses?: {
     imagePropertiesAnnotation?: {

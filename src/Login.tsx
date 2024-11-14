@@ -20,14 +20,14 @@ const Login: React.FC = () => {
     event.preventDefault();
     console.log("Register button clicked");
     try {
-      const response = await fetch('https://wheelback.onrender.com/register', {
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ firstName, lastName, email, password }),
       });
-
+  
       if (response.ok) {
         setShowRegistrationSuccessMessage(true);
         setShowErrorMessage('');
@@ -45,12 +45,13 @@ const Login: React.FC = () => {
       setShowRegistrationSuccessMessage(false);
     }
   };
+  
 
   const handleLoginFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     console.log("Login form submitted");
     try {
-      const response = await fetch('https://wheelback.onrender.com/login', {
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/login'`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

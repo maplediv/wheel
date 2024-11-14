@@ -15,7 +15,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["node", "jest"]  // Added jest types here
+    "types": ["node", "jest", "vite/client"]  // Added jest types here
   },
-  "include": ["src"]
+  "include": ["src", "vite-env.d.ts"]
 }
