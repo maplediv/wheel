@@ -17,18 +17,29 @@ const PalettesPage: React.FC = () => {
   const [palettes, setPalettes] = useState<Palette[]>([]);
 
   useEffect(() => {
-    const fetchPalettes = async () => {
+    // Retrieve palettes from localStorage
+    const storedPalette = localStorage.getItem('savedPalette');
+    if (storedPalette) {
       try {
-        const response = await fetch('/api/palettes');
-        const data = await response.json();
-        setPalettes(data);
+        const colors = JSON.parse(storedPalette);
+        const savedPalettes = [
+          {
+            id: 1, // Default ID for now
+            name: 'My Palette', // Default name
+            colors: colors.map((color: any) => ({
+              red: Math.round(color.red),
+              green: Math.round(color.green),
+              blue: Math.round(color.blue),
+            })),
+          },
+        ];
+        setPalettes(savedPalettes);
       } catch (error) {
-        console.error('Error fetching palettes:', error);
+        console.error('Error parsing stored palettes:', error);
       }
-    };
-
-    fetchPalettes();
+    }
   }, []);
+  
 
   return (
     <div className="home-page-container">
@@ -36,7 +47,7 @@ const PalettesPage: React.FC = () => {
         <title>Saved Palettes</title>
       </Helmet>
       <h1>Saved Color Palettes</h1>
-      
+
       <div className="container home-page-content">
         <div className="row align-items-start">
           <div className="col-md-6">
@@ -60,7 +71,7 @@ const PalettesPage: React.FC = () => {
           </div>
         </div>
       </div>
-      
+
       {palettes.length === 0 ? (
         <p>No palettes saved yet.</p>
       ) : (

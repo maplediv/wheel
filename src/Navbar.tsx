@@ -26,9 +26,9 @@ const Navbar: React.FC = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/paint">Paint</Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
             <Link className="nav-link" to="/palettes">Palettes</Link>
-            </li>
+            </li> */}
 
             {user ? (
               <li className="nav-item dropdown">

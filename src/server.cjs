@@ -61,17 +61,14 @@ const savePalette = async (userId, palette) => {
     }
   }
 
-  const query = 'INSERT INTO palettes (user_id, palette, colors) VALUES ($1, $2, $3)';
-  await db.query(query, [userId, JSON.stringify(palette), JSON.stringify(palette.map(c => c.color))]);
-};
+  // Ensure colors is not null and is correctly formatted as JSON
+  const colorData = palette.map(c => c.color); // Extract the color part
+  if (!colorData || colorData.length === 0) {
+    throw new Error('Colors array is empty or malformed');
+  }
 
-/**
- * Deletes a palette from the database.
- * @param {number} paletteId - The ID of the palette to delete.
- */
-const deletePalette = async (paletteId) => {
-  const query = 'DELETE FROM palettes WHERE id = $1';
-  await db.query(query, [paletteId]);
+  const query = 'INSERT INTO palettes (user_id, palette, colors) VALUES ($1, $2, $3)';
+  await db.query(query, [userId, JSON.stringify(palette), JSON.stringify(colorData)]);
 };
 
 // Render the saved palette(s)
@@ -80,21 +77,22 @@ app.get('/palettes/:paletteId', async (req, res) => {
 
   try {
     const query = 'SELECT * FROM palettes WHERE id = $1';
-    const result = await pool.query(query, [paletteId]);
+    const result = await db.query(query, [paletteId]);
 
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Palette not found' });
     }
 
     const palette = result.rows[0];
-    res.render('palettes', { palette }); // Pass the palette to the template
+    res.json(palette); // Return the full palette, including the color data in the `palette` field
   } catch (err) {
     console.error('Error retrieving palette:', err);
     res.status(500).json({ error: 'Error retrieving palette' });
   }
 });
 
-app.get('/test-db-connection', async (res) => {
+
+app.get('/test-db-connection', async (req, res) => {
   try {
     const result = await db.query('SELECT NOW()'); // Simple query to test connection
     res.json({ success: true, time: result.rows[0].now });
@@ -103,6 +101,7 @@ app.get('/test-db-connection', async (res) => {
     res.status(500).json({ success: false, message: 'Database connection failed' });
   }
 });
+
 
 app.get('/', (_, res) => {
   res.send('Welcome to the Art Genius API');
@@ -140,6 +139,7 @@ app.post('/api/palettes', async (req, res) => {
     res.status(500).json({ message: 'Error saving palette', error: error.message });
   }
 });
+
 
 app.delete('/api/palettes/:id', async (req, res) => {
   const paletteId = parseInt(req.params.id);
