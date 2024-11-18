@@ -1,7 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 
-
-
 interface FormData {
   first_name: string;
   last_name: string;
@@ -27,8 +25,9 @@ const Register: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const backendUrl = process.env.NODE_ENV === 'production' ? import.meta.env.VITE_REACT_APP_API_URL_PRODUCTION : import.meta.env.VITE_REACT_APP_API_URL_LOCAL;
     try {
-      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/register`, {
+      const response = await fetch(`${backendUrl}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
