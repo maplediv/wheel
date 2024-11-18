@@ -4,11 +4,10 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const { Client } = require('pg');
 
-/** @type {import('express').Application} */
 const app = express();
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://wheel-8b7y.onrender.com'],
+  origin: ['http://localhost:3000', 'https://wheel-8b7y.onrender.com', 'https://wheelback.onrender.com'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
@@ -16,7 +15,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use((req, _, next) => {
-  console.log(req.headers); // Log incoming headers for debugging
+  console.log(req.headers); 
   next();
 });
 
@@ -34,24 +33,12 @@ db.connect()
   .then(() => console.log('Connected to PostgreSQL database'))
   .catch(err => console.error('Error connecting to PostgreSQL database:', err));
 
-/**
- * @typedef {Object} Color
- * @property {Object} color - The RGB color object.
- * @property {number} score - The color's score.
- * @property {number} pixelFraction - The fraction of the image covered by this color.
- */
 
-/**
- * Saves a palette to the database.
- * @param {number} userId - The ID of the user saving the palette.
- * @param {Array<Color>} palette - The array of color objects to save.
- */
 const savePalette = async (userId, palette) => {
   if (!Array.isArray(palette) || palette.length === 0) {
     throw new Error('Palette must be a non-empty array');
   }
 
-  // Validate each color object
   for (const color of palette) {
     if (!color.color || typeof color.color !== 'object' || !color.color.red || !color.color.green || !color.color.blue) {
       throw new Error('Each color must have a valid RGB object');
@@ -61,8 +48,7 @@ const savePalette = async (userId, palette) => {
     }
   }
 
-  // Ensure colors is not null and is correctly formatted as JSON
-  const colorData = palette.map(c => c.color); // Extract the color part
+  const colorData = palette.map(c => c.color); 
   if (!colorData || colorData.length === 0) {
     throw new Error('Colors array is empty or malformed');
   }
@@ -71,10 +57,8 @@ const savePalette = async (userId, palette) => {
   await db.query(query, [userId, JSON.stringify(palette), JSON.stringify(colorData)]);
 };
 
-// Render the saved palette(s)
 app.get('/palettes/:paletteId', async (req, res) => {
-  const { paletteId } = req.params;
-
+  const paletteId = parseInt(req.params.paletteId, 10);
   try {
     const query = 'SELECT * FROM palettes WHERE id = $1';
     const result = await db.query(query, [paletteId]);
@@ -84,7 +68,7 @@ app.get('/palettes/:paletteId', async (req, res) => {
     }
 
     const palette = result.rows[0];
-    res.json(palette); // Return the full palette, including the color data in the `palette` field
+    res.json(palette); 
   } catch (err) {
     console.error('Error retrieving palette:', err);
     res.status(500).json({ error: 'Error retrieving palette' });
@@ -94,7 +78,7 @@ app.get('/palettes/:paletteId', async (req, res) => {
 
 app.get('/test-db-connection', async (req, res) => {
   try {
-    const result = await db.query('SELECT NOW()'); // Simple query to test connection
+    const result = await db.query('SELECT NOW()'); 
     res.json({ success: true, time: result.rows[0].now });
   } catch (error) {
     console.error('Database connection error:', error);
@@ -128,7 +112,6 @@ app.post('/register', async (req, res) => {
 app.post('/api/palettes', async (req, res) => {
   const { userId, palette } = req.body;
 
-  // Log the incoming palette data for debugging
   console.log('Received palette:', palette);
   
   try {
@@ -136,13 +119,18 @@ app.post('/api/palettes', async (req, res) => {
     res.status(200).json({ message: 'Palette saved successfully' });
   } catch (error) {
     console.error('Error saving palette:', error);
-    res.status(500).json({ message: 'Error saving palette', error: error.message });
+    res.status(500).json({ message: 'Error saving palette' });
   }
 });
 
 
+const deletePalette = async (paletteId) => {
+  const query = 'DELETE FROM palettes WHERE id = $1';
+  await db.query(query, [paletteId]);
+};
+
 app.delete('/api/palettes/:id', async (req, res) => {
-  const paletteId = parseInt(req.params.id);
+  const paletteId = parseInt(req.params.id, 10);
   try {
     await deletePalette(paletteId);
     res.status(200).json({ message: 'Palette deleted successfully' });
@@ -180,11 +168,10 @@ app.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
 
-    // Return user data (e.g., firstName, email) along with the success message
     res.status(200).json({
       message: 'Logged in successfully',
       user: {
-        firstName: user.rows[0].firstname, // Adjust field as needed
+        firstName: user.rows[0].firstname, 
         email: user.rows[0].email
       }
     });
@@ -194,7 +181,7 @@ app.post('/login', async (req, res) => {
 });
 
 
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.NODE_ENV === 'production' ? process.env.PORT : 10000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

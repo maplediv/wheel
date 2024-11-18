@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import { Helmet } from 'react-helmet';
 
+const backendUrl = process.env.NODE_ENV === 'production' ? import.meta.env.VITE_REACT_APP_API_URL_PRODUCTION : import.meta.env.VITE_REACT_APP_API_URL_LOCAL;
+
 const Login: React.FC = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -20,7 +22,7 @@ const Login: React.FC = () => {
     event.preventDefault();
     console.log("Register button clicked");
     try {
-      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/register`, {
+      const response = await fetch(`${backendUrl}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,7 +53,7 @@ const Login: React.FC = () => {
     event.preventDefault();
     console.log("Login form submitted");
     try {
-      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/login`, {
+      const response = await fetch(`${backendUrl}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
