@@ -16,17 +16,29 @@ app.use(cors(corsOptions));
 
 require('dotenv').config();
 
-const db = new Client({
-  user: process.env.PGUSER || 'Joe',
-  host: process.env.PGHOST || 'localhost',
-  database: process.env.PGDATABASE || 'paint',
-  password: process.env.PGPASSWORD || 'Magic323!',
-  port: process.env.PGPORT ? parseInt(process.env.PGPORT, 10) : 5432,
-});
+const isProduction = process.env.DATABASE_URL;
 
+const db = new Client(
+  isProduction
+    ? {
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      }
+    : {
+        user: process.env.PGUSER || 'Joe',
+        host: process.env.PGHOST || 'localhost',
+        database: process.env.PGDATABASE || 'paint',
+        password: process.env.PGPASSWORD || 'Magic323!',
+        port: process.env.PGPORT ? parseInt(process.env.PGPORT, 10) : 5432,
+      }
+);
+
+// Connect to the database
 db.connect()
-  .then(() => console.log('Connected to PostgreSQL database'))
-  .catch(err => console.error('Error connecting to PostgreSQL database:', err));
+  .then(() => console.log('Connected to the database'))
+  .catch((err) => console.error('Error connecting to the database', err));
 
 app.use((req, _, next) => {
   console.log(req.headers); 
