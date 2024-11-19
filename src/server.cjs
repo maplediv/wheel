@@ -16,15 +16,7 @@ app.use(cors(corsOptions));
 
 require('dotenv').config();
 
-
-app.use((req, _, next) => {
-  console.log(req.headers); 
-  next();
-});
-
-app.use(express.json());
-
-console.log('Connecting to database with:', {
+const db = new Client({
   user: process.env.PGUSER || 'Joe',
   host: process.env.PGHOST || 'localhost',
   database: process.env.PGDATABASE || 'paint',
@@ -32,10 +24,16 @@ console.log('Connecting to database with:', {
   port: process.env.PGPORT ? parseInt(process.env.PGPORT, 10) : 5432,
 });
 
-
 db.connect()
   .then(() => console.log('Connected to PostgreSQL database'))
   .catch(err => console.error('Error connecting to PostgreSQL database:', err));
+
+app.use((req, _, next) => {
+  console.log(req.headers); 
+  next();
+});
+
+app.use(express.json());
 
 
 /**
@@ -212,6 +210,7 @@ app.post('/login', async (req, res) => {
 
 
 const PORT = process.env.NODE_ENV === 'production' ? process.env.PORT : 10000;
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
