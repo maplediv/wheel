@@ -111,27 +111,34 @@ app.get('/test-db-connection', async (req, res) => {
 });
 
 
+
 app.get('/', (_, res) => {
   res.send('Welcome to the Art Genius API');
 });
 
 app.post('/register', async (req, res) => {
-  console.log(req.body);
   const { firstName, lastName, email, password } = req.body;
+
   try {
+    // Check if the email already exists
     const userCheck = await db.query('SELECT email FROM users WHERE email = $1', [email]);
     if (userCheck.rows.length > 0) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
+    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Insert new user into the database
     await db.query('INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4)', 
                    [firstName, lastName, email, hashedPassword]);
     res.status(201).json({ message: 'User registered successfully' });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ message: 'Error registering user' });
   }
 });
+
 
 app.post('/api/palettes', async (req, res) => {
   const { userId, palette } = req.body;
@@ -183,9 +190,10 @@ app.get('/user', async (req, res) => {
 
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
-  console.log('Login attempt:', email);
+
   try {
     const user = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+
     if (user.rows.length === 0) {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
@@ -195,18 +203,20 @@ app.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
 
+    // Successful login response
     res.status(200).json({
       message: 'Logged in successfully',
       user: {
-        firstName: user.rows[0].firstname, 
+        firstName: user.rows[0].firstname,
         email: user.rows[0].email
       }
     });
   } catch (err) {
-    console.error('Error during login:', err); 
+    console.error('Error during login:', err);
     res.status(500).json({ message: 'Error logging in. Please check server logs for details.' });
   }
 });
+
 
 
 const PORT = process.env.NODE_ENV === 'production' ? process.env.PORT : 10000;
