@@ -14,6 +14,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+require('dotenv').config();
+
+
 app.use((req, _, next) => {
   console.log(req.headers); 
   next();
@@ -21,13 +24,14 @@ app.use((req, _, next) => {
 
 app.use(express.json());
 
-const db = new Client({
+console.log('Connecting to database with:', {
   user: process.env.PGUSER || 'Joe',
   host: process.env.PGHOST || 'localhost',
   database: process.env.PGDATABASE || 'paint',
   password: process.env.PGPASSWORD || 'Magic323!',
   port: process.env.PGPORT ? parseInt(process.env.PGPORT, 10) : 5432,
 });
+
 
 db.connect()
   .then(() => console.log('Connected to PostgreSQL database'))
