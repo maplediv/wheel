@@ -34,7 +34,20 @@ db.connect()
   .catch(err => console.error('Error connecting to PostgreSQL database:', err));
 
 
-const savePalette = async (userId, palette) => {
+interface PaletteColor {
+  color: { red: number; green: number; blue: number };
+  score: number;
+  pixelFraction: number;
+}
+
+interface Palette {
+  user_id: number;
+  palette: PaletteColor[];
+  colors: { red: number; green: number; blue: number }[];
+}
+
+
+const savePalette = async (userId: number, palette: PaletteColor[]) => {
   if (!Array.isArray(palette) || palette.length === 0) {
     throw new Error('Palette must be a non-empty array');
   }
@@ -58,7 +71,7 @@ const savePalette = async (userId, palette) => {
 };
 
 app.get('/palettes/:paletteId', async (req, res) => {
-  const paletteId = parseInt(req.params.paletteId, 10);
+  const paletteId: number = parseInt(req.params.paletteId, 10);
   try {
     const query = 'SELECT * FROM palettes WHERE id = $1';
     const result = await db.query(query, [paletteId]);
@@ -67,7 +80,7 @@ app.get('/palettes/:paletteId', async (req, res) => {
       return res.status(404).json({ error: 'Palette not found' });
     }
 
-    const palette = result.rows[0];
+    const palette: Palette = result.rows[0];
     res.json(palette); 
   } catch (err) {
     console.error('Error retrieving palette:', err);
@@ -124,13 +137,13 @@ app.post('/api/palettes', async (req, res) => {
 });
 
 
-const deletePalette = async (paletteId) => {
+const deletePalette = async (paletteId: number) => {
   const query = 'DELETE FROM palettes WHERE id = $1';
   await db.query(query, [paletteId]);
 };
 
 app.delete('/api/palettes/:id', async (req, res) => {
-  const paletteId = parseInt(req.params.id, 10);
+  const paletteId: number = parseInt(req.params.id, 10);
   try {
     await deletePalette(paletteId);
     res.status(200).json({ message: 'Palette deleted successfully' });
@@ -176,7 +189,8 @@ app.post('/login', async (req, res) => {
       }
     });
   } catch (err) {
-    res.status(500).json({ message: 'Error logging in' });
+    console.error('Error during login:', err); // More detailed logging
+    res.status(500).json({ message: 'Error logging in. Please check server logs for details.' });
   }
 });
 
