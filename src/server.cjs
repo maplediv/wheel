@@ -34,20 +34,29 @@ db.connect()
   .catch(err => console.error('Error connecting to PostgreSQL database:', err));
 
 
-interface PaletteColor {
-  color: { red: number; green: number; blue: number };
-  score: number;
-  pixelFraction: number;
-}
+/**
+ * @typedef {object} PaletteColor
+ * @property {object} color - RGB color object
+ * @property {number} color.red - Red value (0-255)
+ * @property {number} color.green - Green value (0-255)
+ * @property {number} color.blue - Blue value (0-255)
+ * @property {number} score - Color score
+ * @property {number} pixelFraction - Pixel fraction
+ */
 
-interface Palette {
-  user_id: number;
-  palette: PaletteColor[];
-  colors: { red: number; green: number; blue: number }[];
-}
+/**
+ * @typedef {object} Palette
+ * @property {number} user_id - User ID
+ * @property {PaletteColor[]} palette - Array of palette colors
+ * @property {{red:number, green:number, blue:number}[]} colors - Array of RGB color objects
+ */
 
-
-const savePalette = async (userId: number, palette: PaletteColor[]) => {
+/**
+ * Saves a palette to the database.
+ * @param {number} userId - The ID of the user.
+ * @param {PaletteColor[]} palette - The palette data.
+ */
+const savePalette = async (userId, palette) => {
   if (!Array.isArray(palette) || palette.length === 0) {
     throw new Error('Palette must be a non-empty array');
   }
@@ -71,7 +80,7 @@ const savePalette = async (userId: number, palette: PaletteColor[]) => {
 };
 
 app.get('/palettes/:paletteId', async (req, res) => {
-  const paletteId: number = parseInt(req.params.paletteId, 10);
+  const paletteId = parseInt(req.params.paletteId, 10);
   try {
     const query = 'SELECT * FROM palettes WHERE id = $1';
     const result = await db.query(query, [paletteId]);
@@ -80,7 +89,7 @@ app.get('/palettes/:paletteId', async (req, res) => {
       return res.status(404).json({ error: 'Palette not found' });
     }
 
-    const palette: Palette = result.rows[0];
+    const palette = result.rows[0];
     res.json(palette); 
   } catch (err) {
     console.error('Error retrieving palette:', err);
@@ -137,13 +146,16 @@ app.post('/api/palettes', async (req, res) => {
 });
 
 
-const deletePalette = async (paletteId: number) => {
+/**
+ * @param {number} paletteId - The ID of the palette to delete.
+ */
+const deletePalette = async (paletteId) => {
   const query = 'DELETE FROM palettes WHERE id = $1';
   await db.query(query, [paletteId]);
 };
 
 app.delete('/api/palettes/:id', async (req, res) => {
-  const paletteId: number = parseInt(req.params.id, 10);
+  const paletteId = parseInt(req.params.id, 10);
   try {
     await deletePalette(paletteId);
     res.status(200).json({ message: 'Palette deleted successfully' });
@@ -189,7 +201,7 @@ app.post('/login', async (req, res) => {
       }
     });
   } catch (err) {
-    console.error('Error during login:', err); // More detailed logging
+    console.error('Error during login:', err); 
     res.status(500).json({ message: 'Error logging in. Please check server logs for details.' });
   }
 });
