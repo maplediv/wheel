@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import VisionAPIComponent from './VisionAPIComponent';
 import ColorTiles from './ColorTiles';
+import { useAuth } from './AuthContext';
 
 interface ColorResponse {
   responses?: {
@@ -9,8 +10,6 @@ interface ColorResponse {
       dominantColors?: {
         colors: {
           color: { red: number; green: number; blue: number };
-          score: number;
-          pixelFraction: number;
         }[];
       };
     };
@@ -19,31 +18,24 @@ interface ColorResponse {
 
 const PaintPage: React.FC = () => {
   const [colorResponse, setColorResponse] = useState<ColorResponse | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const auth = useAuth();
+  const userid = auth.user?.id;
 
+  // Handle the color response from the Vision API
   const handleColorResponse = (response: ColorResponse) => {
     setColorResponse(response);
-    setLoading(false); // Stop loading when response is received
-
-    // Save the palette to localStorage
-    const colors = response.responses?.[0].imagePropertiesAnnotation?.dominantColors.colors || [];
-    const palette = colors.map((color) => ({
-      red: Math.round(color.color.red * 255),
-      green: Math.round(color.color.green * 255),
-      blue: Math.round(color.color.blue * 255),
-    }));
-
-    localStorage.setItem('savedPalette', JSON.stringify(palette));
+    setLoading(false);
+    console.log('Received Color Response:', response);
   };
-
-  const userId = 123; // Example userId, replace it with the actual value (could be dynamic or from context)
 
   return (
     <div className="container">
       <Helmet>
         <title>Color Canvas</title>
       </Helmet>
-      
+
       <div className="row justify-content-center align-items-start">
         <div className="col-md-6">
           <div className="text-left">
@@ -68,9 +60,12 @@ const PaintPage: React.FC = () => {
         </div>
 
         <div className="col-md-6">
+          {successMessage && <p className="alert alert-success">{successMessage}</p>}
           {colorResponse ? (
-            // Pass the response and userId props to ColorTiles
-            <ColorTiles response={colorResponse} userId={userId} />
+            <ColorTiles
+              response={colorResponse.responses?.[0]?.imagePropertiesAnnotation?.dominantColors?.colors || []}
+              userid={userid}
+            />
           ) : (
             !loading && <p>No colors to display. Please upload and analyze an image.</p>
           )}

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { useAuth } from './AuthContext';
+import axios from 'axios';
 
 interface Color {
   red: number;
@@ -9,93 +11,95 @@ interface Color {
 
 interface Palette {
   id: number;
-  name: string;
+  name?: string;
   colors: Color[];
 }
 
 const PalettesPage: React.FC = () => {
+  const { user } = useAuth();
   const [palettes, setPalettes] = useState<Palette[]>([]);
 
   useEffect(() => {
-    // Retrieve palettes from localStorage
-    const storedPalette = localStorage.getItem('savedPalette');
-    if (storedPalette) {
-      try {
-        const colors = JSON.parse(storedPalette);
-        const savedPalettes = [
-          {
-            id: 1, // Default ID for now
-            name: 'My Palette', // Default name
-            colors: colors.map((color: any) => ({
-              red: Math.round(color.red),
-              green: Math.round(color.green),
-              blue: Math.round(color.blue),
-            })),
-          },
-        ];
-        setPalettes(savedPalettes);
-      } catch (error) {
-        console.error('Error parsing stored palettes:', error);
+    const fetchPalettes = async () => {
+      if (!user) {
+        console.error('User not logged in.');
+        return;
       }
+
+      try {
+        const palettesUrl = `http://localhost:10000/api/palettes/${user.userId}`;
+        console.log('Fetching palettes with URL:', palettesUrl);
+
+        const response = await axios.get<Palette[]>(palettesUrl);
+        console.log('Fetched palettes:', response.data);
+
+        setPalettes(response.data);
+      } catch (error) {
+        console.error('Error fetching palettes:', error);
+      }
+    };
+
+    fetchPalettes();
+  }, [user]);
+
+  const updatePaletteName = async (paletteId: number, name: string) => {
+    try {
+      await axios.put(`http://localhost:10000/api/palettes/${paletteId}`, { name });
+      setPalettes((prev) =>
+        prev.map((palette) => (palette.id === paletteId ? { ...palette, name } : palette))
+      );
+    } catch (error) {
+      console.error('Error updating palette name:', error);
     }
-  }, []);
-  
+  };
 
   return (
     <div className="home-page-container">
       <Helmet>
-        <title>Saved Palettes</title>
+        <title>{user ? `${user.firstName}'s Saved Palettes` : 'Saved Palettes'}</title>
       </Helmet>
-      <h1>Saved Color Palettes</h1>
 
-      <div className="container home-page-content">
-        <div className="row align-items-start">
-          <div className="col-md-6">
-            <div className="text-container">
-              <div className="text-left">
-                <h2>Explore Your Color Creations</h2>
-                <p className="responsive-text">
-                  Here are the color palettes you've saved. Click on any palette to view its details or make edits.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="text-container">
-              <div className="text-left">
-                <div className="image-container-home">
-                  <img src="/src/images/palettes-image.jpg" alt="Color Palettes" className="img-fluid" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      {user ? (
+        <>
+          <h1>{user.firstName}'s Saved Color Palettes</h1>
+          {palettes.length === 0 ? (
+            <p>No palettes saved yet.</p>
+          ) : (
+            palettes.map((palette) => (
+              <div key={palette.id} className="palette-item">
+                <input
+                  type="text"
+                  value={palette.name || ''}
+                  placeholder="Name this palette"
+                  onChange={(e) => updatePaletteName(palette.id, e.target.value)}
+                />
+                <div className="palette-container">
+  {palette.colors.map((color, index) => {
+    const hexCode = `#${color.red.toString(16).padStart(2, '0')}${color.green
+      .toString(16)
+      .padStart(2, '0')}${color.blue.toString(16).padStart(2, '0')}`.toUpperCase();
+    
+    return (
+      <div key={index} style={{ display: 'inline-block', textAlign: 'center', margin: '5px' }}>
+        <div style={{ marginBottom: '5px', fontSize: '14px', color: '#333' }}>{hexCode}</div>
+        <div
+          style={{
+            backgroundColor: `rgb(${color.red}, ${color.green}, ${color.blue})`,
+            width: '50px',
+            height: '50px',
+          }}
+        />
       </div>
+    );
+  })}
+</div>
 
-      {palettes.length === 0 ? (
-        <p>No palettes saved yet.</p>
-      ) : (
-        <ul>
-          {palettes.map((palette) => (
-            <li key={palette.id}>
-              <h3>{palette.name || 'Untitled'}</h3>
-              <div>
-                {palette.colors.map((color, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      backgroundColor: `rgb(${color.red}, ${color.green}, ${color.blue})`,
-                      width: '50px',
-                      height: '50px',
-                      display: 'inline-block',
-                      margin: '5px',
-                    }}
-                  />
-                ))}
               </div>
-            </li>
-          ))}
-        </ul>
+            ))
+          )}
+        </>
+      ) : (
+        <p>Please log in to view your saved palettes.</p>
       )}
     </div>
   );

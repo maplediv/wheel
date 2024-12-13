@@ -29,7 +29,7 @@ const Login: React.FC = () => {
         },
         body: JSON.stringify({ firstName, lastName, email, password }),
       });
-  
+
       if (response.ok) {
         setShowRegistrationSuccessMessage(true);
         setShowErrorMessage('');
@@ -47,7 +47,6 @@ const Login: React.FC = () => {
       setShowRegistrationSuccessMessage(false);
     }
   };
-  
 
   const handleLoginFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -60,20 +59,23 @@ const Login: React.FC = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-  
+
       console.log('Login response status:', response.status); // Log the response status
-  
+
       if (response.ok) {
         const data = await response.json();
         console.log('Login data:', data);
-  
+
         // Check if the user data exists in the response
         if (data.user) {
-          const { firstName, email } = data.user;
-          login({ firstName, email });
+          const { firstName, email, id: userId } = data.user; // Use 'id' as userId
+
+          // Call your login context or state management
+          login({ firstName, email, userId }); // Pass userId here
+
           setShowLoginSuccessMessage(true);
           setShowErrorMessage('');
-          navigate('/');
+          navigate('/'); // Redirect to home or wherever needed
         } else {
           setShowErrorMessage('User data not found');
           setShowLoginSuccessMessage(false);
@@ -90,8 +92,6 @@ const Login: React.FC = () => {
       setShowLoginSuccessMessage(false);
     }
   };
-  
-  
 
   return (
     <div className="container">

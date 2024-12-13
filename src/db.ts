@@ -40,6 +40,34 @@ app.post('/register', async (req: Request, res: Response, next: NextFunction) =>
   }
 });
 
+app.post('/api/palettes', async (req: Request, res: Response, next: NextFunction) => {
+  console.log("Received palette data:", req.body);
+  try {
+    const { userid, palette } = req.body;
+
+    // Validate palette as an array of hex color codes
+    if (!Array.isArray(palette) || !palette.every(color => /^#[0-9A-Fa-f]{6}$/.test(color))) {
+      return res.status(400).json({ message: 'Invalid palette format. Must be an array of hex codes.' });
+    }
+
+    // Insert each hex code as a new row
+    for (const hexcode of palette) {
+      await db.query(
+        'INSERT INTO palettes (userid, hexcodes) VALUES ($1, $2)',
+        [userid, hexcode]
+      );
+    }
+
+    res.status(201).json({ message: 'Palette saved successfully' });
+  } catch (err) {
+    next(err);
+  }
+});
+
+
+
+
+
 // Start the server
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {

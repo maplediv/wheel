@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './index.css';
+import { useAuth } from './AuthContext';
+import ColorTiles from './ColorTiles';  // Adjust the path according to your project structure
+
 
 interface VisionAPIComponentProps {
   onColorResponse: (response: any) => void;
 }
 
 const VisionAPIComponent: React.FC<VisionAPIComponentProps> = ({ onColorResponse }) => {
+  const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [colorData, setColorData] = useState<any | null>(null); // Define colorData as a state variable
+
+  const resolvedUserId = user?.userId || localStorage.getItem('userId');
 
   const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -20,8 +27,8 @@ const VisionAPIComponent: React.FC<VisionAPIComponentProps> = ({ onColorResponse
   };
 
   const handleImageAnalysis = async () => {
-    if (!imageUrl) {
-      console.error('Image URL is missing.');
+    if (!imageUrl || !resolvedUserId) {
+      console.error('Image URL or User ID is missing.');
       return;
     }
 
@@ -31,7 +38,7 @@ const VisionAPIComponent: React.FC<VisionAPIComponentProps> = ({ onColorResponse
       return;
     }
 
-    setLoading(true); // Set loading state to true before making the request
+    setLoading(true);
 
     try {
       const response = await axios.get(imageUrl, { responseType: 'blob' });
@@ -58,35 +65,33 @@ const VisionAPIComponent: React.FC<VisionAPIComponentProps> = ({ onColorResponse
         const apiEndpoint = `https://vision.googleapis.com/v1/images:annotate?key=${apiKey}`;
         const visionResponse = await axios.post(apiEndpoint, requestData);
 
-        // Call onColorResponse to pass the data to the parent component (if necessary)
+        // Pass the raw response data to the parent component
         onColorResponse(visionResponse.data);
 
-        // Assuming the response contains a palette of colors (adjust as needed based on actual API response)
-        const colors = visionResponse.data.responses[0].imagePropertiesAnnotation.dominantColors.colors;
+        // Extract and update the colorData state
+        const colors = visionResponse.data.responses[0]?.imagePropertiesAnnotation?.dominantColors?.colors || [];
+        setColorData(colors);
 
-        // Retrieve existing palettes from localStorage
+        // Save the palette to localStorage
         const existingPalettes = JSON.parse(localStorage.getItem('savedPalette') || '[]');
-
-        // Create a new palette object
         const newPalette = {
-          id: existingPalettes.length + 1, // Assign a unique ID
-          name: `Palette ${existingPalettes.length + 1}`, // Default name
+          id: existingPalettes.length + 1,
+          userId: resolvedUserId,
+          name: `Palette ${existingPalettes.length + 1}`,
           colors: colors.map((color: any) => ({
-            red: Math.round(color.color.red * 255),
-            green: Math.round(color.color.green * 255),
-            blue: Math.round(color.color.blue * 255),
+            red: Math.round(color.color.red),
+            green: Math.round(color.color.green),
+            blue: Math.round(color.color.blue),
           })),
         };
-
-        // Save the updated palette list back to localStorage
         localStorage.setItem('savedPalette', JSON.stringify([...existingPalettes, newPalette]));
 
-        setLoading(false); // Set loading state to false after handling the response
+        setLoading(false);
       };
     } catch (err) {
       console.error('Error analyzing image:', err);
       setError('An error occurred while analyzing the image.');
-      setLoading(false); // Set loading state to false in case of error
+      setLoading(false);
     }
   };
 
@@ -104,21 +109,28 @@ const VisionAPIComponent: React.FC<VisionAPIComponentProps> = ({ onColorResponse
             style={{ display: 'none' }}
           />
         </label>
-        <button className="btn btn-primary custom-button full-width-mobile" onClick={handleImageAnalysis} disabled={loading}>
+        <button
+          className="btn btn-primary custom-button full-width-mobile"
+          onClick={handleImageAnalysis}
+          disabled={loading}
+        >
           {loading ? 'Analyzing...' : 'Analyze Image'}
         </button>
       </div>
-
+  
       {loading && <div className="spinner"></div>}
+  
       {imageUrl && (
         <div className="image-table-container">
           <div className="image-container">
             <img src={imageUrl} alt="Uploaded Image" className="uploaded-image" />
           </div>
-          {/* Your table component can go here if needed */}
+  
+          {/* Render ColorTiles if colorData is available */}
+          {colorData && <ColorTiles response={colorData} userId={resolvedUserId} />}
         </div>
       )}
-
+  
       {error && <div className="error-message">{error}</div>}
     </div>
   );

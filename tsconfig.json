@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    
-    "outDir": "./dist",
+    "module": "ESNext",
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
+    "outDir": "./dist",
     "moduleResolution": "node",
     "jsx": "react-jsx",
     "strict": true,
@@ -16,7 +15,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["node", "jest", "vite/client"]  // Added jest types here
+    "types": ["node", "jest", "vite/client"]
   },
   "include": ["src", "vite-env.d.ts"]
 }
