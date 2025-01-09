@@ -295,9 +295,15 @@
     }
   });
 
+<<<<<<< HEAD
   const PORT = process.env.PORT || 10000;
 
   app.listen(PORT, '0.0.0.0', () => {
+=======
+  const PORT = process.env.NODE_ENV === 'production' ? process.env.PORT : 10000;
+
+  app.listen(PORT, () => {
+>>>>>>> 5916a01c4f2c8303ba8d3e379a2973b759cbe77d
     console.log(`Server is running on port ${PORT}`);
   });
 
