@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import ColorTile from './ColorTile';
+import { useAuth } from './AuthContext';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate
 
 interface Color {
   color: { red: number; green: number; blue: number };
@@ -18,7 +20,6 @@ interface ColorTilesProps {
       };
     }[];
   };
-  userId: number;
 }
 
 // Define the Palette type
@@ -28,39 +29,62 @@ type Palette = {
   colors: Color[];
 };
 
-const ColorTiles: React.FC<ColorTilesProps> = ({ response, userId }) => {
+const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
+  const { user } = useAuth();
+  const userId = user?.userId;
   const [savedPalettes, setSavedPalettes] = useState<Palette[]>([]);
+  const [successMessage, setSuccessMessage] = useState<string>(''); // State for success message
+  const navigate = useNavigate();  // Initialize the navigate function
 
-  // Extract colors from the response
   const colors = response?.responses?.[0]?.imagePropertiesAnnotation?.dominantColors?.colors || [];
 
-  // Handle saving a new palette
   const handleSavePalette = async () => {
-    try {
-      // Send the palette data to the backend
-      const res = await axios.post('http://localhost:10000/api/palettes', { userId, palette: colors });
+    if (!userId) {
+      console.error('User ID is missing. Please log in.');
+      return;
+    }
 
-      // Create a new palette object
+    try {
+      const hexCodes = colors.map((color) => {
+        const hexCode = `#${Math.round(color.color.red).toString(16).padStart(2, '0')}${Math.round(color.color.green).toString(16).padStart(2, '0')}${Math.round(color.color.blue).toString(16).padStart(2, '0')}`.toUpperCase();
+        return hexCode;
+      });
+
+      console.log('Sending palette data:', { userId, hexCodes });
+
+      const response = await fetch('http://localhost:10000/api/palettes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId, hexCodes }),
+      });
+
+      const data = await response.json();
+      console.log('Response from backend:', data);
+
       const newPalette: Palette = {
-        id: Date.now(), // Using the current timestamp as a unique ID
-        name: `Palette ${Date.now()}`, // Generating a name for the palette
-        colors, // The colors array being saved
+        id: Date.now(),
+        name: `Palette ${Date.now()}`,
+        colors,
       };
 
-      // Update the state with the new palette
       setSavedPalettes((prevPalettes) => [...prevPalettes, newPalette]);
 
-      console.log(res.data.message); // Optionally log a success message
+      // Show success message
+      setSuccessMessage('Palette saved successfully!');
+
+      // Hide success message after 3 seconds
+      setTimeout(() => setSuccessMessage(''), 3000);
     } catch (error) {
-      console.error('Error saving palette:', error); // Log any error
+      console.error('Error saving palette:', error);
     }
   };
 
-  // Delete palette function (updated to delete palette by index)
-  const handleDeletePalette = async (paletteIndex: number) => {
+  const handleDeletePalette = async (paletteId: number) => {
     try {
-      await axios.delete(`/api/palettes/${paletteIndex}`);
-      setSavedPalettes(savedPalettes.filter((_, index) => index !== paletteIndex));
+      await axios.delete(`/api/palettes/${paletteId}`);
+      setSavedPalettes(savedPalettes.filter((palette) => palette.id !== paletteId));
     } catch (error) {
       console.error('Error deleting palette:', error);
     }
@@ -73,50 +97,43 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response, userId }) => {
   return (
     <div className="color-tiles-container">
       <div className="color-table-container">
-        <table>
+        <table className="table table-bordered">
           <thead>
             <tr>
               <th>Colors</th>
               <th>Hex Code</th>
-             
             </tr>
           </thead>
           <tbody>
             {colors.map((color, index) => {
-              const hexCode = `#${Math.round(color.color.red * 255).toString(16).padStart(2, '0')}${Math.round(color.color.green * 255).toString(16).padStart(2, '0')}${Math.round(color.color.blue * 255).toString(16).padStart(2, '0')}`.toUpperCase();
+              const hexCode = `#${Math.round(color.color.red).toString(16).padStart(2, '0')}${Math.round(color.color.green).toString(16).padStart(2, '0')}${Math.round(color.color.blue).toString(16).padStart(2, '0')}`.toUpperCase();
               return (
                 <tr key={index}>
                   <td className="color-tile">
                     <ColorTile color={color.color} />
                   </td>
                   <td className="hex-code">{hexCode}</td>
-                 
                 </tr>
               );
             })}
           </tbody>
         </table>
       </div>
+
+      {/* Display success message with Bootstrap classes */}
+      {successMessage && (
+        <div className="alert alert-success text-center" role="alert">
+          {successMessage}
+        </div>
+      )}
+
       <div className="save-palette-container">
-        {/* <button onClick={handleSavePalette} className="btn btn-primary">Save Palette</button> */}
-      </div>
-      <div className="saved-palettes-container">
-        {/* <h3>Saved Palettes:</h3> */}
-        <ul>
-          {savedPalettes.map((palette) => (
-            <li key={palette.id}>
-              <strong>{palette.name}</strong>
-              <ul>
-                {palette.colors.map((color, index) => (
-                  <li key={index} style={{ backgroundColor: `rgb(${color.color.red}, ${color.color.green}, ${color.color.blue})` }}>
-                    Color: {color.score}
-                  </li>
-                ))}
-              </ul>
-              <button onClick={() => handleDeletePalette(palette.id)}>Delete Palette</button>
-            </li>
-          ))}
-        </ul>
+        <button onClick={handleSavePalette} className="btn btn-primary">Save Palette</button>
+        
+        {/* Add a new button to navigate to the palettes page */}
+        <button onClick={() => navigate('/palettes')} className="btn btn-primary" style={{ marginLeft: '10px' }}>
+          View Palettes
+        </button>
       </div>
     </div>
   );

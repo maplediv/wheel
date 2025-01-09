@@ -11,6 +11,43 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+.table {
+  table-layout: fixed; /* Prevents columns from expanding beyond their content or specified width */
+  width: 100%; /* Ensure the table takes up the full available width */
+}
+
+/* Reduce the width of the left column */
+.color-name-td {
+  width: 20%; /* Adjust this percentage to reduce the width */
+  max-width: 30%; /* Restrict the column's maximum width */
+  padding: 10px; /* Adjust padding to make it more spacious */
+}
+
+/* Adjust the right column to take the remaining space */
+.color-palette-td {
+  width: 80%; /* Take the remaining width */
+  padding: 10px; /* Adjust padding for the right column */
+}
+.color-row {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping */
+  gap: 10px; /* Add spacing between items */
+}
+
+
+
+
+.success-message {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+}
+
+
 .saved-palettes {
   margin-top: 2rem;
 }
@@ -362,6 +399,69 @@ th {
 
 /* Mobile devices (up to 375px) */
 @media (max-width: 393px) {
+  .color-row {
+    display: flex; /* Use flexbox for rows */
+    flex-direction: column; /* Stack columns vertically */
+  }
+
+  .color-name-td,
+  .color-palette-td {
+    width: 100% !important; /* Force each column to take up full width */
+    display: block; /* Ensure they behave like block elements */
+    box-sizing: border-box; /* Include padding and border in width */
+    margin: 0; /* Reset any unintended margin */
+    padding: 1rem; /* Add consistent padding for readability */
+  }
+
+  .color-name-td {
+    display: flex;
+    flex-direction: column; /* Stack inputs and buttons */
+    gap: 0.5rem; /* Add spacing between inputs and buttons */
+  }
+
+  .color-name-td input {
+    width: 100%; /* Ensure input spans the full width */
+    box-sizing: border-box;
+  }
+
+  .color-name-td button {
+    width: auto; /* Allow buttons to shrink to their content */
+    align-self: flex-start; /* Align buttons to the left */
+  }
+
+  .table {
+    display: block; /* Allow the table to adapt to smaller screens */
+    width: 100%; /* Ensure the table uses the full container width */
+  }
+
+  thead {
+    display: none; /* Hide the table header */
+  }
+
+  tbody tr {
+    display: flex; /* Treat table rows as flex containers */
+    flex-direction: column; /* Stack columns vertically */
+    margin-bottom: 1rem; /* Add spacing between rows */
+    border-bottom: 1px solid #ddd; /* Optional: Separator between rows */
+  }
+
+  tbody td {
+    padding: 0.5rem; /* Add padding for content */
+    margin: 0; /* Reset margin */
+    text-align: left; /* Align text to the left */
+  }
+
+  tbody td::before {
+    content: attr(data-label); /* Use the data-label attribute as a pseudo-header */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+}
+
+
+
+
   .form{
     margin-bottom: 20px;
   }
@@ -869,13 +969,44 @@ th {
   }
 
 @media (min-width: 1440px)  {
+
+  
+ 
+   
+  
+    .colors-pallete {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px; /* Adjust spacing between color tiles */
+      justify-content: start; /* Align color tiles to the left */
+    }
+  }
+  
+  
+
+  .form-control {
+    width: 260px;
+    margin-top: 10px;
+  }
+
+
   .full-width-mobile {
     width: auto !important; 
   }
+
+  .btn-pallete{
+    border: none; /* Remove the border */
+    box-shadow: none; /* Remove the box shadow */
+    background-color: #000000;
+    margin-bottom: 5px !important;
+    margin-top: 20px !important; 
+    padding: 15px;
+    margin-right: 16px !important;
+  }
   .btn {
     margin-bottom: 5px !important;
-    margin-top: 5px !important; 
-    margin-right: 20px !important;
+    margin-top: 5px ; 
+    margin-right: 20px;
 }
 
 .btn-primary{

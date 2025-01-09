@@ -1,6 +1,5 @@
-// src/App.tsx
 import React, { useState } from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes, Navigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import ColorTiles from './ColorTiles';
 import './index.css';
@@ -137,7 +136,8 @@ const App: React.FC = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/paint" element={<PaintPage />} />
             <Route path="/login" element={<LoginPage />} />
-            {/* <Route path="/palettes" element={<PalettesPage />} /> */}
+            <Route path="/palettes" element={<PalettesPage />} /> 
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
       </Router>
