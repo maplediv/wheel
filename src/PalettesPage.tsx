@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { useAuth } from './AuthContext';
+import axios from 'axios';
 
 interface Color {
   red: number;
@@ -9,93 +11,257 @@ interface Color {
 
 interface Palette {
   id: number;
-  name: string;
+  name?: string;
   colors: Color[];
 }
 
 const PalettesPage: React.FC = () => {
+  const { user } = useAuth();
   const [palettes, setPalettes] = useState<Palette[]>([]);
+  const [editingPaletteId, setEditingPaletteId] = useState<number | null>(null);
+  const [paletteNameChanges, setPaletteNameChanges] = useState<{ [key: number]: string }>({});
+  const [successMessage, setSuccessMessage] = useState<string>('');
+
+  // State for delete confirmation modal
+  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
+  const [selectedPaletteId, setSelectedPaletteId] = useState<number | null>(null);
 
   useEffect(() => {
-    // Retrieve palettes from localStorage
-    const storedPalette = localStorage.getItem('savedPalette');
-    if (storedPalette) {
-      try {
-        const colors = JSON.parse(storedPalette);
-        const savedPalettes = [
-          {
-            id: 1, // Default ID for now
-            name: 'My Palette', // Default name
-            colors: colors.map((color: any) => ({
-              red: Math.round(color.red),
-              green: Math.round(color.green),
-              blue: Math.round(color.blue),
-            })),
-          },
-        ];
-        setPalettes(savedPalettes);
-      } catch (error) {
-        console.error('Error parsing stored palettes:', error);
+    const fetchPalettes = async () => {
+      if (!user) {
+        console.error('User not logged in.');
+        return;
       }
-    }
-  }, []);
-  
 
+      try {
+        const palettesUrl = `http://localhost:10000/api/palettes/${user.userId}`;
+        const response = await axios.get<Palette[]>(palettesUrl);
+        setPalettes(response.data);
+      } catch (error) {
+        console.error('Error fetching palettes:', error);
+      }
+    };
+
+    fetchPalettes();
+  }, [user]);
+
+  const updatePaletteName = async (paletteId: number, name: string) => {
+    try {
+      await axios.put(`http://localhost:10000/api/palettes/${paletteId}`, { name });
+      setPalettes((prev) =>
+        prev.map((palette) => (palette.id === paletteId ? { ...palette, name } : palette))
+      );
+    } catch (error) {
+      console.error('Error updating palette name:', error);
+    }
+  };
+
+  const handleNameChange = (paletteId: number, newName: string) => {
+    setPaletteNameChanges((prev) => ({
+      ...prev,
+      [paletteId]: newName,
+    }));
+  };
+
+  const handleSaveChanges = async (paletteId: number) => {
+    const newName = paletteNameChanges[paletteId] || '';
+    await updatePaletteName(paletteId, newName);
+    setEditingPaletteId(null);
+    setSuccessMessage('Palette saved successfully!');
+    setTimeout(() => setSuccessMessage(''), 3000);
+  };
+
+  const confirmDeletePalette = (paletteId: number) => {
+    setSelectedPaletteId(paletteId);
+    setShowDeleteModal(true); // Show modal
+  };
+
+  const deletePalette = async () => {
+    if (selectedPaletteId === null) return;
+  
+    try {
+      await axios.delete(`http://localhost:10000/api/palettes/${selectedPaletteId}`);
+      setPalettes((prev) => prev.filter((palette) => palette.id !== selectedPaletteId));
+      setShowDeleteModal(false); // Hide modal after deletion
+  
+      // Set success message
+      setSuccessMessage('Palette deleted successfully!');
+      setTimeout(() => setSuccessMessage(''), 3000); // Clear message after 3 seconds
+    } catch (error) {
+      console.error('Error deleting palette:', error);
+    }
+  };
+  
+  const copyPaletteToClipboard = (palette: Palette) => {
+    const hexCodes = palette.colors
+      .map(
+        (color) =>
+          `#${color.red.toString(16).padStart(2, '0')}${color.green
+            .toString(16)
+            .padStart(2, '0')}${color.blue.toString(16).padStart(2, '0')}`.toUpperCase()
+      )
+      .join(', ');
+
+    navigator.clipboard
+      .writeText(hexCodes)
+      .then(() => {
+        setSuccessMessage('Palette copied to clipboard!');
+        setTimeout(() => setSuccessMessage(''), 3000);
+      })
+      .catch((err) => {
+        console.error('Failed to copy palette:', err);
+      });
+  };
   return (
     <div className="home-page-container">
       <Helmet>
-        <title>Saved Palettes</title>
+        <title>{user ? `${user.firstName}'s Saved Palettes` : 'Saved Palettes'}</title>
       </Helmet>
-      <h1>Saved Color Palettes</h1>
 
-      <div className="container home-page-content">
-        <div className="row align-items-start">
-          <div className="col-md-6">
-            <div className="text-container">
-              <div className="text-left">
-                <h2>Explore Your Color Creations</h2>
-                <p className="responsive-text">
-                  Here are the color palettes you've saved. Click on any palette to view its details or make edits.
-                </p>
-              </div>
+      {user ? (
+        <>
+          <h1>{user.firstName}'s Saved Color Palettes</h1>
+
+          {successMessage && (
+            <div className="alert alert-success text-center" role="alert">
+              {successMessage}
             </div>
-          </div>
-          <div className="col-md-6">
-            <div className="text-container">
-              <div className="text-left">
-                <div className="image-container-home">
-                  <img src="/src/images/palettes-image.jpg" alt="Color Palettes" className="img-fluid" />
+          )}
+
+          {palettes.length === 0 ? (
+            <p>No palettes saved yet.</p>
+          ) : (
+            <table className="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Palette Name</th>
+                  <th>Colors (Hex Codes and Tiles)</th>
+                </tr>
+              </thead>
+              <tbody>
+  {palettes.map((palette) => (
+    <tr key={palette.id} className="color-row">
+      <td className="color-name-td" data-label="Palette Name">
+        <input
+          type="text"
+          className="form-control"
+          value={paletteNameChanges[palette.id] || palette.name || ''}
+          placeholder="Name your palette"
+          onChange={(e) => handleNameChange(palette.id, e.target.value)}
+          onFocus={() => setEditingPaletteId(palette.id)}
+        />
+
+        <div>
+          <button
+            className="btn-pallete btn-primary btn"
+            onClick={() => handleSaveChanges(palette.id)}
+          >
+            Save
+          </button>
+          <button
+            className="btn btn-primary btn-pallete"
+            onClick={() => confirmDeletePalette(palette.id)}
+          >
+            Delete
+          </button>
+          <button
+            className="btn btn-primary btn-pallete"
+            onClick={() => copyPaletteToClipboard(palette)}
+          >
+            Copy
+          </button>
+        </div>
+      </td>
+
+      <td className="color-palette-td" data-label="Colors (Hex Codes and Tiles)">
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+          {palette.colors.map((color, index) => {
+            const hexCode = `#${color.red.toString(16).padStart(2, '0')}${color.green
+              .toString(16)
+              .padStart(2, '0')}${color.blue.toString(16).padStart(2, '0')}`.toUpperCase();
+
+            return (
+              <div
+                key={index}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  margin: '5px',
+                }}
+              >
+                <div
+                  style={{
+                    backgroundColor: hexCode,
+                    width: '50px',
+                    height: '50px',
+                    border: '1px solid #ccc',
+                  }}
+                />
+                <span style={{ fontSize: '12px', marginTop: '5px' }}>{hexCode}</span>
+              </div>
+            );
+          })}
+        </div>
+      </td>
+    </tr>
+  ))}
+</tbody>
+
+
+
+            </table>
+          )}
+
+          {/* Delete Confirmation Modal */}
+          {showDeleteModal && (
+            <div
+              className="modal"
+              style={{
+                display: 'block',
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 1050,
+              }}
+            >
+              <div
+                className="modal-dialog"
+                style={{
+                  margin: '10% auto',
+                  backgroundColor: '#fff',
+                  padding: '20px',
+                  borderRadius: '5px',
+                  maxWidth: '400px',
+                }}
+              >
+                <h5 className="modal-title">Delete Palette</h5>
+                <p>Are you sure you want to delete this palette?</p>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => setShowDeleteModal(false)} // Close modal
+                  >
+                    Cancel
+                  </button>
+                  <button
+                  className="btn btn-danger"
+                  style={{ pointerEvents: 'auto' }}
+                  onClick={deletePalette}
+                    >
+                  Confirm
+                  </button>
+
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      {palettes.length === 0 ? (
-        <p>No palettes saved yet.</p>
+          )}
+        </>
       ) : (
-        <ul>
-          {palettes.map((palette) => (
-            <li key={palette.id}>
-              <h3>{palette.name || 'Untitled'}</h3>
-              <div>
-                {palette.colors.map((color, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      backgroundColor: `rgb(${color.red}, ${color.green}, ${color.blue})`,
-                      width: '50px',
-                      height: '50px',
-                      display: 'inline-block',
-                      margin: '5px',
-                    }}
-                  />
-                ))}
-              </div>
-            </li>
-          ))}
-        </ul>
+        <p>Please log in to view your saved palettes.</p>
       )}
     </div>
   );
