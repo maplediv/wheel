@@ -96,37 +96,18 @@ app.put('/api/palettes/:paletteId', async (req, res) => {
 // Get palettes by user ID
 app.get('/api/palettes/:userId', async (req, res) => {
   const { userId } = req.params;
-
+  
   try {
+    console.log('Fetching palettes for user:', userId);
     const result = await db.query(
-      'SELECT id, name, hexcodes FROM palettes WHERE userid = $1',
+      'SELECT * FROM palettes WHERE userid = $1 ORDER BY created_at DESC',
       [userId]
     );
-
-    if (result.rows.length === 0) {
-      return res.status(404).json({ message: 'No palettes found for this user.' });
-    }
-
-    const palettes = result.rows.map((row) => ({
-      id: row.id,
-      name: row.name || null, // Handle missing names
-      colors: row.hexcodes
-        ? row.hexcodes.split(',').map((hex) => {
-            if (!hex) return null; // Handle empty or null hex codes
-            const bigint = parseInt(hex.replace('#', ''), 16);
-            return {
-              red: (bigint >> 16) & 255,
-              green: (bigint >> 8) & 255,
-              blue: bigint & 255,
-            };
-          }).filter(Boolean) // Remove null entries
-        : [],
-    }));
-
-    res.status(200).json(palettes);
+    console.log('Found palettes:', result.rows);
+    res.json(result.rows);
   } catch (error) {
     console.error('Error fetching palettes:', error);
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 

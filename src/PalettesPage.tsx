@@ -38,11 +38,20 @@ const PalettesPage: React.FC = () => {
       }
 
       try {
-        const palettesUrl = `http://localhost:10000/api/palettes/${user.userId}`;
+        console.log('API_BASE_URL:', API_BASE_URL);
+        console.log('User ID:', user.userId);
+        const palettesUrl = `${API_BASE_URL}/api/palettes/${user.userId}`;
+        console.log('Fetching from URL:', palettesUrl);
+        
         const response = await axios.get<Palette[]>(palettesUrl);
+        console.log('Response:', response.data);
         setPalettes(response.data);
       } catch (error) {
         console.error('Error fetching palettes:', error);
+        if (axios.isAxiosError(error)) {
+          console.log('Response status:', error.response?.status);
+          console.log('Response data:', error.response?.data);
+        }
       }
     };
 
