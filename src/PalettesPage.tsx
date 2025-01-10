@@ -45,13 +45,10 @@ const PalettesPage: React.FC = () => {
         
         const response = await axios.get<Palette[]>(palettesUrl);
         console.log('Response:', response.data);
-        setPalettes(response.data);
+        setPalettes(response.data || []);
       } catch (error) {
         console.error('Error fetching palettes:', error);
-        if (axios.isAxiosError(error)) {
-          console.log('Response status:', error.response?.status);
-          console.log('Response data:', error.response?.data);
-        }
+        setPalettes([]);
       }
     };
 
@@ -131,7 +128,9 @@ const PalettesPage: React.FC = () => {
         <title>{user ? `${user.firstName}'s Saved Palettes` : 'Saved Palettes'}</title>
       </Helmet>
 
-      {user ? (
+      {!user ? (
+        <p>Please log in to view your saved palettes.</p>
+      ) : (
         <>
           <h1>{user.firstName}'s Saved Color Palettes</h1>
 
@@ -141,7 +140,7 @@ const PalettesPage: React.FC = () => {
             </div>
           )}
 
-          {palettes.length === 0 ? (
+          {!Array.isArray(palettes) || palettes.length === 0 ? (
             <p>No palettes saved yet.</p>
           ) : (
             <table className="table table-bordered">
@@ -153,57 +152,59 @@ const PalettesPage: React.FC = () => {
               </thead>
               <tbody>
                 {palettes.map((palette) => (
-                  <tr key={palette.id}>
-                    <td className="color-name-td">
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={paletteNameChanges[palette.id] || palette.name || ''}
-                        placeholder="Name your palette"
-                        onChange={(e) => handleNameChange(palette.id, e.target.value)}
-                        onFocus={() => setEditingPaletteId(palette.id)}
-                      />
-                      <div>
-                        <button
-                          className="btn-pallete btn-primary btn"
-                          onClick={() => handleSaveChanges(palette.id)}
-                        >
-                          Save
-                        </button>
-                        <button
-                          className="btn btn-primary btn-pallete"
-                          onClick={() => confirmDeletePalette(palette.id)}
-                        >
-                          Delete
-                        </button>
-                        <button
-                          className="btn btn-primary btn-pallete"
-                          onClick={() => copyPaletteToClipboard(palette)}
-                        >
-                          Copy
-                        </button>
-                      </div>
-                    </td>
-                    <td className="color-palette-td">
-                      <div className="color-tiles-container">
-                        {palette.colors.map((color, index) => {
-                          const hexCode = `#${color.red.toString(16).padStart(2, '0')}${color.green
-                            .toString(16)
-                            .padStart(2, '0')}${color.blue.toString(16).padStart(2, '0')}`.toUpperCase();
+                  palette && (
+                    <tr key={palette.id}>
+                      <td className="color-name-td">
+                        <input
+                          type="text"
+                          className="form-control"
+                          value={paletteNameChanges[palette.id] || palette.name || ''}
+                          placeholder="Name your palette"
+                          onChange={(e) => handleNameChange(palette.id, e.target.value)}
+                          onFocus={() => setEditingPaletteId(palette.id)}
+                        />
+                        <div>
+                          <button
+                            className="btn-pallete btn-primary btn"
+                            onClick={() => handleSaveChanges(palette.id)}
+                          >
+                            Save
+                          </button>
+                          <button
+                            className="btn btn-primary btn-pallete"
+                            onClick={() => confirmDeletePalette(palette.id)}
+                          >
+                            Delete
+                          </button>
+                          <button
+                            className="btn btn-primary btn-pallete"
+                            onClick={() => copyPaletteToClipboard(palette)}
+                          >
+                            Copy
+                          </button>
+                        </div>
+                      </td>
+                      <td className="color-palette-td">
+                        <div className="color-tiles-container">
+                          {palette.colors.map((color, index) => {
+                            const hexCode = `#${color.red.toString(16).padStart(2, '0')}${color.green
+                              .toString(16)
+                              .padStart(2, '0')}${color.blue.toString(16).padStart(2, '0')}`.toUpperCase();
 
-                          return (
-                            <div key={index} className="color-tile-wrapper">
-                              <div 
-                                className="color-tile" 
-                                style={{ backgroundColor: hexCode }}
-                              />
-                              <span className="hex-code">{hexCode}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </td>
-                  </tr>
+                            return (
+                              <div key={index} className="color-tile-wrapper">
+                                <div 
+                                  className="color-tile" 
+                                  style={{ backgroundColor: hexCode }}
+                                />
+                                <span className="hex-code">{hexCode}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </td>
+                    </tr>
+                  )
                 ))}
               </tbody>
             </table>
@@ -256,8 +257,6 @@ const PalettesPage: React.FC = () => {
             </div>
           )}
         </>
-      ) : (
-        <p>Please log in to view your saved palettes.</p>
       )}
     </div>
   );
