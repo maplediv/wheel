@@ -29,6 +29,10 @@ type Palette = {
   colors: Color[];
 };
 
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://wheelback.onrender.com'
+  : 'http://localhost:10000';
+
 const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
   const { user } = useAuth();
   const userId = user?.userId;
@@ -52,7 +56,7 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
 
       console.log('Sending palette data:', { userId, hexCodes });
 
-      const response = await fetch('http://localhost:10000/api/palettes', {
+      const response = await fetch(`${API_BASE_URL}/api/palettes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
