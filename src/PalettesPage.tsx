@@ -38,7 +38,7 @@ const PalettesPage: React.FC = () => {
       }
 
       try {
-        const palettesUrl = `${API_BASE_URL}/api/palettes/${user.userId}`;
+        const palettesUrl = `http://localhost:10000/api/palettes/${user.userId}`;
         const response = await axios.get<Palette[]>(palettesUrl);
         setPalettes(response.data);
       } catch (error) {
@@ -51,7 +51,7 @@ const PalettesPage: React.FC = () => {
 
   const updatePaletteName = async (paletteId: number, name: string) => {
     try {
-      await axios.put(`${API_BASE_URL}/api/palettes/${paletteId}`, { name });
+      await axios.put(`http://localhost:10000/api/palettes/${paletteId}`, { name });
       setPalettes((prev) =>
         prev.map((palette) => (palette.id === paletteId ? { ...palette, name } : palette))
       );
@@ -84,7 +84,7 @@ const PalettesPage: React.FC = () => {
     if (selectedPaletteId === null) return;
   
     try {
-      await axios.delete(`${API_BASE_URL}/api/palettes/${selectedPaletteId}`);
+      await axios.delete(`http://localhost:10000/api/palettes/${selectedPaletteId}`);
       setPalettes((prev) => prev.filter((palette) => palette.id !== selectedPaletteId));
       setShowDeleteModal(false); // Hide modal after deletion
   
@@ -143,77 +143,60 @@ const PalettesPage: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-  {palettes.map((palette) => (
-    <tr key={palette.id} className="color-row">
-      <td className="color-name-td" data-label="Palette Name">
-        <input
-          type="text"
-          className="form-control"
-          value={paletteNameChanges[palette.id] || palette.name || ''}
-          placeholder="Name your palette"
-          onChange={(e) => handleNameChange(palette.id, e.target.value)}
-          onFocus={() => setEditingPaletteId(palette.id)}
-        />
+                {palettes.map((palette) => (
+                  <tr key={palette.id}>
+                    <td className="color-name-td">
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={paletteNameChanges[palette.id] || palette.name || ''}
+                        placeholder="Name your palette"
+                        onChange={(e) => handleNameChange(palette.id, e.target.value)}
+                        onFocus={() => setEditingPaletteId(palette.id)}
+                      />
+                      <div>
+                        <button
+                          className="btn-pallete btn-primary btn"
+                          onClick={() => handleSaveChanges(palette.id)}
+                        >
+                          Save
+                        </button>
+                        <button
+                          className="btn btn-primary btn-pallete"
+                          onClick={() => confirmDeletePalette(palette.id)}
+                        >
+                          Delete
+                        </button>
+                        <button
+                          className="btn btn-primary btn-pallete"
+                          onClick={() => copyPaletteToClipboard(palette)}
+                        >
+                          Copy
+                        </button>
+                      </div>
+                    </td>
+                    <td className="color-palette-td">
+                      <div className="color-tiles-container">
+                        {palette.colors.map((color, index) => {
+                          const hexCode = `#${color.red.toString(16).padStart(2, '0')}${color.green
+                            .toString(16)
+                            .padStart(2, '0')}${color.blue.toString(16).padStart(2, '0')}`.toUpperCase();
 
-        <div>
-          <button
-            className="btn-pallete btn-primary btn"
-            onClick={() => handleSaveChanges(palette.id)}
-          >
-            Save
-          </button>
-          <button
-            className="btn btn-primary btn-pallete"
-            onClick={() => confirmDeletePalette(palette.id)}
-          >
-            Delete
-          </button>
-          <button
-            className="btn btn-primary btn-pallete"
-            onClick={() => copyPaletteToClipboard(palette)}
-          >
-            Copy
-          </button>
-        </div>
-      </td>
-
-      <td className="color-palette-td" data-label="Colors (Hex Codes and Tiles)">
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-          {palette.colors.map((color, index) => {
-            const hexCode = `#${color.red.toString(16).padStart(2, '0')}${color.green
-              .toString(16)
-              .padStart(2, '0')}${color.blue.toString(16).padStart(2, '0')}`.toUpperCase();
-
-            return (
-              <div
-                key={index}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  margin: '5px',
-                }}
-              >
-                <div
-                  style={{
-                    backgroundColor: hexCode,
-                    width: '50px',
-                    height: '50px',
-                    border: '1px solid #ccc',
-                  }}
-                />
-                <span style={{ fontSize: '12px', marginTop: '5px' }}>{hexCode}</span>
-              </div>
-            );
-          })}
-        </div>
-      </td>
-    </tr>
-  ))}
-</tbody>
-
-
-
+                          return (
+                            <div key={index} className="color-tile-wrapper">
+                              <div 
+                                className="color-tile" 
+                                style={{ backgroundColor: hexCode }}
+                              />
+                              <span className="hex-code">{hexCode}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
           )}
 

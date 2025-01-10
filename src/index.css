@@ -19,16 +19,60 @@
 
 /* Reduce the width of the left column */
 .color-name-td {
-  width: 20%; /* Adjust this percentage to reduce the width */
-  max-width: 30%; /* Restrict the column's maximum width */
-  padding: 10px; /* Adjust padding to make it more spacious */
+  width: 30%;
+  padding: 15px;
 }
 
-/* Adjust the right column to take the remaining space */
-.color-palette-td {
-  width: 80%; /* Take the remaining width */
-  padding: 10px; /* Adjust padding for the right column */
+/* Container for the buttons */
+.color-name-td > div {
+  display: flex;
+  flex-direction: row;  /* Change from column to row */
+  align-items: center;  /* Center align the buttons vertically */
+  gap: 10px;           /* Space between buttons */
+  margin-top: 10px;
 }
+
+/* Style for individual buttons */
+.btn-pallete {
+  width: auto;
+  margin: 0;          /* Remove vertical margin */
+}
+
+/* Style for the color tiles section */
+.color-palette-td {
+  width: 70%;
+  padding: 15px;
+}
+
+.color-tiles-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 10px;
+}
+
+.color-tile-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70px;
+}
+
+.color-tile {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+}
+
+.hex-code {
+  font-size: 12px;
+  text-align: center;
+  width: 70px;
+  display: block;
+  margin-top: 5px;
+}
+
 .color-row {
   display: flex;
   flex-wrap: wrap; /* Allow wrapping */
@@ -302,7 +346,7 @@ p.footer-text {
   background-color: #ffffff;
   width: 50px;
   height: 50px;
-  margin-right: 50px;
+  margin-right: 0px;
   border: 1px solid black; /* Add border */
   padding: 20px;
 }
@@ -399,6 +443,11 @@ th {
 
 /* Mobile devices (up to 375px) */
 @media (max-width: 393px) {
+
+  .btn, .home-button {
+    width: 100% !important;
+    max-width: 100% !important;
+
   .color-row {
     display: flex; /* Use flexbox for rows */
     flex-direction: column; /* Stack columns vertically */
@@ -845,13 +894,13 @@ th {
     display: flex;
     align-items: center;
     gap: 0.5rem; /* Space between buttons */
-    margin-bottom: 40px;
+    margin-bottom: 25px;
   }
   
 
   .btn {
     margin-bottom: 5px !important;
-    margin-top: 5px !important; 
+    margin-top: 25px !important; 
     padding: 15px;
     margin-right: 0px !important;
 }
@@ -1049,7 +1098,7 @@ th {
     border: none; /* Remove border */
     box-shadow: none; /* Remove box-shadow */
   }
-  }
+  
   body {
     padding-bottom: 80px;
   }
@@ -1130,4 +1179,172 @@ th {
    }
  }
   
+
+/* Add these new styles for the palette table */
+.color-row {
+  display: flex;
+  width: 100%;
+}
+
+.color-name-td {
+  width: 30%;
+  padding: 15px;
+  border-right: 1px solid #dee2e6;
+}
+
+.color-palette-td {
+  width: 70%;
+  padding: 15px;
+}
+
+/* Style for the color tiles container */
+.color-palette-td > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+/* Style for individual color tile containers */
+.color-palette-td > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+}
+
+/* Style for the color squares */
+.color-tile {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+}
+
+/* Style for the hex code text */
+.hex-code {
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Style for the buttons container */
+.btn-pallete {
+  margin: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .color-row {
+    flex-direction: column;
+  }
+  
+  .color-name-td,
+  .color-palette-td {
+    width: 100%;
+  }
+}
+
+.color-tiles-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 10px;
+}
+
+.color-tile-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70px;
+}
+
+.color-tile {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+}
+
+.hex-code {
+  font-size: 12px;
+  text-align: center;
+  width: 70px;
+  display: block;
+  margin-top: 5px;
+}
+
+.color-name-td {
+  width: 30%;
+  vertical-align: top;
+}
+
+.color-palette-td {
+  width: 70%;
+  vertical-align: top;
+}
+
+.full-width-mobile {
+    width: 100% !important;
+    margin-bottom: 10px; /* Add spacing between stacked buttons */
+  }
+
+  .btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .home-button {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 10px 0 !important;
+  }
+
+  .upload-button-container {
+    width: 100%;
+  }
+
+  .upload-button-container .btn {
+    width: 100% !important;
+    margin: 5px 0 !important;
+  }
+
+  
+
+/* Tablet styles (394px to 767px) */
+@media (min-width: 394px) and (max-width: 767px) {
+  .home-button {
+    margin-top: 46.59px !important;
+    margin-bottom: 46.59px !important;
+  }
+
+  .btn {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .upload-button-container .btn {
+    margin: 10px 0 !important;
+  }
+}
+
+/* Mobile and Tablet styles (up to 768px) */
+@media (max-width: 768px) {
+  .home-button {
+    margin-top: 46.59px !important;
+    margin-bottom: 46.59px !important;
+  }
+
+  .btn {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .upload-button-container .btn {
+    margin: 10px 0 !important;
+  }
+  
+  
+
 
