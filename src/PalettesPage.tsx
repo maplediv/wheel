@@ -15,6 +15,10 @@ interface Palette {
   colors: Color[];
 }
 
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://wheelback.onrender.com'
+  : 'http://localhost:10000';
+
 const PalettesPage: React.FC = () => {
   const { user } = useAuth();
   const [palettes, setPalettes] = useState<Palette[]>([]);
@@ -34,7 +38,7 @@ const PalettesPage: React.FC = () => {
       }
 
       try {
-        const palettesUrl = `http://localhost:10000/api/palettes/${user.userId}`;
+        const palettesUrl = `${API_BASE_URL}/api/palettes/${user.userId}`;
         const response = await axios.get<Palette[]>(palettesUrl);
         setPalettes(response.data);
       } catch (error) {
@@ -47,7 +51,7 @@ const PalettesPage: React.FC = () => {
 
   const updatePaletteName = async (paletteId: number, name: string) => {
     try {
-      await axios.put(`http://localhost:10000/api/palettes/${paletteId}`, { name });
+      await axios.put(`${API_BASE_URL}/api/palettes/${paletteId}`, { name });
       setPalettes((prev) =>
         prev.map((palette) => (palette.id === paletteId ? { ...palette, name } : palette))
       );
@@ -80,7 +84,7 @@ const PalettesPage: React.FC = () => {
     if (selectedPaletteId === null) return;
   
     try {
-      await axios.delete(`http://localhost:10000/api/palettes/${selectedPaletteId}`);
+      await axios.delete(`${API_BASE_URL}/api/palettes/${selectedPaletteId}`);
       setPalettes((prev) => prev.filter((palette) => palette.id !== selectedPaletteId));
       setShowDeleteModal(false); // Hide modal after deletion
   
