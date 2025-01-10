@@ -51,7 +51,7 @@ const PalettesPage: React.FC = () => {
 
   const updatePaletteName = async (paletteId: number, name: string) => {
     try {
-      await axios.put(`http://localhost:10000/api/palettes/${paletteId}`, { name });
+      await axios.put(`${API_BASE_URL}/api/palettes/${paletteId}`, { name });
       setPalettes((prev) =>
         prev.map((palette) => (palette.id === paletteId ? { ...palette, name } : palette))
       );
@@ -84,7 +84,7 @@ const PalettesPage: React.FC = () => {
     if (selectedPaletteId === null) return;
   
     try {
-      await axios.delete(`http://localhost:10000/api/palettes/${selectedPaletteId}`);
+      await axios.delete(`${API_BASE_URL}/api/palettes/${selectedPaletteId}`);
       setPalettes((prev) => prev.filter((palette) => palette.id !== selectedPaletteId));
       setShowDeleteModal(false); // Hide modal after deletion
   
