@@ -12,7 +12,8 @@ interface Color {
 interface Palette {
   id: number;
   name?: string;
-  colors: Color[];
+  hexcodes: string;
+  created_at?: string;
 }
 
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
@@ -103,15 +104,7 @@ const PalettesPage: React.FC = () => {
   };
   
   const copyPaletteToClipboard = (palette: Palette) => {
-    const hexCodes = palette.colors
-      .map(
-        (color) =>
-          `#${color.red.toString(16).padStart(2, '0')}${color.green
-            .toString(16)
-            .padStart(2, '0')}${color.blue.toString(16).padStart(2, '0')}`.toUpperCase()
-      )
-      .join(', ');
-
+    const hexCodes = palette.hexcodes;
     navigator.clipboard
       .writeText(hexCodes)
       .then(() => {
@@ -186,21 +179,15 @@ const PalettesPage: React.FC = () => {
                       </td>
                       <td className="color-palette-td">
                         <div className="color-tiles-container">
-                          {palette.colors.map((color, index) => {
-                            const hexCode = `#${color.red.toString(16).padStart(2, '0')}${color.green
-                              .toString(16)
-                              .padStart(2, '0')}${color.blue.toString(16).padStart(2, '0')}`.toUpperCase();
-
-                            return (
-                              <div key={index} className="color-tile-wrapper">
-                                <div 
-                                  className="color-tile" 
-                                  style={{ backgroundColor: hexCode }}
-                                />
-                                <span className="hex-code">{hexCode}</span>
-                              </div>
-                            );
-                          })}
+                          {palette.hexcodes.split(',').map((hexCode, index) => (
+                            <div key={index} className="color-tile-wrapper">
+                              <div 
+                                className="color-tile" 
+                                style={{ backgroundColor: hexCode }}
+                              />
+                              <span className="hex-code">{hexCode}</span>
+                            </div>
+                          ))}
                         </div>
                       </td>
                     </tr>
