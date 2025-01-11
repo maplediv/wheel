@@ -443,10 +443,10 @@ th {
 
 /* Mobile devices (up to 375px) */
 @media (max-width: 393px) {
-
   .btn, .home-button {
     width: 100% !important;
     max-width: 100% !important;
+  }
 
   .color-row {
     display: flex; /* Use flexbox for rows */
@@ -474,8 +474,8 @@ th {
   }
 
   .color-name-td button {
-    width: auto; /* Allow buttons to shrink to their content */
-    align-self: flex-start; /* Align buttons to the left */
+    width: 100%;
+    margin: 5px 0 !important;
   }
 
   .table {
@@ -726,7 +726,6 @@ th {
 
 /* Tablet devices (376px to 768px) */
 @media (min-width: 394px) and (max-width: 768px) {
-
   .row.align-items-start{
     margin-bottom: 20px !important;
   }

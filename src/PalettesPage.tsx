@@ -12,7 +12,8 @@ interface Color {
 interface Palette {
   id: number;
   name?: string;
-  hexcodes: string;
+  hexcodes?: string;
+  palette?: string[];
   created_at?: string;
 }
 
@@ -39,14 +40,18 @@ const PalettesPage: React.FC = () => {
       }
 
       try {
-        console.log('API_BASE_URL:', API_BASE_URL);
-        console.log('User ID:', user.userId);
-        const palettesUrl = `${API_BASE_URL}/api/palettes/${user.userId}`;
-        console.log('Fetching from URL:', palettesUrl);
+        const response = await axios.get<Palette[]>(`${API_BASE_URL}/api/palettes/${user.userId}`);
         
-        const response = await axios.get<Palette[]>(palettesUrl);
-        console.log('Response:', response.data);
-        setPalettes(response.data || []);
+        // Transform the data to consistent format
+        const validPalettes = response.data.map(palette => ({
+          id: palette.id,
+          name: palette.name || '',
+          hexcodes: palette.hexcodes || (palette.palette ? palette.palette.join(',') : ''),
+          created_at: palette.created_at
+        })).filter(palette => palette.hexcodes);
+
+        console.log('Transformed palettes:', validPalettes);
+        setPalettes(validPalettes);
       } catch (error) {
         console.error('Error fetching palettes:', error);
         setPalettes([]);
@@ -55,6 +60,12 @@ const PalettesPage: React.FC = () => {
 
     fetchPalettes();
   }, [user]);
+
+  useEffect(() => {
+    if (palettes.length > 0) {
+      console.log('First palette:', palettes[0]);
+    }
+  }, [palettes]);
 
   const updatePaletteName = async (paletteId: number, name: string) => {
     try {
@@ -144,8 +155,14 @@ const PalettesPage: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {palettes.map((palette) => (
-                  palette && (
+                {palettes.map((palette) => {
+                  if (!palette) {
+                    console.log('Null palette found');
+                    return null;
+                  }
+                  console.log('Processing palette:', palette);
+
+                  return (
                     <tr key={palette.id}>
                       <td className="color-name-td">
                         <input
@@ -179,7 +196,7 @@ const PalettesPage: React.FC = () => {
                       </td>
                       <td className="color-palette-td">
                         <div className="color-tiles-container">
-                          {palette.hexcodes.split(',').map((hexCode, index) => (
+                          {palette.hexcodes && palette.hexcodes.split(',').map((hexCode, index) => (
                             <div key={index} className="color-tile-wrapper">
                               <div 
                                 className="color-tile" 
@@ -191,8 +208,8 @@ const PalettesPage: React.FC = () => {
                         </div>
                       </td>
                     </tr>
-                  )
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           )}
