@@ -21,9 +21,7 @@ const PaintPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const auth = useAuth();
-  const userid = auth.user?.id;
 
-  // Handle the color response from the Vision API
   const handleColorResponse = (response: ColorResponse) => {
     setColorResponse(response);
     setLoading(false);
@@ -64,7 +62,7 @@ const PaintPage: React.FC = () => {
           {colorResponse ? (
             <ColorTiles
               response={colorResponse.responses?.[0]?.imagePropertiesAnnotation?.dominantColors?.colors || []}
-              userid={userid}
+              userid={auth.user?.id}
             />
           ) : (
             !loading && <p>No colors to display. Please upload and analyze an image.</p>

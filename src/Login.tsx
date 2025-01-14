@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import { Helmet } from 'react-helmet';
 
@@ -17,6 +17,13 @@ const Login: React.FC = () => {
 
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.showCreateAccount) {
+      setShowLoginForm(false);
+    }
+  }, [location]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();

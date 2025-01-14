@@ -3,6 +3,7 @@ import axios from 'axios';
 import './index.css';
 import { useAuth } from './AuthContext';
 import ColorTiles from './ColorTiles';  // Adjust the path according to your project structure
+import { useNavigate } from 'react-router-dom';
 
 
 interface VisionAPIComponentProps {
@@ -14,9 +15,9 @@ const VisionAPIComponent: React.FC<VisionAPIComponentProps> = ({ onColorResponse
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
-  const [colorData, setColorData] = useState<any | null>(null); // Define colorData as a state variable
-
-  const resolvedUserId = user?.userId || localStorage.getItem('userId');
+  const [colorData, setColorData] = useState<any | null>(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const navigate = useNavigate();
 
   const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -27,8 +28,13 @@ const VisionAPIComponent: React.FC<VisionAPIComponentProps> = ({ onColorResponse
   };
 
   const handleImageAnalysis = async () => {
-    if (!imageUrl || !resolvedUserId) {
-      console.error('Image URL or User ID is missing.');
+    if (!user) {
+      setShowLoginModal(true);
+      return;
+    }
+
+    if (!imageUrl) {
+      console.error('Image URL is missing.');
       return;
     }
 
@@ -76,7 +82,7 @@ const VisionAPIComponent: React.FC<VisionAPIComponentProps> = ({ onColorResponse
         const existingPalettes = JSON.parse(localStorage.getItem('savedPalette') || '[]');
         const newPalette = {
           id: existingPalettes.length + 1,
-          userId: resolvedUserId,
+          userId: user?.userId,
           name: `Palette ${existingPalettes.length + 1}`,
           colors: colors.map((color: any) => ({
             red: Math.round(color.color.red),
@@ -125,13 +131,47 @@ const VisionAPIComponent: React.FC<VisionAPIComponentProps> = ({ onColorResponse
           <div className="image-container">
             <img src={imageUrl} alt="Uploaded Image" className="uploaded-image" />
           </div>
-  
-          {/* Render ColorTiles if colorData is available */}
-          {colorData && <ColorTiles response={colorData} userId={resolvedUserId} />}
+          <div className="color-tiles-wrapper">
+            {colorData && <ColorTiles response={colorData} userId={user?.userId} />}
+          </div>
         </div>
       )}
   
       {error && <div className="error-message">{error}</div>}
+
+      {/* Login Modal */}
+      {showLoginModal && (
+        <div className="modal" style={{ display: 'block', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Login Required</h5>
+                <button type="button" className="close" onClick={() => setShowLoginModal(false)}>
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <p>Please log in or create an account to analyze images and save palettes.</p>
+              </div>
+              <div className="modal-footer">
+                
+                <button className="btn btn-primary" onClick={() => {
+                  setShowLoginModal(false);
+                  navigate('/login');
+                }}>
+                  Login
+                </button>
+                <button className="btn btn-success" onClick={() => {
+                  setShowLoginModal(false);
+                  navigate('/login', { state: { showCreateAccount: true } });
+                }}>
+                  Create Account
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

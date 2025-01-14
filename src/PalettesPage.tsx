@@ -12,8 +12,8 @@ interface Color {
 interface Palette {
   id: number;
   name?: string;
+  colors?: Color[];
   hexcodes?: string;
-  palette?: string[];
   created_at?: string;
 }
 
@@ -24,6 +24,7 @@ const API_BASE_URL = process.env.NODE_ENV === 'production'
 const PalettesPage: React.FC = () => {
   const { user } = useAuth();
   const [palettes, setPalettes] = useState<Palette[]>([]);
+  const [loading, setLoading] = useState(true);
   const [editingPaletteId, setEditingPaletteId] = useState<number | null>(null);
   const [paletteNameChanges, setPaletteNameChanges] = useState<{ [key: number]: string }>({});
   const [successMessage, setSuccessMessage] = useState<string>('');
@@ -35,26 +36,37 @@ const PalettesPage: React.FC = () => {
   useEffect(() => {
     const fetchPalettes = async () => {
       if (!user) {
-        console.error('User not logged in.');
+        console.log('Waiting for user data...');
         return;
       }
 
       try {
+        setLoading(true);
+        console.log('Fetching palettes for user:', user);
         const response = await axios.get<Palette[]>(`${API_BASE_URL}/api/palettes/${user.userId}`);
         
-        // Transform the data to consistent format
-        const validPalettes = response.data.map(palette => ({
-          id: palette.id,
-          name: palette.name || '',
-          hexcodes: palette.hexcodes || (palette.palette ? palette.palette.join(',') : ''),
-          created_at: palette.created_at
-        })).filter(palette => palette.hexcodes);
+        console.log('Raw response:', response);
+        console.log('Raw palette data:', response.data);
 
-        console.log('Transformed palettes:', validPalettes);
+        // Update validation to check for either colors array or hexcodes
+        const validPalettes = response.data.filter(palette => {
+          const isValid = palette && (
+            (palette.colors && palette.colors.length > 0) || 
+            (palette.hexcodes && palette.hexcodes.length > 0)
+          );
+          if (!isValid) {
+            console.log('Invalid palette:', palette);
+          }
+          return isValid;
+        });
+
+        console.log('Valid palettes:', validPalettes);
         setPalettes(validPalettes);
       } catch (error) {
         console.error('Error fetching palettes:', error);
         setPalettes([]);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -114,8 +126,41 @@ const PalettesPage: React.FC = () => {
     }
   };
   
+  const getColorsFromPalette = (palette: Palette): Color[] => {
+    if (palette.colors && palette.colors.length > 0) {
+      return palette.colors;
+    }
+    if (palette.hexcodes) {
+      return palette.hexcodes.split(',').map(hex => {
+        const value = parseInt(hex.replace('#', ''), 16);
+        return {
+          red: (value >> 16) & 255,
+          green: (value >> 8) & 255,
+          blue: value & 255
+        };
+      });
+    }
+    return [];
+  };
+
   const copyPaletteToClipboard = (palette: Palette) => {
-    const hexCodes = palette.hexcodes;
+    let hexCodes: string;
+    if (palette.hexcodes) {
+      hexCodes = palette.hexcodes;
+    } else if (palette.colors) {
+      hexCodes = palette.colors
+        .map(
+          (color) =>
+            `#${color.red.toString(16).padStart(2, '0')}${color.green
+              .toString(16)
+              .padStart(2, '0')}${color.blue.toString(16).padStart(2, '0')}`.toUpperCase()
+        )
+        .join(',');
+    } else {
+      console.error('No color data found in palette');
+      return;
+    }
+
     navigator.clipboard
       .writeText(hexCodes)
       .then(() => {
@@ -126,6 +171,15 @@ const PalettesPage: React.FC = () => {
         console.error('Failed to copy palette:', err);
       });
   };
+
+  if (loading) {
+    return (
+      <div className="home-page-container">
+        <p>Loading palettes...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="home-page-container">
       <Helmet>
@@ -194,17 +248,35 @@ const PalettesPage: React.FC = () => {
                           </button>
                         </div>
                       </td>
-                      <td className="color-palette-td">
-                        <div className="color-tiles-container">
-                          {palette.hexcodes && palette.hexcodes.split(',').map((hexCode, index) => (
-                            <div key={index} className="color-tile-wrapper">
-                              <div 
-                                className="color-tile" 
-                                style={{ backgroundColor: hexCode }}
-                              />
-                              <span className="hex-code">{hexCode}</span>
-                            </div>
-                          ))}
+                      <td className="color-palette-td" data-label="Colors (Hex Codes and Tiles)">
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                          {getColorsFromPalette(palette).map((color, index) => {
+                            const hexCode = `#${color.red.toString(16).padStart(2, '0')}${color.green
+                              .toString(16)
+                              .padStart(2, '0')}${color.blue.toString(16).padStart(2, '0')}`.toUpperCase();
+
+                            return (
+                              <div
+                                key={index}
+                                style={{
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  alignItems: 'center',
+                                  margin: '5px',
+                                }}
+                              >
+                                <div
+                                  style={{
+                                    backgroundColor: hexCode,
+                                    width: '50px',
+                                    height: '50px',
+                                    border: '1px solid #ccc',
+                                  }}
+                                />
+                                <span style={{ fontSize: '12px', marginTop: '5px' }}>{hexCode}</span>
+                              </div>
+                            );
+                          })}
                         </div>
                       </td>
                     </tr>

@@ -96,18 +96,38 @@ app.put('/api/palettes/:paletteId', async (req, res) => {
 // Get palettes by user ID
 app.get('/api/palettes/:userId', async (req, res) => {
   const { userId } = req.params;
-  
+
   try {
     console.log('Fetching palettes for user:', userId);
     const result = await db.query(
-      'SELECT * FROM palettes WHERE userid = $1 ORDER BY created_at DESC',
+      'SELECT id, name, hexcodes, created_at FROM palettes WHERE userid = $1 ORDER BY created_at DESC',
       [userId]
     );
-    console.log('Found palettes:', result.rows);
-    res.json(result.rows);
+
+    console.log('Database result:', result.rows);
+
+    const palettes = result.rows.map(row => {
+      const hexcodes = row.hexcodes;
+      return {
+        id: row.id,
+        name: row.name,
+        created_at: row.created_at,
+        colors: hexcodes.split(',').map(hex => {
+          const value = parseInt(hex.replace('#', ''), 16);
+          return {
+            red: (value >> 16) & 255,
+            green: (value >> 8) & 255,
+            blue: value & 255
+          };
+        })
+      };
+    });
+
+    console.log('Sending palettes:', palettes);
+    res.status(200).json(palettes);
   } catch (error) {
     console.error('Error fetching palettes:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
@@ -151,30 +171,54 @@ app.post('/register', async (req, res) => {
   }
 });
 
+async function getUserPaletteCount(userId) {
+  try {
+    const result = await db.query(
+      'SELECT COUNT(*) as count FROM palettes WHERE userid = $1',
+      [userId]
+    );
+    console.log(`Current palette count for user ${userId}:`, result.rows[0].count);
+    return parseInt(result.rows[0].count);
+  } catch (error) {
+    console.error('Error counting palettes:', error);
+    throw error;
+  }
+}
+
 app.post('/api/palettes', async (req, res) => {
   console.log('Received request to save palette:', req.body);
-  const { userId, hexCodes } = req.body; // Get user ID and hex codes from the request body
+  const { userId, hexCodes } = req.body;
 
-  // Ensure hexCodes is an array, default to empty array if undefined
-  const palette = Array.isArray(hexCodes) ? hexCodes : [];
-
-  // Validate that palette is an array
-  if (!Array.isArray(palette)) {
-    return res.status(400).json({ error: "Palette must be an array" });
+  if (!userId) {
+    console.error('No userId provided');
+    return res.status(400).json({ error: "userId is required" });
   }
 
-  // Join the hex codes array into a comma-separated string
-  const hexCodeString = palette.join(',');
-
   try {
-    // Save the hex codes in the database
-    const query = 'INSERT INTO palettes (userid, hexcodes) VALUES ($1, $2) RETURNING id';
+    // Check current palette count
+    const paletteCount = await getUserPaletteCount(userId);
+    console.log(`User ${userId} has ${paletteCount} palettes`);
+    
+    if (paletteCount >= 2) {
+      console.log(`User ${userId} attempted to exceed palette limit`);
+      return res.status(403).json({ 
+        error: "Maximum palette limit reached (2). Please delete an existing palette before creating a new one."
+      });
+    }
+
+    // Join the hex codes array into a comma-separated string
+    const hexCodeString = Array.isArray(hexCodes) ? hexCodes.join(',') : '';
+    console.log('Saving new palette with hexcodes:', hexCodeString);
+
+    // Save the palette
+    const query = 'INSERT INTO palettes (userid, hexcodes) VALUES ($1, $2) RETURNING id, hexcodes';
     const result = await db.query(query, [userId, hexCodeString]);
+    console.log('Palette saved successfully:', result.rows[0]);
 
     const newPalette = {
       id: result.rows[0].id,
       userId,
-      palette, // Return the array of hex codes for confirmation
+      hexcodes: result.rows[0].hexcodes
     };
 
     res.status(201).json(newPalette);

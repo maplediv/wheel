@@ -43,45 +43,41 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
   const colors = response?.responses?.[0]?.imagePropertiesAnnotation?.dominantColors?.colors || [];
 
   const handleSavePalette = async () => {
-    if (!userId) {
-      console.error('User ID is missing. Please log in.');
+    if (!user || !user.userId) {
+      console.error('No user logged in or missing userId');
+      setErrorMessage('Please log in to save palettes');
       return;
     }
 
     try {
-      const hexCodes = colors.map((color) => {
-        const hexCode = `#${Math.round(color.color.red).toString(16).padStart(2, '0')}${Math.round(color.color.green).toString(16).padStart(2, '0')}${Math.round(color.color.blue).toString(16).padStart(2, '0')}`.toUpperCase();
-        return hexCode;
+      console.log('Attempting to save palette for user:', user.userId);
+      const hexCodes = colors.map(color => {
+        const { red, green, blue } = color.color;
+        return `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`.toUpperCase();
       });
 
-      console.log('Sending palette data:', { userId, hexCodes });
-
-      const response = await fetch(`${API_BASE_URL}/api/palettes`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userId, hexCodes }),
+      console.log('Sending request with hexCodes:', hexCodes);
+      const response = await axios.post(`${API_BASE_URL}/api/palettes`, {
+        userId: user.userId,
+        hexCodes
       });
 
-      const data = await response.json();
-      console.log('Response from backend:', data);
-
-      const newPalette: Palette = {
-        id: Date.now(),
-        name: `Palette ${Date.now()}`,
-        colors,
-      };
-
-      setSavedPalettes((prevPalettes) => [...prevPalettes, newPalette]);
-
-      // Show success message
-      setSuccessMessage('Palette saved successfully!');
-
-      // Hide success message after 3 seconds
-      setTimeout(() => setSuccessMessage(''), 3000);
+      if (response.status === 201) {
+        setSuccessMessage('Palette saved successfully!');
+        setTimeout(() => setSuccessMessage(''), 3000);
+      }
     } catch (error) {
-      console.error('Error saving palette:', error);
+      console.error('Save palette error:', error);
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 403) {
+          setErrorMessage(error.response.data.error);
+        } else {
+          setErrorMessage(`Error saving palette: ${error.response?.data?.error || 'Please try again.'}`);
+        }
+      } else {
+        setErrorMessage('Error saving palette. Please try again.');
+      }
+      setTimeout(() => setErrorMessage(''), 3000);
     }
   };
 
@@ -104,27 +100,33 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
         <table className="table table-bordered">
           <thead>
             <tr>
-              <th>Colors</th>
-              <th>Hex Code</th>
+              <th>Colors (Hex Codes and Tiles)</th>
             </tr>
           </thead>
           <tbody>
-            {colors.map((color, index) => {
-              const hexCode = `#${Math.round(color.color.red).toString(16).padStart(2, '0')}${Math.round(color.color.green).toString(16).padStart(2, '0')}${Math.round(color.color.blue).toString(16).padStart(2, '0')}`.toUpperCase();
-              return (
-                <tr key={index}>
-                  <td className="color-tile">
-                    <ColorTile color={color.color} />
-                  </td>
-                  <td className="hex-code">{hexCode}</td>
-                </tr>
-              );
-            })}
+            <tr>
+              <td className="color-palette-td" data-label="Colors (Hex Codes and Tiles)">
+                <div className="color-palette-flex-container">
+                  {colors.map((color, index) => {
+                    const hexCode = `#${Math.round(color.color.red).toString(16).padStart(2, '0')}${Math.round(color.color.green).toString(16).padStart(2, '0')}${Math.round(color.color.blue).toString(16).padStart(2, '0')}`.toUpperCase();
+                    
+                    return (
+                      <div key={index} className="color-tile-wrapper">
+                        <div 
+                          className="color-tile"
+                          style={{ backgroundColor: hexCode }}
+                        />
+                        <span className="hex-code">{hexCode}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
 
-      {/* Display success message with Bootstrap classes */}
       {successMessage && (
         <div className="alert alert-success text-center" role="alert">
           {successMessage}
@@ -133,9 +135,7 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
 
       <div className="save-palette-container">
         <button onClick={handleSavePalette} className="btn btn-primary">Save Palette</button>
-        
-        {/* Add a new button to navigate to the palettes page */}
-        <button onClick={() => navigate('/palettes')} className="btn btn-primary" style={{ marginLeft: '10px' }}>
+        <button onClick={() => navigate('/palettes')} className="btn btn-primary">
           View Palettes
         </button>
       </div>
