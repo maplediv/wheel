@@ -118,7 +118,7 @@ const Login: React.FC = () => {
                       type="text"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
-                      className="form-control"
+                      className="form-control-login"
                       placeholder="First Name"
                       required
                     />
@@ -128,7 +128,7 @@ const Login: React.FC = () => {
                       type="text"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
-                      className="form-control"
+                      className="form-control-login"
                       placeholder="Last Name"
                       required
                     />
@@ -138,7 +138,7 @@ const Login: React.FC = () => {
               <div className="mb-3">
                 <input
                   type="email"
-                  className="form-control"
+                  className="form-control-login"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
@@ -148,7 +148,7 @@ const Login: React.FC = () => {
               <div className="mb-3">
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control-login"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"

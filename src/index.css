@@ -11,33 +11,329 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-.table {
+.form-control-login {
   display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+ 
+}
+.form-control {
+  display: block;
+  width: 35% !important;
+  max-width: 35% !important;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+ 
+}
+.form-container {
   width: 100%;
-  margin-bottom: 0;
-  background-color: transparent;
-  border-collapse: collapse;
-}
-
-.table-bordered {
+  max-width: 500px;
+  margin: 1.75rem auto;
+  background-color: white;
+  border-radius: 0.3rem;
   border: 1px solid #dee2e6;
+  padding: 2rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.uploaded-image{
+  margin-top: 20px;
+  width: 100%; /* Set the width of the uploaded image to 100% */
+  max-width: 100%; /* Ensure the image does not exceed its container width */
+  margin-bottom: 80px;
 }
 
-/* Reduce the width of the left column */
-.color-name-td {
-  width: 30%;
+.color-palette-td {
+  max-width: 100% !important;
+  width: 100% !important; /* Force each column to take up full width */
+  display: block; /* Ensure they behave like block elements */
+  box-sizing: border-box; /* Include padding and border in width */
+  margin-top: 20px !important; /* Reset any unintended margin */
+  padding: 1rem; /* Add consistent padding for readability */
+}
+
+.palspace{
+  margin-bottom: 80px;
+}
+
+
+
+.img-fluid {
+  width: auto; /* Let the browser calculate the width to maintain aspect ratio */
+  height: auto; /* Let the browser calculate the height to maintain aspect ratio */
+  max-width: 400px; /* Set the maximum width of the image */
+  max-height: 400px; /* Set the maximum height of the image */
+  display: block; /* Ensure proper rendering */
+  margin-bottom: 60px;
+}
+
+li.custom-list-item {
+  font-size: 18px;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.custom-list-item{
+  margin-left: 20px;
+  white-space: nowrap;  /* Keep text on one line */
+     /* Hide overflow */
+
+  
+}
+
+.custom-ul {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-bottom: 0px;
+}
+
+.color-text {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-top: 0; /* Remove top margin */
+  margin-bottom: 20px; /* Add bottom margin */
+  text-align: left;
+}
+
+
+.save-palette-container {
+  flex-direction: column;
+  margin-right: 0px;
+  width: 100% !important;
+  align-items: left;
+}
+
+.upload-button-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.custom-button {
+  margin-top: 30px !important;
+  margin-bottom: 40px !important;
+  margin-right: 20px !important;
+  display: inline-block;
+  font-size: 18px;
+  width: 180px !important;
+  max-width: 180px !important;
+  color: #1473e6;
+  background-color: #ffffff;
+  border: 1px solid #1473e6;
   padding: 15px;
+  border-radius: 0.25rem;
+  text-align: center;
+  }
+
+
+.color-palette-td > div {
+  width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 0px !important;
+  margin-bottom: 40px !important;
 }
 
-/* Container for the buttons */
-.color-name-td > div {
+.form-button-container {
   display: flex;
-  flex-direction: row;  /* Change from column to row */
-  align-items: center;  /* Center align the buttons vertically */
-  gap: 10px;           /* Space between buttons */
-  margin-top: 10px;
+  flex-direction: row;  /* Make items display in a row */
+  align-items: center;  /* Center items vertically */
+  gap: 10px;
+  width: 100%;
 }
+
+.form-button-container {
+  flex: 1;  /* Take up remaining space */
+  margin-bottom: 0 !important;  /* Remove bottom margin */
+}
+.btnsave {
+
+  display: inline-block;
+  font-size: 18px;
+  width: 100px !important;
+  max-width: 100px !important;
+  color: #ffffff !important;
+  background-color: #1473e6;
+  border: #1473e6;
+  padding: 15px;
+  text-align: center;  /* Center text horizontally */
+  line-height: .5;     /* Adjust line height for vertical centering */
+  vertical-align: middle;  /* Center text vertically */
+  border-radius: 0.25rem;
+}
+
+.form-control {
+  display: block;
+  width: 35% !important;
+  max-width: 35% !important;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+ 
+}
+
+
+.full-width-mobile {
+  width: auto;  /* Default width for desktop */
+}
+
+
+.color-palette-flex-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: left !important;
+  
+}
+
+.color-palette-td > div {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: left !important;
+}
+
+
+
+
+
+.footer-spacing{
+  margin-bottom: 100px !important;
+}
+
+.home-page-content{
+  margin-bottom: 60px !important;
+}
+
+
+
+.btnprm {
+  margin-top: 30px !important;
+  margin-bottom: 40px !important;
+  margin-right: 20px !important;
+  display: inline-block;
+  font-size: 18px;
+  width: 180px !important;
+  max-width: 180px !important;
+  color: #ffffff;
+  background-color: #1473e6;
+  border: 1px solid #1473e6;
+  padding: 15px;
+  border-radius: 0.25rem;
+}
+.btn {
+  margin-top: 30px !important;
+  margin-bottom: 40px !important;
+  display: inline-block;
+  font-size: 18px;
+  width: 180px !important;
+  max-width: 180px !important;
+  color: #1473e6;
+  background-color: #ffffff;
+  border: 1px solid #1473e6;
+  padding: 15px;
+  border-radius: 0.25rem;
+}
+
+
+
+
+
+h1 {
+  font-size: 40px !important;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+h2 {
+  font-size: 32px;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  font-weight: semi-bold;
+}
+
+
+p.responsive-text {
+  font-size: 18px;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #000;
+  animation: spin 1s ease-in-out infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.loading-text {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+
+.color-palette-td > div {
+  width: 50%;
+  display: flex;
+  
+  gap: 10px;
+  
+}
+
+.color-tile-display {
+  background-color: inherit;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+} 
+
 
 /* Style for individual buttons */
 .btn-pallete {
@@ -45,22 +341,13 @@
   margin: 0;          /* Remove vertical margin */
 }
 
-/* Style for the color tiles section */
-.color-palette-td {
-  width: 100% !important;
-  display: block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 1rem;
-  border-top: none;
-}
+
 
 .color-tiles-container {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  padding: 10px;
-  margin-top: 250px;
+  margin-top: 385px;
 }
 
 .color-tile-wrapper {
@@ -84,14 +371,6 @@
   display: block;
   margin-top: 5px;
 }
-
-.color-row {
-  display: flex;
-  flex-wrap: wrap; /* Allow wrapping */
-  gap: 10px; /* Add spacing between items */
-}
-
-
 
 
 .success-message {
@@ -139,70 +418,13 @@
 
 
 
-.left-h1 {
- 
-  line-height: 1.1;
-  margin-top: 80px;
-  margin-bottom: 40px;
-  color: #000000;
-  text-align: left; /* Increase the margin-top to create more space */
-}
 
-.h1-custom {
- 
-  line-height: 1.1;
-  color: #000000;
-  text-align: center; /* Increase the margin-top to create more space */
-}
-
-h2 {
- 
-  line-height: 1.1;
-  margin-top: 0px;
-  margin-bottom: 40px;
-  color: #000000;
-  text-align: left; /* Increase the margin-top to create more space */
-  margin-right: 0px;
-}
-
-h3 {
-  font-size: 24px; /* Unified font size for h1 and h3 */
-  line-height: 1.1;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  color: #000000;
-  text-align: left; /* Increase the margin-top to create more space */
-}
-
-
-.form-container {
-  width: 100%;
-  max-width: 500px;
-  margin: 1.75rem auto;
-  background-color: white;
-  border-radius: 0.3rem;
-  border: 1px solid #dee2e6;
-  padding: 2rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-}
 
 .form-group {
   margin-bottom: 1rem;
 }
 
-.form-control {
-  display: block;
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
+
 
 .form-control:focus {
   color: #495057;
@@ -212,22 +434,14 @@ h3 {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-@media (max-width: 576px) {
-  .form-container {
-    margin: 0.5rem auto;
-    width: 95%;
-  }
-}
+
+  
+
 
 .footer-text {
   margin-top: 400px; /* Adjust the value as needed */
 }
 
-.btn-primary {
-  border: none; /* Remove the border */
-  box-shadow: none; /* Remove the box shadow */
-  background-color: #000000;
-}
 
 
 .account-heading {
@@ -239,31 +453,14 @@ h3 {
 }
 
 
-.color-table-column {
-  margin-top: 0px; /* Adjust the value as needed */
-}
 
-
-.home-button {
-  display: inline-block;
-  background-color: #000000;
-  margin-top: 46.59px;
-  margin-bottom: 46.59px;
-}
-
-.footer-spacing{
-  margin-bottom: 100px;
-}
 
 .no-margin-padding {
   margin: 0;
   padding: 0;
 }
 
-.responsive-text {
-  margin: 0;
-  padding: 0;
-}
+
 
 
 .input-small {
@@ -271,27 +468,13 @@ h3 {
 }
 
 
-.custom-button.no-bottom-padding {
-  margin-bottom: 0;
-}
-
 .button-container {
   margin-bottom: 40px; /* Adjust the margin value as needed */
 }
 
 
-.upload-button-container {
-  text-align: left; /* Override global text-center style */
-}
 
-.upload-button-container .btn {
-  margin-right: 0px; /* Add margin between buttons */
-}
 
-.uploaded-image {
-  width: 100%; /* Set the width of the uploaded image to 100% */
-  max-width: 100%; /* Ensure the image does not exceed its container width */
-}
 
 .home-page-container {
   display: flex;
@@ -310,18 +493,6 @@ h3 {
 .text-left {
   text-align: left;
 }
-
-.home-page-content {
-  margin-top: auto; /* Align the home page content at the top */
-}
-
-.color-text {
-  margin-top: 0; /* Remove top margin */
-  margin-bottom: 40px; /* Add bottom margin */
-  text-align: left;
-}
-
-
 
 /* Adjust the margin between the login icon and nav links */
 .navbar {
@@ -361,9 +532,9 @@ h3 {
   padding: 20px 0;
   text-align: center;
   width: 100%; /* Make the footer span the entire width */
-  bottom: 0; /* Position the footer at the bottom of the viewport */
-  left: 0; /* Align the footer to the left */
-  z-index: 999; /* Ensure footer is above other elements */
+  bottom: 0; 
+  left: 0; 
+  z-index: 999; 
   display: flex; /* Use flexbox for layout */
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
@@ -403,12 +574,7 @@ p.footer-text {
   padding: 20px;
 }
 
-td,
-th {
-  border: 1px solid black; /* Add border */
-  background-color: #ffffff;
-  padding: 20px;
-}
+
 
 .table-container {
   display: flex;
@@ -449,10 +615,7 @@ th {
   margin: 0 auto; /* To center the image horizontally */
 }
 
-#galacticCenterContent {
-  padding: 0;
-  margin: 0;
-}
+
 
 .row.align-items-start {
   height: auto;
@@ -471,14 +634,6 @@ th {
   background-color:#fff
 }
 
-.img-fluid {
-  width: auto; /* Let the browser calculate the width to maintain aspect ratio */
-  height: auto; /* Let the browser calculate the height to maintain aspect ratio */
-  max-width: 400px; /* Set the maximum width of the image */
-  max-height: 400px; /* Set the maximum height of the image */
-  display: block; /* Ensure proper rendering */
-  margin: 0; /* Set margin to 0 */
-}
 
 .text-left{
   text-align: left;
@@ -493,24 +648,26 @@ th {
   margin-bottom: 20px; /* Adjust the value as needed */
 }
 
-/* Mobile devices (up to 375px) */
-@media (max-width: 393px) {
-  .btn, .home-button {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
 
-  .color-row {
-    display: flex; /* Use flexbox for rows */
-    flex-direction: column; /* Stack columns vertically */
+@media screen and (max-width: 393px)  {
+  .uploaded-image{
+    margin-top: 40px;
+    margin-bottom: 0px;
+    width: 100%; /* Set the width of the uploaded image to 100% */
+    max-width: 100%; /* Ensure the image does not exceed its container width */
   }
-
+  .custom-list-item {
+    white-space: normal;  /* Default - allows text to wrap */
+    word-wrap: break-word;
+    margin-left: 20px;
+  }
   .color-name-td,
   .color-palette-td {
+    max-width: 100% !important;
     width: 100% !important; /* Force each column to take up full width */
     display: block; /* Ensure they behave like block elements */
     box-sizing: border-box; /* Include padding and border in width */
-    margin: 0; /* Reset any unintended margin */
+    margin-top: 20px !important; /* Reset any unintended margin */
     padding: 1rem; /* Add consistent padding for readability */
   }
 
@@ -519,6 +676,157 @@ th {
     flex-direction: column; /* Stack inputs and buttons */
     gap: 0.5rem; /* Add spacing between inputs and buttons */
   }
+  .img-fluid,
+  .image-container-home img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  
+
+.btnprm {
+    margin-top: 30px !important;
+    margin-bottom: 40px !important;
+    display: inline-block;
+    font-size: 18px;
+    width: 100px !important;
+    max-width: 100px !important;
+    color: #ffffff;
+    background-color: #1473e6;
+    border: 1px solid #1473e6;
+    padding: 15px;
+    border-radius: 0.25rem;
+  }
+
+.color-tiles-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 50px;
+}
+  .custom-button {
+    margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  margin-right: 20px !important;
+  display: inline-block;
+  font-size: 18px;
+  width: 100px !important;
+  max-width: 100px !important;
+  color: #1473e6;
+  background-color: #ffffff;
+  border: 1px solid #1473e6;
+  padding: 15px;
+  border-radius: 0.25rem;
+  text-align: center;
+    }
+  
+  .btnsave {
+    margin-top: 20px !important;
+    display: inline-block;
+    font-size: 18px;
+    width: 100px !important;
+    max-width: 100px !important;
+    color: #ffffff !important;
+    background-color: #1473e6;
+    border: #1473e6;
+    padding: 15px;
+    text-align: center;  /* Center text horizontally */
+    line-height: .5;     /* Adjust line height for vertical centering */
+    vertical-align: middle;  /* Center text vertically */
+    border-radius: 0.25rem;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .form-control {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    margin-bottom: 0px !important;
+  }
+
+  
+  .full-width-mobile {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+  
+  
+  
+  .footer-spacing{
+    margin-bottom: 40px !important;
+  }
+  .home-page-content{
+    margin-bottom: 20px !important;
+  }
+  h1 {
+    font-size: 32px !important;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: .5px;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-weight: semi-bold;
+  }
+
+  li.custom-list-item {
+    font-size: 14px;
+  }
+
+  p.responsive-text {
+    font-size: 14px;
+  }
+
+  .color-name-td::before {
+    content: "Palette Name";
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    box-sizing: border-box;
+    font-weight: bold;
+  }
+  
+
+  .btn {
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+    display: inline-block;
+    font-size: 16px;
+    width: 100% !important;
+    max-width: 100% !important;
+     color: #1473e6;
+    background-color: #ffffff;
+    border: 1px solid #1473e6;
+    padding: 15px;
+  }
+  
+  
+
+  .color-row {
+    display: flex; /* Use flexbox for rows */
+    flex-direction: column; /* Stack columns vertically */
+  }
+
+  
 
   .color-name-td input {
     width: 100%; /* Ensure input spans the full width */
@@ -540,10 +848,11 @@ th {
   }
 
   tbody tr {
-    display: flex; /* Treat table rows as flex containers */
-    flex-direction: column; /* Stack columns vertically */
-    margin-bottom: 1rem; /* Add spacing between rows */
-    border-bottom: 1px solid #ddd; /* Optional: Separator between rows */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   tbody td {
@@ -558,33 +867,19 @@ th {
     display: block;
     margin-bottom: 0.5rem;
   }
-}
-
-
 
 
   .form{
     margin-bottom: 20px;
   }
-.uploaded-image{
-  margin-top: 20px;
-}
-  .custom-ul {
-  margin-bottom: 0px;
-}
 
 
-.custom-list-item{
-  margin-left: 20px;
-}
+
 .justify-content-center{
   margin-bottom: 0px;
 }
 
-.left-h1{
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
+
 
 .logo-container{
   padding-top: 0px !important;
@@ -597,9 +892,7 @@ th {
   padding-top: 0px;
   padding-bottom: 0px;
 }
-.footer-spacing{
-  margin-bottom: 0px !important;
-}
+
  .row.align-items-start{
     margin-bottom: 20px !important;
   }
@@ -608,9 +901,7 @@ th {
     width: 25px;
   }
 
-  .img-fluid{
-    margin-bottom: 0px !important;
-  }
+  
   
   .dropdown-menu {
     max-width: 50px; 
@@ -648,44 +939,6 @@ th {
     padding-bottom: 0px;
     font-size: 14px;
     padding: 0px;
-  }
-
-  p.responsive-text {
-    margin: 0;
-    padding: 0;
-    font-size: 14px;
-  }
-
-  h1 {
-    font-size: 32px !important;
-    margin-bottom: 20px !important;
-    margin-top: 20px !important;
-  }
-
-  h2 {
-    font-size: 28px !important;
-    margin-bottom: 20px !important;
-  }
-  .home-button {
-    display: inline-block;
-    background-color: #000000;
-    margin-top: 46.59px;
-    margin-bottom: 46.59px;
-    font-size: 14px;
-  }
-
-  .home-page-title {
-    font-size: 2rem; /* Reducing font size of h1 */
-  }
-
-  .img-fluid,
-  .image-container-home img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    display: block;
-    margin: 0 auto;
-    object-fit: cover;
   }
  
   .color-table-container {
@@ -735,365 +988,354 @@ th {
     display: none;
   }
 
-  .full-width-mobile {
-    width: 100% !important;
-    margin-bottom: 0px; /* Add margin if you need spacing between buttons */
+  
+  
+ 
+
+  .btn-link {
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0 5px;
   }
-  .btn {
-    margin-bottom: 5px !important;
-    margin-top: 20px !important; 
-    padding: 15px;
-    margin-right: 0px !important;
-   
-}
+  
+  .btn-link:hover {
+    opacity: 0.8;
+  }
+  
+  .btn-link img {
+    vertical-align: middle;
+  }
 
-.btn-link{
-  border: none;
-  background-color: #ffffff;
-  margin-left: 10px;
-}
 
-.btn-primary{
-    color: #ffffff !important;
-    background-color: #000000;
-    border: #000000;
-}
 
-.custom-button{
-    margin-bottom: 0px !important;
-}
 
-.home-button{
-  margin-bottom: 20px !important;
-  margin-top: 20px !important; 
-}
-
-.home-page-content{
-  margin-bottom: 0px !important;
-}
-
-.color-text {
-  margin-bottom: 0px !important;
-}
 
 
 /* Tablet devices (376px to 768px) */
 @media (min-width: 394px) and (max-width: 768px) {
-  .row.align-items-start{
-    margin-bottom: 20px !important;
-  }
-
-  .full-width-mobile {
-    width: 100% !important;
-    margin-bottom: 0px; /* Add margin if you need spacing between buttons */
-  }
-
-  .upload-button-container {
-    flex-direction: column; /* Stack buttons vertically on mobile */
-    align-items: stretch; /* Stretch buttons to full width */
-  }
-
-  .btn {
-    margin-bottom: 5px !important;
-    margin-top: 5px !important; 
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-}
-
-.btn-primary{
-    color: #ffffff !important;
-    background-color: #000000;
-    border: #000000;
-}
-
-.custom-button{
-    margin-bottom: 20px !important;
-}
-
-.home-button{
-  margin-bottom: 20px !important;
-  margin-top: 20px !important; 
-}
-  .custom-list-item{
-    margin-left: 20px;
-  }
-  .left-h1{
-    margin-top: 20px;
-  }
-  .dropdown-menu {
-    max-width: 50px; 
-    right: 0;
-    left: auto;
-    transform: translateX(-0%); /* Adjust based on your layout */
-    width: auto; /* Adjust width as necessary */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .dropdown-menu.show{
-    width: 25px;
-  }
-  
-  .dropdown-item.logout-button {
-    width: 50px;
-    margin-left: auto; /* Automatically adjust margin on the left */
-    margin-right: auto; /* Automatically adjust margin on the right */
-    display: flex; /* Ensure it behaves like a block element */
-    text-align: center; /* Center the text inside the button */
-    padding:  0px; /* Adjust padding as needed */
-    background-color: transparent; /* Remove any background color */
-    border: none; /* Remove border */
-    box-shadow: none; /* Remove box-shadow */
-  }
-  
-  body {
-    padding-bottom: 0px;
-  }
-  p.responsive-text {
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-  }
-  .home-button {
-    display: inline-block;
-    background-color: #000000;
-    margin-top: 46.59px;
-    margin-bottom: 46.59px;
-    font-size: 16px;
-  }
-
-  .justify-content-center{
+.uploaded-image{
     margin-bottom: 0px;
+    margin-top: 60px;
+    width: 100%; /* Set the width of the uploaded image to 100% */
+    max-width: 100%; /* Ensure the image does not exceed its container width */
   }
-
-  h1 {
-    font-size: 40px !important;
-    margin-top: 20px !important;
-  margin-bottom: 20px !important;
-  }
-
-  h2 {
-    font-size: 32px;
-    margin-bottom: 20px !important;
-  }
-  .img-fluid,
-  .image-container-home img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    display: block;
-    margin: 0 auto;
-    object-fit: cover;
-  }
-
-  .color-table-container {
-    margin-top: 20px;
-    margin-bottom: 0px;
-    overflow-x: auto;
-    max-width: 100%;
-  }
-
-  .color-table-column {
-    margin-top: 20px !important;
-    margin-bottom: 0px !important;
-  }
-
-  td,
-  th {
-    font-size: 12px;
-    padding: 8px;
-  }
-
-  .table-container {
-    padding: 5px;
-  }
-
-  .color-table-container table {
-    width: 100%;
-    max-width: unset;
-  }
-
-  .color-table-container th,
-  .color-table-container td {
-    padding: 8px;
-    font-size: 14px;
-  }
-}
-
-.footer-spacing{
-  margin-bottom: 40px;
-}
- 
-
-
-@media (min-width: 769px)  {
-  .color-table-column {
-    margin-top: 340px !important;
-  }
-  .row.align-items-start{
-    margin-bottom: 20px;
-  }
-  .full-width-mobile {
-    width: auto !important; 
-  }
-
-  .desktop-wide.full-width-mobile{
-    margin-bottom: 0px !important;
-    width: 100%;
-    padding: 15px !important;
-}
-
-  .upload-button-container {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem; /* Space between buttons */
-    margin-bottom: 25px;
-  }
-  
-
-  .btn {
-    margin-bottom: 5px !important;
-    margin-top: 0px !important; 
-    padding: 15px;
-    margin-right: 0px !important;
-}
-
-.btn-primary{
-    color: #ffffff !important;
-    background-color: #000000;
-    border: #000000;
-}
-
-.custom-button{
-    margin-bottom: 0px !important;
-}
-
-.home-button{
+.img-fluid,
+.image-container-home img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin-top: 40px;
+  object-fit: cover;
   margin-bottom: 0px !important;
-  margin-top: 40px !important; 
 }
-  .custom-list-item{
+  .custom-list-item {
+    white-space: normal;  /* Default - allows text to wrap */
+    word-wrap: break-word;
     margin-left: 20px;
   }
-  .left-h1{
-    margin-top: 40px;
-  }
-  .dropdown-menu {
-    max-width: 50px;
-    right: 0;
-    left: auto;
-    transform: translateX(-0%); /* Adjust based on your layout */
-    width: auto; /* Adjust width as necessary */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  }
-  .dropdown-menu.show{
-    width: 25px;
-  }
   
-  .dropdown-item.logout-button {
-    width: 50px;
-    margin-left: auto; /* Automatically adjust margin on the left */
-    margin-right: auto; /* Automatically adjust margin on the right */
-    display: flex; /* Ensure it behaves like a block element */
-    text-align: center; /* Center the text inside the button */
-    padding:  0px; /* Adjust padding as needed */
-    background-color: transparent; /* Remove any background color */
-    border: none; /* Remove border */
-    box-shadow: none; /* Remove box-shadow */
-  }
-  
-  body {
-    padding-bottom: 80px;
-  }
-
-  .navbar-nav {
-    margin-left: auto !important;
-  }
-
-  p.responsive-text {
-    margin: 0;
-    padding: 0;
+  .btnprm {
+    margin-top: 30px !important;
+    margin-bottom: 0px !important;
+    display: inline-block;
     font-size: 18px;
+    width: 100px !important;
+    max-width: 100px !important;
+    color: #ffffff;
+    background-color: #1473e6;
+    border: 1px solid #1473e6;
+    padding: 15px;
+    border-radius: 0.25rem;
+  }
+  .color-tiles-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 50px;
   }
 
+  .custom-button {
+    margin-top: 30px !important;
+    margin-bottom: 0px !important;
+    margin-right: 20px !important;
+    display: inline-block;
+    font-size: 18px;
+    width: 100px !important;
+    max-width: 100px !important;
+    color: #1473e6;
+    background-color: #ffffff;
+    border: 1px solid #1473e6;
+    padding: 15px;
+    border-radius: 0.25rem;
+    text-align: center;
+    }
   
-
-  h1 {
-    font-size: 40px;
-    margin-top: 40px !important;
+.color-palette-td > div {
+  width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+  .btnsave {
+    margin-bottom: 20px !important;
+    display: inline-block;
+    font-size: 18px;
+    width: 100px !important;
+    max-width: 100px !important;
+    color: #ffffff !important;
+    background-color: #1473e6;
+    border: #1473e6;
+    padding: 15px;
+    text-align: center;  /* Center text horizontally */
+    line-height: .5;     /* Adjust line height for vertical centering */
+    vertical-align: middle;  /* Center text vertically */
+    border-radius: 0.25rem;
+  }
+  .form-control {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     margin-bottom: 40px !important;
   }
+  .full-width-mobile {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+
+.btn {
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+  display: inline-block;
+  font-size: 16px;
+  width: 100% !important;
+  max-width: 100% !important;
+   color: #1473e6;
+  background-color: #ffffff;
+  border: 1px solid #1473e6;
+  padding: 15px;
+  border-radius: 0.25rem;
+}
+  .footer-spacing{
+    margin-bottom: 40px !important;
+  }
+  h1 {
+    font-size: 36px !important;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
 
   h2 {
-    font-size: 36px;
+    font-size: 28px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    font-weight: semi-bold;
   }
 
-  .account-heading {
-    font-size: 50px;
-    color: #333;
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .color-name-td {
+    order: 1;
+  }
+
+  .color-name-td::before {
+    content: "Palette Name";
+    display: block;
+    width: 100%;
     text-align: left;
-    margin-top: 80px;
-    margin-bottom: 80px;
+    padding: 1rem;
+    box-sizing: border-box;
+    font-weight: bold;
   }
 
-  .custom-margin-bottom {
-    margin-bottom: 150px;
+  .color-palette-td {
+    order: 2;
   }
 
-  .home-button {
-    background-color: #000000;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 50px;
-  }
 
+.color-tile-display {
+  background-color: inherit;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+}
+
+.color-tile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.hex-code-display {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.color-tiles-wrapper {
+  max-width: 100%;
+}
+
+.color-table-container {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.color-table-container table {
+  width: 100%;
+}
+
+.color-table-container th,
+.color-table-container td {
+  padding: 8px;
+  font-size: 14px;
+}
+
+
+
+
+.save-palette-container {
+  flex-direction: column;
+  margin-right: 0px;
+  width: 100% !important;
+  align-items: left;
+}
+
+
+
+/* Modal */
+.modal-dialog {
+  margin: 0.5rem auto;
+  width: 95%;
+}
+
+.modal-footer {
+  flex-direction: column;
+}
+
+.modal-footer button {
+  width: 100%;
+  margin: 0.25rem 0;
+}
+
+/* General Layout and Text */
+body {
+  padding-bottom: 0px;
+}
+
+li.custom-list-item {
+  font-size: 16px;
+}
+
+p.responsive-text {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+
+
+.row.align-items-start {
+  margin-bottom: 20px !important;
+}
+
+
+.image-table-container {
+  grid-template-columns: 1fr;
+}
+
+.image-container {
+  max-width: 100%;
+}
+
+.account-container {
+  margin: 0.5rem auto;
+  width: 95%;
+}
+
+.justify-content-center {
+  margin-bottom: 0px;
+}
+
+.dropdown-menu {
+  max-width: 50px;
+  right: 0;
+  left: auto;
+  transform: translateX(0%);
+  width: auto;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu.show {
+  width: 25px;
+}
+
+.dropdown-item.logout-button {
+  width: 50px;
+  margin: auto;
+  display: flex;
+  text-align: center;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+
+.color-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+
+
+
+@media (max-width: 900px)  {
   
 
-  .home-button:hover {
-    background-color: #000000;
+ 
+  .footer-spacing{
+    margin-bottom: 40px !important;
   }
-
-  .color-table-container {
-    margin-bottom: 0px;
+  
+  
+  
+  
+  .color-name-td {
+    width: 30% !important;
+    margin-top: 60px !important;
   }
-}
-
-.footer-spacing{
-  margin-bottom: 40px;
-}
-  .row.align-items-start{
-    margin-bottom: 40px;
-  }
-
-@media (min-width: 1440px)  {
-
   
  
-   
   
-    .colors-pallete {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px; /* Adjust spacing between color tiles */
-      justify-content: start; /* Align color tiles to the left */
-    }
-  }
-  
-  
-
-  .form-control {
-    width: 100%;
-    margin-top: 10px;
-  }
-
-
-  .full-width-mobile {
-    width: auto !important; 
-  }
 
   .btn-pallete{
     border: none; /* Remove the border */
@@ -1104,27 +1346,9 @@ th {
     padding: 15px;
     margin-right: 16px !important;
   }
-  .btn {
-    margin-bottom: 5px !important;
-    margin-top: 5px ; 
-    margin-right: 20px;
-}
+ 
 
-.btn-primary{
-    color: #ffffff !important;
-    background-color: #000000;
-    border: #000000;
-}
-
-
-
-.home-button{
-  margin-bottom: 0px !important;
-  margin-top: 40px !important; 
-}
-  .responsive-text{
-    max-width: 500px;
-  }
+  
 
   .dropdown-menu {
     max-width: 50px;
@@ -1169,15 +1393,9 @@ th {
     margin-top: 0px;
   }
 
-  h1 {
-    font-size: 48px;
-    margin-top: 60px;
-  margin-bottom: 60px;
-  }
+  
 
-  h2 {
-    font-size: 36px;
-  }
+  
 
   .account-heading {
     font-size: 50px;
@@ -1191,19 +1409,9 @@ th {
     margin-bottom: 150px;
   }
 
-  .home-button {
-    background-color: #000000;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 50px;
-  }
+  
 
-  .home-button:hover {
+  .btn:hover {
     background-color: #000000;
   }
 
@@ -1211,555 +1419,30 @@ th {
     margin-bottom: 0px !important;
   }
 
-  .footer-spacing{
-    margin-bottom: 0px;
-  }
+ 
     .row.align-items-start{
       margin-bottom: 40px;
     }
-
-/* New media query */
-@media (min-width: 769px) and (max-width: 1439px) {
-  .color-table-container {
-   margin-top: 15px;
   }
-}
-/* New media query for tablet */
-@media (min-width: 768px) and (max-width: 991px) {
-  .color-table-container {
-    margin-top: 60px;
-   }
- }
-  
-
-/* Add these new styles for the palette table */
-.color-row {
-  display: flex;
-  width: 100%;
-}
-
-.color-name-td {
-  width: 30%;
-  padding: 15px;
-  border-right: 1px solid #dee2e6;
-}
-
-.color-palette-td {
-  width: 70%;
-  padding: 15px;
-}
-
-/* Style for the color tiles container */
-.color-palette-td > div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: flex-start;
-}
-
-/* Style for individual color tile containers */
-.color-palette-td > div > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 5px;
-}
-
-/* Style for the color squares */
-.color-tile {
-  width: 50px;
-  height: 50px;
-  border: 1px solid #ccc;
-  margin-bottom: 5px;
-}
-
-/* Style for the hex code text */
-.hex-code {
-  font-size: 12px;
-  text-align: center;
-}
-
-/* Style for the buttons container */
-.btn-pallete {
-  margin: 5px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .color-row {
-    flex-direction: column;
-  }
-  
-  .color-name-td,
-  .color-palette-td {
+  .color-palette-flex-container {
     width: 100%;
-  }
-}
-
-.color-tiles-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  padding: 10px;
-  margin-top: 250px;
-}
-
-.color-tile-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 70px;
-}
-
-.color-tile {
-  width: 50px;
-  height: 50px;
-  border: 1px solid #ccc;
-  margin-bottom: 5px;
-}
-
-.hex-code {
-  font-size: 12px;
-  text-align: center;
-  width: 70px;
-  display: block;
-  margin-top: 5px;
-}
-
-.color-name-td {
-  width: 30%;
-  vertical-align: top;
-}
-
-.color-palette-td {
-  width: 70%;
-  vertical-align: top;
-}
-
-.full-width-mobile {
-    width: 100% !important;
-    margin-bottom: 10px; /* Add spacing between stacked buttons */
-  }
-
-  .btn {
-    width: 100% !important;
     max-width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: left !important;
   }
 
-  .home-button {
-    width: 100% !important;
-    max-width: 30% !important;
-    margin: 40px 0 !important;
-  }
 
-  .upload-button-container {
-    width: 65%;
-  }
 
-  .upload-button-container .btn {
-    width: 100% !important;
-    margin-top: 40px !important;
-    margin-right: 10px !important;
-  }
 
-  
 
-/* Tablet styles (394px to 767px) */
-@media (min-width: 394px) and (max-width: 767px) {
-  .home-button {
-    margin-top: 46.59px !important;
-    margin-bottom: 46.59px !important;
-  }
 
-  .btn {
-    margin-top: 0px !important;
-    margin-bottom: 0px !important;
-  }
 
-  .upload-button-container .btn {
-    margin: 10px 0 !important;
-  }
-}
 
-/* Mobile and Tablet styles (up to 768px) */
-@media (max-width: 768px) {
-  /* Button and layout styles */
-  .home-button {
-    margin-top: 46.59px !important;
-    margin-bottom: 46.59px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 10px 0 !important;
-  }
 
-  .btn {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 20px 0 !important;
-  }
 
-  .upload-button-container {
-    width: 100%;
-  }
-
-  .upload-button-container .btn {
-    width: 100% !important;
-    margin: 10px 0 !important;
-  }
-
-  /* Table and color tiles styles */
-  thead {
-    display: none;
-  }
-  
-  .color-palette-td {
-    width: 100% !important;
-    display: block;
-    padding: 0.5rem;
-  }
-  
-  .save-palette-container {
-    flex-direction: column;
-    margin-right: 40px;
-    width: 100% !important;
-  }
-  
-  .save-palette-container button {
-    width: 100%;
-    margin: 0;
-  }
-
-  /* Image and color tiles container */
-  .image-table-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .image-container,
-  .color-tiles-wrapper {
-    max-width: 100%;
-  }
-}
-
-.color-tiles-container {
-  margin: 20px 0;
-  width: 100%;
-  margin-top: 250px;
-}
-
-.color-table-container {
-  overflow-x: auto;
-  margin-bottom: 0px;
-}
-
-.color-palette-td {
-  width: 100% !important;
-  display: block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 1rem;
-}
-
-.save-palette-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 0px;
-  margin-right: 0px;
-  width: 65%;
-}
-
-.alert {
-  margin: 10px 0;
-}
-
-/* Ensure consistent table styling */
-.table {
-  display: block;
-  width: 100%;
-  margin-bottom: 1rem;
-  background-color: transparent;
-}
-
-.table-bordered {
-  border: 1px solid #dee2e6;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-
-  .image-table-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .image-container,
-  .color-tiles-wrapper {
-    max-width: 100%;
-  }
-
-  thead {
-    display: none;
-  }
-  
-  .color-palette-td {
-    padding: 0.5rem;
-  }
-  
-  .save-palette-container {
-    flex-direction: column;
-  }
-  
-  .save-palette-container button {
-    width: 100%;
-    margin: 5px 0;
-  }
-}
-
-/* Modal styles */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1050;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-dialog {
-  width: 100%;
-  max-width: 500px;
-  margin: 1.75rem auto;
-  background-color: white;
-  border-radius: 0.3rem;
-}
-
-.modal-content {
-  position: relative;
-  padding: 1rem;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #dee2e6;
-  padding-bottom: 1rem;
-}
-
-.modal-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
-  border-top: 1px solid #dee2e6;
-  padding-top: 1rem;
-  margin-top: 1rem;
-}
-
-@media (max-width: 576px) {
-  .modal-dialog {
-    margin: 0.5rem auto;
-    width: 95%;
-  }
-  
-  .modal-footer {
-    flex-direction: column;
-  }
-  
-  .modal-footer button {
-    width: 100%;
-    margin: 0.25rem 0;
-  }
-}
-
-.image-table-container {
-  
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  align-items: start;
-  margin-top: 20px;
-}
-
-.image-container {
-  width: 100%;
-}
-
-.uploaded-image {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0;
-}
-
-.color-tiles-wrapper {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.color-tiles-container {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  margin-top: 25px;
-}
-
-.account-container {
-  width: 100%;
-  max-width: 500px;
-  margin: 1.75rem auto;
-  background-color: white;
-  border-radius: 0.3rem;
-  border: 1px solid #dee2e6;
-  padding: 2rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-}
-
-.account-content {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.account-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #dee2e6;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-}
-
-.account-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
-  border-top: 1px solid #dee2e6;
-  padding-top: 1rem;
-  margin-top: 1rem;
-}
-
-@media (max-width: 576px) {
-  .account-container {
-    margin: 0.5rem auto;
-    width: 95%;
-  }
-  
-  .account-footer {
-    flex-direction: column;
-  }
-  
-  .account-footer button {
-    width: 100%;
-    margin: 0.25rem 0;
-  }
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-control {
-  display: block;
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.form-control:focus {
-  color: #495057;
-  background-color: #fff;
-  border-color: #80bdff;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.account-container {
-  width: 100%;
-  max-width: 500px;
-  margin: 1.75rem auto;
-  background-color: white;
-  border-radius: 0.3rem;
-  border: 1px solid #dee2e6;
-  padding: 2rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-}
-
-.account-content {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-}
-
-@media (max-width: 576px) {
-  .account-container {
-    margin: 0.5rem auto;
-    width: 95%;
-  }
-}
-
-.form-container h1,
-.account-container h1 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #dee2e6;
-  width: 100%;
-  text-align: left;
-}
-
-.form-header,
-.account-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #dee2e6;
-  padding-bottom: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.account-heading {
-  font-size: 1.5rem;
-  margin: 0;
-  padding: 0;
-  color: #333;
-  text-align: left;
-}
-
-th[data-label="Colors (Hex Codes and Tiles)"],
-td.color-palette-td {
-  width: 100%;
-  max-width: 100%;
-}
-
-.color-palette-td {
-  width: 100% !important;
-  display: block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 1rem;
-}
-
-.color-palette-td > div {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+ 
 
 
 

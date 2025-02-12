@@ -36,8 +36,8 @@ const PaintPage: React.FC = () => {
 
       <div className="row justify-content-center align-items-start">
         <div className="col-md-6">
-          <div className="text-left">
-            <h1 className="left-h1">Color Canvas</h1>
+          <div>
+            <h1>Color Canvas</h1>
             <div className="color-text">
               <ul className="custom-ul">
                 <li className="custom-list-item">
@@ -59,13 +59,18 @@ const PaintPage: React.FC = () => {
 
         <div className="col-md-6">
           {successMessage && <p className="alert alert-success">{successMessage}</p>}
-          {colorResponse ? (
+          {loading ? (
+            <div className="loading-container">
+              <div className="loading-spinner"></div>
+              <p className="loading-text">Analyzing image colors...</p>
+            </div>
+          ) : colorResponse ? (
             <ColorTiles
               response={colorResponse.responses?.[0]?.imagePropertiesAnnotation?.dominantColors?.colors || []}
               userid={auth.user?.id}
             />
           ) : (
-            !loading && <p>No colors to display. Please upload and analyze an image.</p>
+            <p>No colors to display. Please upload and analyze an image.</p>
           )}
         </div>
       </div>

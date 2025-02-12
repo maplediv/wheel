@@ -201,11 +201,10 @@ const PalettesPage: React.FC = () => {
           {!Array.isArray(palettes) || palettes.length === 0 ? (
             <p>No palettes saved yet.</p>
           ) : (
-            <table className="table table-bordered">
+            <table>
               <thead>
                 <tr>
-                  <th>Palette Name</th>
-                  <th>Colors (Hex Codes and Tiles)</th>
+                  <th>Palette Name Colors (Hex Codes and Tiles)</th>
                 </tr>
               </thead>
               <tbody>
@@ -218,65 +217,71 @@ const PalettesPage: React.FC = () => {
 
                   return (
                     <tr key={palette.id}>
-                      <td className="color-name-td">
-                        <input
-                          type="text"
-                          className="form-control"
-                          value={paletteNameChanges[palette.id] || palette.name || ''}
-                          placeholder="Name your palette"
-                          onChange={(e) => handleNameChange(palette.id, e.target.value)}
-                          onFocus={() => setEditingPaletteId(palette.id)}
-                        />
-                        <div>
+                     
+                        
+                 
+                      <td className="color-palette-td" data-label="Colors (Hex Codes and Tiles)">
+                        <div className="form-button-container">
+                          <input
+                            type="text"
+                            className="form-control"
+                            value={paletteNameChanges[palette.id] || palette.name || ''}
+                            placeholder="Name your palette"
+                            onChange={(e) => handleNameChange(palette.id, e.target.value)}
+                            onFocus={() => setEditingPaletteId(palette.id)}
+                          />
+                        
                           <button
-                            className="btn-pallete btn-primary btn"
+                            className="btnsave full-width-mobile"
                             onClick={() => handleSaveChanges(palette.id)}
                           >
                             Save
                           </button>
-                          <button
-                            className="btn btn-primary btn-pallete"
-                            onClick={() => confirmDeletePalette(palette.id)}
-                          >
-                            Delete
-                          </button>
-                          <button
-                            className="btn btn-primary btn-pallete"
-                            onClick={() => copyPaletteToClipboard(palette)}
-                          >
-                            Copy
-                          </button>
+                          
                         </div>
-                      </td>
-                      <td className="color-palette-td" data-label="Colors (Hex Codes and Tiles)">
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                        <div className="color-palette-flex-container">
                           {getColorsFromPalette(palette).map((color, index) => {
                             const hexCode = `#${color.red.toString(16).padStart(2, '0')}${color.green
                               .toString(16)
                               .padStart(2, '0')}${color.blue.toString(16).padStart(2, '0')}`.toUpperCase();
 
                             return (
-                              <div
-                                key={index}
-                                style={{
-                                  display: 'flex',
-                                  flexDirection: 'column',
-                                  alignItems: 'center',
-                                  margin: '5px',
-                                }}
-                              >
-                                <div
-                                  style={{
-                                    backgroundColor: hexCode,
-                                    width: '50px',
-                                    height: '50px',
-                                    border: '1px solid #ccc',
-                                  }}
+                              <div className="color-tile-container">
+                                <div 
+                                  className="color-tile-display"
+                                  style={{ backgroundColor: hexCode }}
                                 />
-                                <span style={{ fontSize: '12px', marginTop: '5px' }}>{hexCode}</span>
+                                <span className="hex-code-display">{hexCode}</span>
                               </div>
                             );
                           })}
+                        </div>
+                        <div>
+                         
+                          <button
+                            className="btn-link"
+                            onClick={() => confirmDeletePalette(palette.id)}
+                            title="Delete palette"
+                          >
+                            <img 
+                              src="/src/images/delete.svg" 
+                              alt="Delete" 
+                              width="21" 
+                              height="24"
+                            />
+                          </button>
+                          <button
+                            className="btn-link"
+                            onClick={() => copyPaletteToClipboard(palette)}
+                            title="Copy palette"
+                          >
+                            <img 
+                              src="/src/images/copy.svg" 
+                              alt="Copy" 
+                              width="20" 
+                              height="24"
+                            />
+                          </button>
                         </div>
                       </td>
                     </tr>

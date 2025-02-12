@@ -133,9 +133,9 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
         </div>
       )}
 
-      <div className="save-palette-container">
-        <button onClick={handleSavePalette} className="btn btn-primary">Save Palette</button>
-        <button onClick={() => navigate('/palettes')} className="btn btn-primary">
+      <div className="palspace full-width-mobile">
+        <button onClick={handleSavePalette} className="btnprm full-width-mobile">Save Palette</button>
+        <button onClick={() => navigate('/palettes')} className="full-width-mobile custom-button">
           View Palettes
         </button>
       </div>

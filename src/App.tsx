@@ -41,7 +41,7 @@ const HomePage: React.FC = () => {
                   Visual artists can elevate their creative process by using our app's sophisticated color image recognition feature.
                   By uploading images, artists can seamlessly identify and analyze the color palette within their artwork, enabling them to experiment with new hues and shades.
                 </p>
-                <button className="home-button btn btn-primary full-width-mobile" onClick={() => { window.location.href = '/paint'; }}>Try Now</button>
+                <button className="full-width-mobile btnprm" onClick={() => { window.location.href = '/paint'; }}>Try Now</button>
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="container home-page-content footer-spacing">
+      <div className="container  footer-spacing">
         <div className="row align-items-start">
           <div className="col-md-6 order-md-4">
             <div className="text-container">
@@ -66,7 +66,7 @@ const HomePage: React.FC = () => {
                   This tool not only assists in color matching but also offers insights into the dominant colors and their proportions, helping artists maintain harmony and balance in their compositions.
                   Whether refining a piece or seeking inspiration, our app empowers artists to harness the power of color with precision and ease.
                 </p>
-                <button className="home-button btn btn-primary full-width-mobile" onClick={() => { window.location.href = '/paint'; }}>Learn More</button>
+                <button className="btnprm full-width-mobile" onClick={() => { window.location.href = '/paint'; }}>Learn More</button>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@ const PaintPage: React.FC = () => {
         <div className="col-md-6">
           <div className="text-left">
             <div className="color-canvas">
-              <h1 className='left-h1'>Color Canvas</h1>
+              <h1>Color Canvas</h1>
               <div className="color-text">
                 <ul className="custom-ul">
                   <li className='custom-list-item'>Click the "Choose File" button and upload any file to return the dominant colors in the image.</li>
