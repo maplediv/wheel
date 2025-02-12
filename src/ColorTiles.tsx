@@ -43,41 +43,34 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
   const colors = response?.responses?.[0]?.imagePropertiesAnnotation?.dominantColors?.colors || [];
 
   const handleSavePalette = async () => {
-    if (!user || !user.userId) {
-      console.error('No user logged in or missing userId');
-      setErrorMessage('Please log in to save palettes');
-      return;
-    }
-
     try {
-      console.log('Attempting to save palette for user:', user.userId);
+      console.log('Attempting to save palette for user:', userId);
+      
       const hexCodes = colors.map(color => {
         const { red, green, blue } = color.color;
         return `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`.toUpperCase();
       });
 
       console.log('Sending request with hexCodes:', hexCodes);
-      const response = await axios.post(`${API_BASE_URL}/api/palettes`, {
-        userId: user.userId,
-        hexCodes
+      console.log('Sending palette data:', { userId, hexCodes });
+
+      const response = await fetch(`${API_BASE_URL}/api/palettes`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId, hexCodes }),
       });
+
+      const data = await response.json();
+      console.log('Response from backend:', data);
 
       if (response.status === 201) {
         setSuccessMessage('Palette saved successfully!');
         setTimeout(() => setSuccessMessage(''), 3000);
       }
     } catch (error) {
-      console.error('Save palette error:', error);
-      if (axios.isAxiosError(error)) {
-        if (error.response?.status === 403) {
-          setErrorMessage(error.response.data.error);
-        } else {
-          setErrorMessage(`Error saving palette: ${error.response?.data?.error || 'Please try again.'}`);
-        }
-      } else {
-        setErrorMessage('Error saving palette. Please try again.');
-      }
-      setTimeout(() => setErrorMessage(''), 3000);
+      console.error('Error saving palette:', error);
     }
   };
 
