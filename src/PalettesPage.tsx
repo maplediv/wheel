@@ -190,7 +190,7 @@ const PalettesPage: React.FC = () => {
         <p>Please log in to view your saved palettes.</p>
       ) : (
         <>
-          <h1>{user.firstName}'s Saved Color Palettes</h1>
+          <h2>{user.firstName}'s Saved Color Palettes</h2>
 
           {successMessage && (
             <div className="alert alert-success text-center" role="alert">

@@ -37,7 +37,7 @@ const PaintPage: React.FC = () => {
       <div className="row justify-content-center align-items-start">
         <div className="col-md-6">
           <div>
-            <h1>Color Canvas</h1>
+            <h2>Color Canvas</h2>
             <div className="color-text">
               <ul className="custom-ul">
                 <li className="custom-list-item">

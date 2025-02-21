@@ -10,6 +10,39 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.btnprm {
+  margin-top: 30px !important;
+  margin-bottom: 40px !important;
+  display: inline-block;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #1473e6;
+  border: 1px solid #1473e6;
+  padding-right: 24px;
+  padding-left: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 0.25rem;
+}
+
+.custom-button {
+  margin-top: 30px !important;
+  margin-bottom: 40px !important;
+  margin-right: 20px !important;
+  display: inline-block;
+  font-size: 16px;
+  color: #1473e6;
+  background-color: #ffffff;
+  border: 1px solid #1473e6;
+  padding-right: 24px;
+  padding-left: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 0.25rem;
+  text-align: center;
+  }
+
+
 
 .responsive-text {
   width: 100% !important;
@@ -32,7 +65,7 @@ h1 {
 
 h2 {
   font-size: 24px;
-  margin-top: 0px;
+  margin-top: 50px !important;
   margin-bottom: 15px;
   font-weight: semi-bold;
 }
@@ -178,21 +211,7 @@ li.custom-list-item {
   align-items: stretch;
 }
 
-.custom-button {
-  margin-top: 30px !important;
-  margin-bottom: 40px !important;
-  margin-right: 20px !important;
-  display: inline-block;
-  font-size: 18px;
-  width: 180px !important;
-  max-width: 180px !important;
-  color: #1473e6;
-  background-color: #ffffff;
-  border: 1px solid #1473e6;
-  padding: 15px;
-  border-radius: 0.25rem;
-  text-align: center;
-  }
+
 
 
 .color-palette-td > div {
@@ -288,20 +307,7 @@ li.custom-list-item {
 
 
 
-.btnprm {
-  margin-top: 30px !important;
-  margin-bottom: 40px !important;
-  display: inline-block;
-  font-size: 16px;
-  color: #ffffff;
-  background-color: #1473e6;
-  border: 1px solid #1473e6;
-  padding-right: 24px;
-  padding-left: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  border-radius: 0.25rem;
-}
+
 .btn {
   margin-top: 30px !important;
   margin-bottom: 40px !important;
@@ -716,18 +722,12 @@ p.footer-text {
     border-radius: 0.25rem;
   }
 
-.color-tiles-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 50px;
-}
   .custom-button {
     margin-top: 0px !important;
   margin-bottom: 0px !important;
   margin-right: 20px !important;
   display: inline-block;
-  font-size: 18px;
+  font-size: 14px;
   width: 100px !important;
   max-width: 100px !important;
   color: #1473e6;
@@ -737,6 +737,14 @@ p.footer-text {
   border-radius: 0.25rem;
   text-align: center;
     }
+
+.color-tiles-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 50px;
+}
+  
   
   .btnsave {
     margin-top: 20px !important;
@@ -796,7 +804,7 @@ p.footer-text {
 
   h2 {
     font-size: 21px;
-    margin-top: 15px;
+    margin-top: 20px;
     margin-bottom: 15px;
     font-weight: semi-bold;
   }
@@ -1037,6 +1045,13 @@ p.footer-text {
     font-weight: 600;
     letter-spacing: .5px;
   }
+
+  h2 {
+    font-size: 23px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-weight: semi-bold;
+  }
 .uploaded-image{
     margin-bottom: 0px;
     margin-top: 60px;
@@ -1058,6 +1073,21 @@ p.footer-text {
     word-wrap: break-word;
     margin-left: 20px;
   }
+  .custom-button {
+    margin-top: 30px !important;
+    margin-bottom: 0px !important;
+    margin-right: 20px !important;
+    display: inline-block;
+    font-size: 16px;
+    width: 100px !important;
+    max-width: 100px !important;
+    color: #1473e6;
+    background-color: #ffffff;
+    border: 1px solid #1473e6;
+    padding: 20px;
+    border-radius: 0.25rem;
+    text-align: center;
+    }
   
   .btnprm {
     margin-top: 30px !important;
@@ -1079,21 +1109,7 @@ p.footer-text {
     margin-top: 50px;
   }
 
-  .custom-button {
-    margin-top: 30px !important;
-    margin-bottom: 0px !important;
-    margin-right: 20px !important;
-    display: inline-block;
-    font-size: 18px;
-    width: 100px !important;
-    max-width: 100px !important;
-    color: #1473e6;
-    background-color: #ffffff;
-    border: 1px solid #1473e6;
-    padding: 15px;
-    border-radius: 0.25rem;
-    text-align: center;
-    }
+ 
   
 .color-palette-td > div {
   width: 100% !important;
@@ -1157,12 +1173,7 @@ p.footer-text {
   }
 
 
-  h2 {
-    font-size: 23px;
-    margin-top: 0px;
-    margin-bottom: 15px;
-    font-weight: semi-bold;
-  }
+  
 
   thead {
     display: none;
