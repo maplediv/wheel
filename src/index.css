@@ -11,6 +11,58 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.responsive-text {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  display: block;
+  margin: 0;
+  padding: 20px 0;
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: 44px !important;
+  margin-top: 100px !important;
+  margin-bottom: 60 !important;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  font-weight: semi-bold;
+}
+
+
+p.responsive-text {
+  font-size: 16px;
+  text-align: center;
+}
+
+.saved-palettes {
+  margin-top: 2rem;
+}
+
+.saved-palettes h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.saved-palettes ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.saved-palettes li {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
 .form-control-login {
   display: block;
   width: 100% !important;
@@ -65,6 +117,7 @@
   box-sizing: border-box; /* Include padding and border in width */
   margin-top: 20px !important; /* Reset any unintended margin */
   padding: 1rem; /* Add consistent padding for readability */
+  margin-bottom: 0px !important;
 }
 
 .palspace{
@@ -209,7 +262,7 @@ li.custom-list-item {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: left !important;
-  
+  margin-bottom: 40px !important;
 }
 
 .color-palette-td > div {
@@ -238,15 +291,15 @@ li.custom-list-item {
 .btnprm {
   margin-top: 30px !important;
   margin-bottom: 40px !important;
-  margin-right: 20px !important;
   display: inline-block;
-  font-size: 18px;
-  width: 180px !important;
-  max-width: 180px !important;
+  font-size: 16px;
   color: #ffffff;
   background-color: #1473e6;
   border: 1px solid #1473e6;
-  padding: 15px;
+  padding-right: 24px;
+  padding-left: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   border-radius: 0.25rem;
 }
 .btn {
@@ -265,27 +318,6 @@ li.custom-list-item {
 
 
 
-
-
-h1 {
-  font-size: 40px !important;
-  margin-top: 60px;
-  margin-bottom: 40px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-}
-
-h2 {
-  font-size: 32px;
-  margin-top: 0px;
-  margin-bottom: 15px;
-  font-weight: semi-bold;
-}
-
-
-p.responsive-text {
-  font-size: 18px;
-}
 
 .loading-spinner {
   display: inline-block;
@@ -322,7 +354,6 @@ p.responsive-text {
 .color-palette-td > div {
   width: 50%;
   display: flex;
-  
   gap: 10px;
   
 }
@@ -383,25 +414,7 @@ p.responsive-text {
 }
 
 
-.saved-palettes {
-  margin-top: 2rem;
-}
 
-.saved-palettes h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.saved-palettes ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.saved-palettes li {
-  margin-bottom: 1rem;
-  text-align: left;
-}
 
 .palette-colors {
   display: flex;
@@ -538,6 +551,7 @@ p.responsive-text {
   display: flex; /* Use flexbox for layout */
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
+  margin-top: 60px !important;
 }
 
 .footer .social-icons {
@@ -588,7 +602,7 @@ p.footer-text {
   justify-content: center;
   align-items: center;
   margin-top: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 40px !important;
 }
 
 /* Reset */
@@ -649,7 +663,7 @@ p.footer-text {
 }
 
 
-@media screen and (max-width: 393px)  {
+@media screen and (max-width: 394px)  {
   .uploaded-image{
     margin-top: 40px;
     margin-bottom: 0px;
@@ -692,13 +706,13 @@ p.footer-text {
     margin-top: 30px !important;
     margin-bottom: 40px !important;
     display: inline-block;
-    font-size: 18px;
+    font-size: 14px;
     width: 100px !important;
     max-width: 100px !important;
     color: #ffffff;
     background-color: #1473e6;
     border: 1px solid #1473e6;
-    padding: 15px;
+    padding: 16px;
     border-radius: 0.25rem;
   }
 
@@ -773,7 +787,7 @@ p.footer-text {
     margin-bottom: 20px !important;
   }
   h1 {
-    font-size: 32px !important;
+    font-size: 38px;
     margin-top: 20px;
     margin-bottom: 20px;
     font-weight: 600;
@@ -781,7 +795,7 @@ p.footer-text {
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 21px;
     margin-top: 15px;
     margin-bottom: 15px;
     font-weight: semi-bold;
@@ -1015,6 +1029,14 @@ p.footer-text {
 
 /* Tablet devices (376px to 768px) */
 @media (min-width: 394px) and (max-width: 768px) {
+
+  h1 {
+    font-size: 41px !important;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: .5px;
+  }
 .uploaded-image{
     margin-bottom: 0px;
     margin-top: 60px;
@@ -1041,13 +1063,13 @@ p.footer-text {
     margin-top: 30px !important;
     margin-bottom: 0px !important;
     display: inline-block;
-    font-size: 18px;
+    font-size: 16px;
     width: 100px !important;
     max-width: 100px !important;
     color: #ffffff;
     background-color: #1473e6;
     border: 1px solid #1473e6;
-    padding: 15px;
+    padding: 20px;
     border-radius: 0.25rem;
   }
   .color-tiles-container {
@@ -1133,16 +1155,10 @@ p.footer-text {
   .footer-spacing{
     margin-bottom: 40px !important;
   }
-  h1 {
-    font-size: 36px !important;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
+
 
   h2 {
-    font-size: 28px;
+    font-size: 23px;
     margin-top: 0px;
     margin-bottom: 15px;
     font-weight: semi-bold;
@@ -1256,7 +1272,7 @@ li.custom-list-item {
 p.responsive-text {
   margin: 0;
   padding: 0;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 
@@ -1415,10 +1431,6 @@ p.responsive-text {
     background-color: #000000;
   }
 
-  .color-table-container {
-    margin-bottom: 0px !important;
-  }
-
  
     .row.align-items-start{
       margin-bottom: 40px;
@@ -1431,6 +1443,7 @@ p.responsive-text {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: left !important;
+    margin-bottom: 40px !important;
   }
 
 

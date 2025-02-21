@@ -32,50 +32,15 @@ const HomePage: React.FC = () => {
       </Helmet>
       <h1>Welcome to Art Genius!</h1>
       <div className="container home-page-content">
-        <div className="row align-items-start">
-          <div className="col-md-6 order-md-1">
-            <div className="text-container">
-              <div className="text-left">
-                <h2>A tool for artists</h2>
+        <div className="">
+          <div className="">
+            <div className="">
+              <div className="">
                 <p className="responsive-text">
                   Visual artists can elevate their creative process by using our app's sophisticated color image recognition feature.
                   By uploading images, artists can seamlessly identify and analyze the color palette within their artwork, enabling them to experiment with new hues and shades.
                 </p>
                 <button className="full-width-mobile btnprm" onClick={() => { window.location.href = '/paint'; }}>Try Now</button>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 order-md-2">
-            <div className="text-container">
-              <div className="text-left">
-                <div className="image-container-home">
-                  <img src="/src/images/biglandscape1.jpg" alt="landscape painting" className="img-fluid" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="container  footer-spacing">
-        <div className="row align-items-start">
-          <div className="col-md-6 order-md-4">
-            <div className="text-container">
-              <div className="text-left">
-                <h2>Infinite imagination</h2>
-                <p className="responsive-text">
-                  This tool not only assists in color matching but also offers insights into the dominant colors and their proportions, helping artists maintain harmony and balance in their compositions.
-                  Whether refining a piece or seeking inspiration, our app empowers artists to harness the power of color with precision and ease.
-                </p>
-                <button className="btnprm full-width-mobile" onClick={() => { window.location.href = '/paint'; }}>Learn More</button>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="text-container">
-              <div className="text-left">
-                <div className="image-container-home">
-                  <img src="/src/images/acrylic1.jpg" alt="Acrylic painting" className="img-fluid" />
-                </div>
               </div>
             </div>
           </div>
