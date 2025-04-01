@@ -91,13 +91,10 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
     <div className="color-tiles-container">
       <div className="color-table-container">
         <table className="table table-bordered">
-          <thead>
-            <tr>
-              <th>Colors (Hex Codes and Tiles)</th>
-            </tr>
-          </thead>
+       
           <tbody>
             <tr>
+            <th>Colors (Hex Codes and Tiles)</th>
               <td className="color-palette-td" data-label="Colors (Hex Codes and Tiles)">
                 <div className="color-palette-flex-container">
                   {colors.map((color, index) => {

@@ -41,6 +41,16 @@ const HomePage: React.FC = () => {
                   By uploading images, artists can seamlessly identify and analyze the color palette within their artwork, enabling them to experiment with new hues and shades.
                 </p>
                 <button className="full-width-mobile btnprm" onClick={() => { window.location.href = '/paint'; }}>Try Now</button>
+                <div className="image-container-home">
+                  <video 
+                    src="/src/images/movie.mov" 
+                    className="img-fluid" 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                  />
+                </div>
               </div>
             </div>
           </div>
