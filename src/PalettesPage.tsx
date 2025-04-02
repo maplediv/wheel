@@ -221,7 +221,7 @@ const PalettesPage: React.FC = () => {
                         
                  
                       <td className="color-palette-td" data-label="Colors (Hex Codes and Tiles)">
-                        <div className="form-button-container">
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                           <input
                             type="text"
                             className="form-control"
@@ -230,14 +230,12 @@ const PalettesPage: React.FC = () => {
                             onChange={(e) => handleNameChange(palette.id, e.target.value)}
                             onFocus={() => setEditingPaletteId(palette.id)}
                           />
-                        
                           <button
-                            className="btnsave full-width-mobile"
+                            className="btn-pallete full-width-mobile"
                             onClick={() => handleSaveChanges(palette.id)}
                           >
                             Save
                           </button>
-                          
                         </div>
                         <div className="color-palette-flex-container">
                           {getColorsFromPalette(palette).map((color, index) => {
@@ -320,13 +318,13 @@ const PalettesPage: React.FC = () => {
                 <p>Are you sure you want to delete this palette?</p>
                 <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
                   <button
-                    className="btn btn-primary"
+                    className="btnprm full-width-mobile"
                     onClick={() => setShowDeleteModal(false)} // Close modal
                   >
                     Cancel
                   </button>
                   <button
-                  className="btn btn-danger"
+                  className="custom-button full-width-mobile"
                   style={{ pointerEvents: 'auto' }}
                   onClick={deletePalette}
                     >
