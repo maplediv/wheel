@@ -41,15 +41,20 @@ const HomePage: React.FC = () => {
                   By uploading images, artists can seamlessly identify and analyze the color palette within their artwork, enabling them to experiment with new hues and shades.
                 </p>
                 <button className="full-width-mobile btnprm" onClick={() => { window.location.href = '/paint'; }}>Try Now</button>
-                <div className="image-container-home">
-                  <video 
-                    src="/src/images/movie.mov" 
-                    className="img-fluid" 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline
-                  />
+                <div className="video-card">
+                  <div className="image-container-home">
+                    <iframe 
+                      style={{ 
+                        border: "1px solid rgba(0, 0, 0, 0.1)", 
+                        width: "100%", 
+                        maxWidth: "800px", 
+                        height: "100vh", 
+                        maxHeight: "450px" 
+                      }} 
+                      src="https://embed.figma.com/proto/cwtzQSN4ftotagUcHAZ66O/Art-Genius?page-id=0%3A1&node-id=331-33&p=f&viewport=-9717%2C6226%2C1&scaling=contain&content-scaling=fixed&starting-point-node-id=331%3A33&embed-host=share" 
+                      allowFullScreen
+                    />
+                  </div>
                 </div>
               </div>
             </div>
