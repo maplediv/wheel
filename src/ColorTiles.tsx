@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ColorTile from './ColorTile';
 import { useAuth } from './AuthContext';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 interface Color {
   color: { red: number; green: number; blue: number };
@@ -37,8 +37,9 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
   const { user } = useAuth();
   const userId = user?.userId;
   const [savedPalettes, setSavedPalettes] = useState<Palette[]>([]);
-  const [successMessage, setSuccessMessage] = useState<string>(''); // State for success message
-  const navigate = useNavigate();  // Initialize the navigate function
+  const [successMessage, setSuccessMessage] = useState<string>('');
+  const [showLimitModal, setShowLimitModal] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const colors = response?.responses?.[0]?.imagePropertiesAnnotation?.dominantColors?.colors || [];
 
@@ -68,6 +69,8 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
       if (response.status === 201) {
         setSuccessMessage('Palette saved successfully!');
         setTimeout(() => setSuccessMessage(''), 3000);
+      } else if (response.status === 403) {
+        setShowLimitModal(true);
       }
     } catch (error) {
       console.error('Error saving palette:', error);
@@ -82,6 +85,12 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
       console.error('Error deleting palette:', error);
     }
   };
+
+  useEffect(() => {
+    if (showLimitModal) {
+      console.log("Modal is visible");
+    }
+  }, [showLimitModal]);
 
   if (colors.length === 0) {
     return null;
@@ -117,18 +126,88 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
         </table>
       </div>
 
+      <div className="palspace full-width-mobile">
+        {!showLimitModal ? (
+          <button onClick={handleSavePalette} className="btnprm full-width-mobile">Save Palette</button>
+        ) : (
+          <>
+            <p className="text-center">Maximum palettes reached. Please delete an existing palette first.</p>
+            <button 
+              onClick={() => navigate('/palettes')} 
+              className="custom-button full-width-mobile"
+            >
+              View Palettes
+            </button>
+          </>
+        )}
+        <button onClick={() => navigate('/palettes')} className="full-width-mobile custom-button">
+          View Palettes
+        </button>
+      </div>
+
       {successMessage && (
         <div className="alert alert-success text-center" role="alert">
           {successMessage}
         </div>
       )}
 
-      <div className="palspace full-width-mobile">
-        <button onClick={handleSavePalette} className="btnprm full-width-mobile">Save Palette</button>
-        <button onClick={() => navigate('/palettes')} className="full-width-mobile custom-button">
-          View Palettes
-        </button>
-      </div>
+      {showLimitModal && (
+        <div 
+          className="modal" 
+          style={{
+            display: 'block',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 1050,
+            pointerEvents: 'none',
+          }}
+        >
+          <div 
+            className="modal-dialog" 
+            style={{
+              margin: '10% auto',
+              backgroundColor: '#fff',
+              padding: '20px',
+              borderRadius: '5px',
+              maxWidth: '400px',
+              pointerEvents: 'auto',
+            }}
+          >
+            <h5 className="modal-title">Maximum Palettes Reached</h5>
+            <p>Please delete an existing palette before creating a new one.</p>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+              <button
+                type="button"
+                className="btnprm full-width-mobile"
+                onClick={(e) => {
+                  console.log('Cancel button clicked');
+                  setShowLimitModal(false);
+                }}
+              >
+                Cancel
+              </button>
+              <button 
+                type="button"
+                className="custom-button full-width-mobile"
+                onClick={(e) => {
+                  console.log('View Palettes button clicked');
+                  setShowLimitModal(false);
+                  console.log('About to navigate to /palettes');
+                  navigate('/palettes');
+                  console.log('Navigation called');
+                }}
+              >
+                View Palettes
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

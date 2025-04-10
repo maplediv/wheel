@@ -17,7 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 0;  /* Remove margin since card has margin */
+  margin-bottom: 0;
 }
 
 .image-container-home video {
@@ -36,7 +36,7 @@
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   margin: 2rem auto;
   max-width: 800px;
-  margin-bottom: 80px;  /* Added bottom margin */
+  margin-bottom: 120px !important; /* Increase this to add more space */
 }
 
 .btnprm {
@@ -239,6 +239,7 @@ li.custom-list-item {
 
 .color-palette-td > div {
   width: 100% !important;
+  max-width: 100% !important;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -304,7 +305,7 @@ li.custom-list-item {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: left !important;
-  margin-bottom: 40px !important;
+  /* Remove margin-bottom since parent container handles it */
 }
 
 .color-palette-td > div {
@@ -314,6 +315,8 @@ li.custom-list-item {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: left !important;
+ * Increased from 40px to 120px to match other pages */
+  margin-top: 40px !important;
 }
 
 
@@ -324,8 +327,8 @@ li.custom-list-item {
   margin-bottom: 100px !important;
 }
 
-.home-page-content{
-  margin-bottom: 60px !important;
+.home-page-content {
+  margin-bottom: 0 !important; /* Remove this margin since video-card handles spacing */
 }
 
 
@@ -642,7 +645,7 @@ p.footer-text {
   justify-content: center;
   align-items: center;
   margin-top: 0px;
-  margin-bottom: 40px !important;
+  /* Remove margin-bottom since parent container handles it */
 }
 
 /* Reset */
@@ -674,9 +677,9 @@ p.footer-text {
 .row.align-items-start {
   height: auto;
   max-height: 100%;
-  margin-bottom: 100px;
+  margin-bottom: 120px !important; /* Increased margin for desktop */
   margin-left: auto;
-  margin-right: 0px; /* Adjust this value as needed */
+  margin-right: 0px;
   max-width: 100%;
 }
 
@@ -1455,16 +1458,7 @@ p.responsive-text {
       margin-bottom: 40px;
     }
   }
-  .color-palette-flex-container {
-    width: 100%;
-    max-width: 100% !important;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: left !important;
-    margin-bottom: 40px !important;
-  }
-
+ 
 
 
 
