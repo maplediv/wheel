@@ -68,6 +68,7 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
 
       if (response.status === 201) {
         setSuccessMessage('Palette saved successfully!');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         setTimeout(() => setSuccessMessage(''), 3000);
       } else if (response.status === 403) {
         setShowLimitModal(true);
@@ -98,6 +99,25 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
 
   return (
     <div className="color-tiles-container">
+      {successMessage && (
+        <div 
+          className="alert alert-success text-center" 
+          role="alert"
+          style={{
+            position: 'fixed',
+            top: '20px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 1000,
+            padding: '1rem 2rem',
+            borderRadius: '4px',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+          }}
+        >
+          {successMessage}
+        </div>
+      )}
+
       <div className="color-table-container">
         <table className="table table-bordered">
        
@@ -144,12 +164,6 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
           View Palettes
         </button>
       </div>
-
-      {successMessage && (
-        <div className="alert alert-success text-center" role="alert">
-          {successMessage}
-        </div>
-      )}
 
       {showLimitModal && (
         <div 
