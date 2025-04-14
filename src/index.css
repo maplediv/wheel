@@ -36,7 +36,8 @@
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   margin: 2rem auto;
   max-width: 800px;
-  margin-bottom: 120px !important; /* Increase this to add more space */
+  margin-bottom: 60px !important;
+  margin-top: 60px !important;
 }
 
 .btnprm {
@@ -306,7 +307,6 @@ li.custom-list-item {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
- 
 }
 
 
@@ -879,6 +879,7 @@ p.footer-text {
     padding: 1rem;
     box-sizing: border-box;
     font-weight: bold;
+    margin-bottom: 60px !important;
   }
   
 
@@ -938,10 +939,11 @@ p.footer-text {
   }
 
   tbody td::before {
-    content: attr(data-label); /* Use the data-label attribute as a pseudo-header */
+    content: attr(data-label); /* Uses the data-label attribute as a pseudo-header */
     font-weight: bold;
     display: block;
     margin-bottom: 0.5rem;
+    margin-top: 60px !important;
   }
 
 
@@ -1251,6 +1253,7 @@ p.footer-text {
     padding: 1rem;
     box-sizing: border-box;
     font-weight: bold;
+    margin-bottom: 20px !important;
   }
 
   .color-palette-td {

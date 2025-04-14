@@ -41,7 +41,7 @@ const HomePage: React.FC = () => {
                   Visual artists can elevate their creative process by using our app's sophisticated color image recognition feature.
                   By uploading images, artists can seamlessly identify and analyze the color palette within their artwork, enabling them to experiment with new hues and shades.
                 </p>
-                <button className="full-width-mobile btnprm" onClick={() => { window.location.href = '/paint'; }}>Try Now</button>
+               
                 <div className="video-card">
                   <div className="image-container-home">
                     <img 
@@ -56,6 +56,7 @@ const HomePage: React.FC = () => {
                     />
                   </div>
                 </div>
+                <button className="full-width-mobile btnprm" onClick={() => { window.location.href = '/paint'; }}>Try Now</button>
               </div>
             </div>
           </div>
