@@ -204,7 +204,9 @@ const PalettesPage: React.FC = () => {
             <table>
               <thead>
                 <tr>
-                  <th>Palette Name Colors (Hex Codes and Tiles)</th>
+                  <th>
+                    <h2>Your Color Palettes</h2>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -316,21 +318,20 @@ const PalettesPage: React.FC = () => {
               >
                 <h5 className="modal-title">Delete Palette</h5>
                 <p>Are you sure you want to delete this palette?</p>
-                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '0px' }}>
                   <button
                     className="btnprm full-width-mobile"
-                    onClick={() => setShowDeleteModal(false)} // Close modal
+                    onClick={() => setShowDeleteModal(false)}
                   >
                     Cancel
                   </button>
                   <button
-                  className="custom-button full-width-mobile"
-                  style={{ pointerEvents: 'auto' }}
-                  onClick={deletePalette}
-                    >
-                  Confirm
+                    className="custom-button-modal full-width-mobile"
+                    style={{ pointerEvents: 'auto' }}
+                    onClick={deletePalette}
+                  >
+                    Confirm
                   </button>
-
                 </div>
               </div>
             </div>

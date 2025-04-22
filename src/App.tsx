@@ -85,7 +85,7 @@ const PaintPage: React.FC = () => {
         <div className="col-md-6">
           <div className="text-left">
             <div className="color-canvas">
-              <h1>Color Canvas</h1>
+              <h2>Color Canvas</h2>
               <div className="color-text">
                 <ul className="custom-ul">
                   <li className='custom-list-item'>Click the "Choose File" button and upload any file to return the dominant colors in the image.</li>

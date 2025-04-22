@@ -73,6 +73,23 @@
   text-align: center;
   }
 
+  .custom-button-modal {
+    margin-top: 30px !important;
+    margin-bottom: 40px !important;
+    margin-right: 0px !important;
+    display: inline-block;
+    font-size: 16px;
+    color: #1473e6;
+    background-color: #ffffff;
+    border: 1px solid #1473e6;
+    padding-right: 24px;
+    padding-left: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 0.25rem;
+    text-align: center;
+    }
+
 
 
 .responsive-text {
@@ -182,23 +199,7 @@ p.responsive-text {
   margin-top: 20px !important;
   padding: 1rem;
   margin-bottom: 0px !important;
-  position: relative; /* Add this for absolute positioning of pseudo-element */
-}
-
-/* Add horizontal line using pseudo-element */
-.color-palette-td::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 1rem; /* Align with padding */
-  width: 50%; /* Width of the line */
-  height: 1px;
-  background-color: #000000;
-}
-
-/* Remove border from last palette */
-tr:last-child .color-palette-td::after {
-  display: none;
+  position: relative;
 }
 
 .palspace{
@@ -438,7 +439,7 @@ li.custom-list-item {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  margin-top: 425px;
+  margin-top: 345px;
 }
 
 .color-tile-wrapper {
@@ -725,13 +726,7 @@ p.footer-text {
 
 @media screen and (max-width: 394px)  {
 .color-palette-td::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 1rem; /* Align with padding */
-  width: 90%; /* Width of the line */
-  height: 1px;
-  background-color: #000000;
+  display: none;
 }
   .uploaded-image{
     margin-top: 40px;
@@ -1094,13 +1089,7 @@ p.footer-text {
 /* Tablet devices (376px to 768px) */
 @media (min-width: 394px) and (max-width: 768px) {
 .color-palette-td::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 1rem; /* Align with padding */
-  width: 95%; /* Width of the line */
-  height: 1px;
-  background-color: #000000;
+  display: none;
 }
   h1 {
     font-size: 41px !important;
@@ -1315,7 +1304,7 @@ p.footer-text {
 
 /* Modal */
 .modal-dialog {
-  margin: 0.5rem auto;
+  margin: 0.75rem auto;
   width: 95%;
 }
 

@@ -124,7 +124,7 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
           <tbody>
             <tr>
             <th>Colors (Hex Codes and Tiles)</th>
-              <td className="color-palette-td" data-label="Colors (Hex Codes and Tiles)">
+              <td className="color-palette-td" data-label="">
                 <div className="color-palette-flex-container">
                   {colors.map((color, index) => {
                     const hexCode = `#${Math.round(color.color.red).toString(16).padStart(2, '0')}${Math.round(color.color.green).toString(16).padStart(2, '0')}${Math.round(color.color.blue).toString(16).padStart(2, '0')}`.toUpperCase();
@@ -146,20 +146,8 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
         </table>
       </div>
 
-      <div className="palspace full-width-mobile">
-        {!showLimitModal ? (
-          <button onClick={handleSavePalette} className="btnprm full-width-mobile">Save Palette</button>
-        ) : (
-          <>
-            <p className="text-center">Maximum palettes reached. Please delete an existing palette first.</p>
-            <button 
-              onClick={() => navigate('/palettes')} 
-              className="custom-button full-width-mobile"
-            >
-              View Palettes
-            </button>
-          </>
-        )}
+      <div className="palspace full-width-mobile" style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+        <button onClick={handleSavePalette} className="btnprm full-width-mobile">Save Palette</button>
         <button onClick={() => navigate('/palettes')} className="full-width-mobile custom-button">
           View Palettes
         </button>
@@ -193,12 +181,11 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
           >
             <h5 className="modal-title">Maximum Palettes Reached</h5>
             <p>Please delete an existing palette before creating a new one.</p>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '0px' }}>
               <button
                 type="button"
                 className="btnprm full-width-mobile"
                 onClick={(e) => {
-                  console.log('Cancel button clicked');
                   setShowLimitModal(false);
                 }}
               >
@@ -206,13 +193,10 @@ const ColorTiles: React.FC<ColorTilesProps> = ({ response }) => {
               </button>
               <button 
                 type="button"
-                className="custom-button full-width-mobile"
+                className="custom-button-modal full-width-mobile"
                 onClick={(e) => {
-                  console.log('View Palettes button clicked');
                   setShowLimitModal(false);
-                  console.log('About to navigate to /palettes');
                   navigate('/palettes');
-                  console.log('Navigation called');
                 }}
               >
                 View Palettes
