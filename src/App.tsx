@@ -42,19 +42,6 @@ const HomePage: React.FC = () => {
                   By uploading images, artists can seamlessly identify and analyze the color palette within their artwork, enabling them to experiment with new hues and shades.
                 </p>
                
-                <div className="video-card">
-                  <div className="image-container-home">
-                    <img 
-                      src={artGif}
-                      alt="Art Genius Demo"
-                      style={{ 
-                        width: "100%", 
-                        maxWidth: "600px", 
-                        height: "auto",
-                        border: "1px solid rgba(0, 0, 0, 0.1)"
-                      }} 
-                    />
-                  </div>
                 </div>
                 <button className="full-width-mobile btnprm" onClick={() => { window.location.href = '/paint'; }}>Try Now</button>
               </div>
