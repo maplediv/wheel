@@ -42,7 +42,7 @@ const HomePage: React.FC = () => {
                   By uploading images, artists can seamlessly identify and analyze the color palette within their artwork, enabling them to experiment with new hues and shades.
                 </p>
                
-                </div>
+                
                 <button className="full-width-mobile btnprm" onClick={() => { window.location.href = '/paint'; }}>Try Now</button>
               </div>
             </div>
